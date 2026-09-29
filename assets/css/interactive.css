@@ -212,6 +212,8 @@
     radial-gradient(circle at calc(72% + var(--mx) * .4) calc(16% + var(--my) * .4), hsl(calc(var(--bg-a) + 2) 100% 76% / .22) 0 3%, transparent 16%),
     radial-gradient(circle at calc(86% + var(--mx) * -.3) calc(68% + var(--my) * -.3), hsl(var(--bg-b) 100% 76% / .26) 0 5%, transparent 22%),
     radial-gradient(circle at 56% 94%, hsl(var(--bg-c) 100% 67% / .09) 0 3%, transparent 17%),
+    radial-gradient(circle at 40% 45%, hsl(calc(var(--bg-a) + 30) 100% 30% / .3) 0 8%, transparent 32%),
+    radial-gradient(ellipse at 90% 95%, hsl(calc(var(--bg-a) + 24) 100% 42% / .28) 0 6%, transparent 30%),
     conic-gradient(from 210deg at 50% 50%, hsl(calc(var(--bg-a) + 21) 100% 50% / .17), hsl(var(--bg-b) 100% 75% / .14), hsl(var(--bg-a) 100% 50% / .17), hsl(calc(var(--bg-a) + 21) 100% 50% / .17)),
     linear-gradient(135deg, hsl(calc(var(--bg-a) + 32) 70% 3%) 8%, hsl(calc(var(--bg-a) + 29) 80% 13%) 42%, hsl(calc(var(--bg-a) + 32) 80% 5%) 72%, hsl(calc(var(--bg-a) + 32) 85% 1.5%) 100%);
 }
@@ -384,3 +386,54 @@ address { font-style: normal; display: grid; justify-items: start; gap: 14px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) { .site-footer::before, .footer-mark { animation: none; } }
+
+:root { --bg2-a: 190; --bg2-b: 258; --bg2-c: 72; }
+html.lite { transition: none; }
+html.lite body::before, html.lite body::after {
+  position: fixed; inset: 0; z-index: -1; animation: none; filter: none; transform: none; will-change: auto;
+}
+html.lite body::after { display: block; opacity: 0; transition: opacity 1.4s var(--ease-soft); will-change: opacity; }
+html.lite.bg-alt body::after { opacity: 1; }
+html.lite.bg-instant body::after { transition: none; }
+html.lite:not([data-theme="light"]) body::before {
+  background:
+    radial-gradient(circle at 12% 8%, hsl(var(--bg-a) 100% 50% / .3), transparent 38%),
+    radial-gradient(circle at 88% 22%, hsl(calc(var(--bg-a) + 26) 100% 58% / .3), transparent 42%),
+    radial-gradient(circle at 20% 55%, hsl(calc(var(--bg-a) + 14) 100% 45% / .26), transparent 46%),
+    radial-gradient(circle at 60% 38%, hsl(calc(var(--bg-a) + 40) 100% 30% / .28), transparent 50%),
+    radial-gradient(circle at 92% 62%, hsl(var(--bg-b) 100% 76% / .2), transparent 40%),
+    radial-gradient(ellipse at 50% 100%, hsl(calc(var(--bg-a) + 22) 100% 40% / .36), transparent 55%),
+    radial-gradient(circle at 8% 92%, hsl(var(--bg-c) 100% 67% / .07), transparent 30%),
+    linear-gradient(170deg, hsl(calc(var(--bg-a) + 32) 80% 10%) 0%, hsl(calc(var(--bg-a) + 29) 85% 14%) 38%, hsl(calc(var(--bg-a) + 32) 85% 6%) 72%, hsl(calc(var(--bg-a) + 32) 90% 3%) 100%);
+}
+html.lite:not([data-theme="light"]) body::after {
+  background:
+    radial-gradient(circle at 12% 8%, hsl(var(--bg2-a) 100% 50% / .3), transparent 38%),
+    radial-gradient(circle at 88% 22%, hsl(calc(var(--bg2-a) + 26) 100% 58% / .3), transparent 42%),
+    radial-gradient(circle at 20% 55%, hsl(calc(var(--bg2-a) + 14) 100% 45% / .26), transparent 46%),
+    radial-gradient(circle at 60% 38%, hsl(calc(var(--bg2-a) + 40) 100% 30% / .28), transparent 50%),
+    radial-gradient(circle at 92% 62%, hsl(var(--bg2-b) 100% 76% / .2), transparent 40%),
+    radial-gradient(ellipse at 50% 100%, hsl(calc(var(--bg2-a) + 22) 100% 40% / .36), transparent 55%),
+    radial-gradient(circle at 8% 92%, hsl(var(--bg2-c) 100% 67% / .07), transparent 30%),
+    linear-gradient(170deg, hsl(calc(var(--bg2-a) + 32) 80% 10%) 0%, hsl(calc(var(--bg2-a) + 29) 85% 14%) 38%, hsl(calc(var(--bg2-a) + 32) 85% 6%) 72%, hsl(calc(var(--bg2-a) + 32) 90% 3%) 100%);
+}
+html.lite[data-theme="light"] body::before {
+  background:
+    radial-gradient(circle at 12% 8%, hsl(var(--bg-a) 90% 60% / .16), transparent 40%),
+    radial-gradient(circle at 88% 20%, hsl(var(--bg-b) 90% 65% / .15), transparent 42%),
+    radial-gradient(circle at 25% 80%, hsl(var(--bg-c) 90% 62% / .11), transparent 44%),
+    radial-gradient(circle at 55% 45%, hsl(calc(var(--bg-a) + 26) 70% 65% / .14), transparent 50%),
+    linear-gradient(170deg, hsl(calc(var(--bg-a) + 30) 100% 98%), hsl(calc(var(--bg-a) + 28) 100% 94%) 45%, hsl(calc(var(--bg-a) + 30) 100% 97%) 80%, #fff);
+}
+html.lite[data-theme="light"] body::after {
+  background:
+    radial-gradient(circle at 12% 8%, hsl(var(--bg2-a) 90% 60% / .16), transparent 40%),
+    radial-gradient(circle at 88% 20%, hsl(var(--bg2-b) 90% 65% / .15), transparent 42%),
+    radial-gradient(circle at 25% 80%, hsl(var(--bg2-c) 90% 62% / .11), transparent 44%),
+    radial-gradient(circle at 55% 45%, hsl(calc(var(--bg2-a) + 26) 70% 65% / .14), transparent 50%),
+    linear-gradient(170deg, hsl(calc(var(--bg2-a) + 30) 100% 98%), hsl(calc(var(--bg2-a) + 28) 100% 94%) 45%, hsl(calc(var(--bg2-a) + 30) 100% 97%) 80%, #fff);
+}
+html.lite .featured .feature-card.personal-note::after { display: none; }
+html.lite .personal-note .code-art, html.lite .err-art, html.lite .personal-note-tag,
+html.lite .err-code, html.lite .footer-mark, html.lite .site-footer::before,
+html.lite .cyber-glass .scanline { animation: none; }

@@ -170,6 +170,7 @@
   const KEY = 'arlingkin-bg';
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const liteQuery = matchMedia('(max-width: 700px), (pointer: coarse)');
   const controller = new AbortController();
   const opts = { signal: controller.signal };
   let channel = null;
@@ -177,19 +178,41 @@
 
   const rand = (min, max) => min + Math.random() * (max - min);
   const isPalette = v => v && [v.a, v.b, v.c].every(Number.isFinite);
+  const detectLite = () => liteQuery.matches || (navigator.deviceMemory ?? 8) <= 4 || navigator.connection?.saveData === true;
   let current = { a: 190, b: 258, c: 72 };
+  let lite = null;
+  let alt = false;
+
+  const setVars = (prefix, palette) => {
+    root.style.setProperty(`${prefix}a`, palette.a);
+    root.style.setProperty(`${prefix}b`, palette.b);
+    root.style.setProperty(`${prefix}c`, palette.c);
+  };
 
   const paint = palette => {
     current = palette;
-    root.style.setProperty('--bg-a', palette.a);
-    root.style.setProperty('--bg-b', palette.b);
-    root.style.setProperty('--bg-c', palette.c);
+    if (!lite) { setVars('--bg-', palette); return; }
+    alt = !alt;
+    setVars(alt ? '--bg2-' : '--bg-', palette);
+    root.classList.toggle('bg-alt', alt);
   };
 
   const paintInstant = palette => {
     root.classList.add('bg-instant');
-    paint(palette);
+    current = palette;
+    alt = false;
+    setVars('--bg-', palette);
+    setVars('--bg2-', palette);
+    root.classList.remove('bg-alt');
     requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('bg-instant')));
+  };
+
+  const applyMode = () => {
+    const next = detectLite();
+    if (next === lite) return;
+    lite = next;
+    root.classList.toggle('lite', lite);
+    paintInstant(current);
   };
 
   const readStored = () => {
@@ -216,7 +239,9 @@
   };
 
   const stored = readStored();
-  if (stored) paintInstant(stored);
+  if (stored) current = stored;
+  applyMode();
+  liteQuery.addEventListener('change', applyMode, opts);
 
   channel?.addEventListener('message', e => receive(e.data), opts);
   addEventListener('storage', e => {
@@ -236,7 +261,8 @@
       if (nextDir !== dir) { dir = nextDir; travelled = 0; }
       travelled += Math.abs(delta);
       const now = performance.now();
-      if (travelled >= Math.max(360, innerHeight * .6) && now - lastChange > 2500) {
+      const gap = lite ? 4000 : 2500;
+      if (travelled >= Math.max(360, innerHeight * .6) && now - lastChange > gap) {
         travelled = 0;
         lastChange = now;
         shuffle();
