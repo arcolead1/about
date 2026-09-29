@@ -99,15 +99,46 @@
   addEventListener('resize', scheduleProgress, opts);
   paintProgress();
 
-  const marqueeTrack = document.querySelector('.tool-marquee-track');
-  if (marqueeTrack && !marqueeTrack.dataset.cloned) {
-    marqueeTrack.dataset.cloned = '1';
-    [...marqueeTrack.children].forEach(item => {
-      const clone = item.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
+  const marqueeWrap = document.querySelector('[data-marquee]');
+  const firstTrack = marqueeWrap?.querySelector('.tool-marquee-track');
+  let marqueeObserver = null;
+  if (firstTrack && !firstTrack.dataset.ready) {
+    const softenClone = (node, isDuplicate) => {
+      const clone = node.cloneNode(true);
       clone.tabIndex = -1;
-      marqueeTrack.appendChild(clone);
+      clone.setAttribute('aria-hidden', 'true');
+      if (isDuplicate) clone.dataset.clone = '1';
+      return clone;
+    };
+    const reverseTrack = firstTrack.cloneNode(false);
+    reverseTrack.className = 'tool-marquee-track is-reverse';
+    reverseTrack.setAttribute('aria-hidden', 'true');
+    [...firstTrack.children].reverse().forEach(chip => reverseTrack.appendChild(softenClone(chip, false)));
+    marqueeWrap.appendChild(reverseTrack);
+    marqueeWrap.querySelectorAll('.tool-marquee-track').forEach(track => {
+      track.dataset.ready = '1';
+      [...track.children].forEach(chip => track.appendChild(softenClone(chip, true)));
     });
+
+    let spotFrame = null;
+    marqueeWrap.addEventListener('pointermove', e => {
+      const chip = e.target.closest('.tool-chip');
+      if (!chip || spotFrame !== null) return;
+      const { clientX, clientY } = e;
+      spotFrame = requestAnimationFrame(() => {
+        const rect = chip.getBoundingClientRect();
+        chip.style.setProperty('--px', `${clientX - rect.left}px`);
+        chip.style.setProperty('--py', `${clientY - rect.top}px`);
+        spotFrame = null;
+      });
+    }, { ...opts, passive: true });
+
+    if ('IntersectionObserver' in window) {
+      marqueeObserver = new IntersectionObserver(([entry]) => {
+        marqueeWrap.classList.toggle('is-offscreen', !entry.isIntersecting);
+      });
+      marqueeObserver.observe(marqueeWrap);
+    }
   }
 
   document.querySelectorAll('.cta, .read-link, .project-link').forEach(el => {
@@ -130,6 +161,7 @@
     stopAmbient();
     clearTimeout(popTimeout);
     if (progressFrame !== null) cancelAnimationFrame(progressFrame);
+    marqueeObserver?.disconnect();
     controller.abort();
   }, { once: true });
 })();

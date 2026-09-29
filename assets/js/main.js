@@ -12,6 +12,12 @@ const T = {
   'nav.github':   { en:'github ↗',  id:'github ↗' },
   'footer.copy':  { en:'© 2026 Arlingkin. Built with care & plain HTML.', id:'© 2026 Arlingkin. Dibuat dengan sepenuh hati, pakai HTML murni.' },
   'footer.hello': { en:'say hello ↗', id:'sapa saya ↗' },
+  'footer.tagline': { en:'A quiet corner of the internet — building things, learning in public, staying curious.', id:'Sudut sepi internet — membangun sesuatu, belajar di depan publik, tetap penasaran.' },
+  'footer.status':  { en:'open to collaborate', id:'terbuka untuk berkolaborasi' },
+  'footer.nav':     { en:'Navigate', id:'Jelajah' },
+  'footer.social':  { en:'Elsewhere', id:'Di tempat lain' },
+  'footer.contact': { en:'Contact', id:'Kontak' },
+  'footer.top':     { en:'Back to top ↑', id:'Kembali ke atas ↑' },
   'skip.main':    { en:'Skip to content', id:'Lewati ke konten' },
 
   'err.eyebrow':  { en:'404 / Not found', id:'404 / Tidak ditemukan' },
