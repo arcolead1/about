@@ -337,10 +337,8 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ── dynamic note typography ─────────────────────────────────── */
 function initNoteTypography() {
   const targets = document.querySelectorAll('[data-note-fonts]');
-  if (!targets.length) return;
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  if (reduced.matches) return;
-  let index = 0;
+  if (!targets.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let index = 0, timer = null;
   const tick = () => {
     targets.forEach(el => {
       el.classList.remove('note-font-0','note-font-1','note-font-2','note-font-3','note-font-4');
@@ -349,6 +347,10 @@ function initNoteTypography() {
     });
     index = (index + 1) % 5;
   };
+  const start = () => { if (timer === null) timer = setInterval(tick, 3600); };
+  const stop = () => { clearInterval(timer); timer = null; };
   tick();
-  setInterval(tick, 3600);
+  start();
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+  addEventListener('pagehide', stop, { once: true });
 }

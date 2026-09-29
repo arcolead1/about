@@ -170,26 +170,85 @@
 }
 
 
-/* ── Personal note: animated lime ↔ cyan perimeter ─────────── */
+@property --note-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
 .featured .feature-card.personal-note { position: relative; isolation: isolate; overflow: hidden; }
 .featured .feature-card.personal-note::before {
-  content: ""; position: absolute; z-index: 3; inset: 0; padding: 1px; border-radius: inherit;
-  background: conic-gradient(from 0deg, transparent 0deg 18deg, var(--lime) 48deg, var(--cyan) 108deg, transparent 142deg 218deg, var(--cyan) 248deg, var(--lime) 308deg, transparent 340deg 360deg);
+  content: ""; position: absolute; z-index: 3; inset: 0; padding: 2px; border-radius: inherit;
+  background:
+    conic-gradient(from var(--note-angle), transparent 0 52%, rgba(217,255,89,.15) 60%, var(--lime) 78%, var(--cyan) 92%, #fff 98.5%, transparent 100%),
+    linear-gradient(rgba(216,224,255,.1), rgba(216,224,255,.1));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
-  animation: personal-note-orbit 5.5s linear infinite;
+  animation: personal-note-orbit 6s linear infinite;
 }
 .featured .feature-card.personal-note::after {
-  content: ""; position: absolute; z-index: -1; inset: -18%;
-  background: conic-gradient(from 0deg, transparent 0deg 80deg, rgba(217,255,89,.11) 120deg, rgba(142,232,255,.13) 180deg, transparent 230deg 360deg);
-  filter: blur(28px); opacity: .5; pointer-events: none;
-  animation: personal-note-glow 5.5s linear infinite;
+  content: ""; position: absolute; z-index: -1; inset: -30%; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg 90deg, rgba(217,255,89,.12) 140deg, rgba(142,232,255,.16) 200deg, transparent 250deg 360deg);
+  filter: blur(34px); opacity: .55; pointer-events: none;
+  animation: personal-note-glow 9s linear infinite;
 }
 .featured .feature-card.personal-note > * { position: relative; z-index: 1; }
 .personal-note-tag { background: linear-gradient(100deg, var(--lime), var(--cyan), var(--lime)); background-size: 220% 100%; animation: personal-note-tag-flow 3.8s ease-in-out infinite; }
-@keyframes personal-note-orbit { to { transform: rotate(360deg); } }
+.personal-note .code-art { background-size: 220% 220%; animation: personal-note-art 14s ease-in-out infinite alternate; }
+.personal-note .code-window { animation: float 7s ease-in-out infinite; }
+@keyframes personal-note-orbit { to { --note-angle: 360deg; } }
 @keyframes personal-note-glow { to { transform: rotate(360deg); } }
 @keyframes personal-note-tag-flow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes personal-note-art { 0% { background-position: 0% 20%; } 100% { background-position: 100% 80%; } }
+
+:root:not([data-theme="light"]) body::before {
+  background:
+    radial-gradient(circle at calc(14% + var(--mx)) calc(24% + var(--my)), rgba(0,223,255,.27) 0 2.2%, transparent 13%),
+    radial-gradient(circle at calc(28% + var(--mx) * -.6) calc(72% + var(--my) * -.6), rgba(43,130,255,.28) 0 4.5%, transparent 20%),
+    radial-gradient(circle at calc(72% + var(--mx) * .4) calc(16% + var(--my) * .4), rgba(142,232,255,.22) 0 3%, transparent 16%),
+    radial-gradient(circle at calc(86% + var(--mx) * -.3) calc(68% + var(--my) * -.3), rgba(174,140,255,.26) 0 5%, transparent 22%),
+    radial-gradient(circle at 56% 94%, rgba(217,255,89,.08) 0 3%, transparent 17%),
+    conic-gradient(from 210deg at 50% 50%, rgba(0,120,255,.17), rgba(174,140,255,.14), rgba(0,223,255,.17), rgba(0,120,255,.17)),
+    linear-gradient(135deg, #02050d 8%, #071a3b 42%, #020816 72%, #000207 100%);
+}
+@keyframes aurora-shift {
+  0%   { filter: blur(14px) saturate(115%) hue-rotate(-12deg); }
+  50%  { filter: blur(16px) saturate(140%) hue-rotate(14deg); }
+  100% { filter: blur(14px) saturate(120%) hue-rotate(38deg); }
+}
+@supports (animation-timeline: scroll()) {
+  :root:not([data-theme="light"]) body::before {
+    animation: molecular-scroll linear both, aurora-shift 22s ease-in-out infinite alternate;
+    animation-timeline: scroll(root), auto;
+    animation-range: 0% 100%, normal;
+  }
+}
+
+.note-head .note-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 24px; color: var(--muted); font: 500 11px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
+.note-body { max-width: 680px; margin: 56px auto 40px; }
+.note-body p { margin: 0 0 24px; font-size: 17.5px; line-height: 1.8; color: #cfd5e7; }
+.note-body p.lead { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.3; letter-spacing: -.03em; color: var(--ink); }
+.note-body p.lead::first-line { color: var(--ink); }
+.note-quote {
+  margin: 44px 0; padding: 6px 0 6px 26px; border-left: 2px solid var(--lime);
+  font: italic 600 clamp(1.4rem, 3vw, 2rem)/1.3 var(--font-display); color: var(--ink);
+}
+.note-quote span {
+  color: var(--orange); padding: 0 .1em;
+  background: linear-gradient(transparent 62%, rgba(255,138,92,.28) 62%) no-repeat 0 0 / 0% 100%;
+  transition: background-size 1.2s var(--ease) .35s;
+}
+.note-quote.in span { background-size: 100% 100%; }
+.note-back { display: inline-block; margin: 0 0 72px; font: 500 12px/1 var(--font-mono); color: var(--lime); border-bottom: 1px solid rgba(217,255,89,.5); padding-bottom: 5px; transition: transform var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
+.note-back:hover { color: var(--cyan); transform: translateX(-3px); }
+[data-note-fonts] { transition: letter-spacing .9s var(--ease); }
+.note-font-0 { font-family: var(--font-sans); }
+.note-font-1 { font-family: "Fraunces", var(--font-display), serif; }
+.note-font-2 { font-family: "Caveat", cursive; font-size: 1.16em; }
+.note-font-3 { font-family: "Newsreader", Georgia, serif; }
+.note-font-4 { font-family: "Lora", Georgia, serif; font-style: italic; }
+.font-shifted { letter-spacing: .012em; }
+:root[data-theme="light"] .note-body p { color: #3d4760; }
+
 @media (prefers-reduced-motion: reduce) {
-  .featured .feature-card.personal-note::before, .featured .feature-card.personal-note::after, .personal-note-tag { animation: none; }
+  .featured .feature-card.personal-note::before, .featured .feature-card.personal-note::after,
+  .personal-note-tag, .personal-note .code-art, .personal-note .code-window { animation: none; }
+  .note-quote span { transition: none; background-size: 100% 100%; }
+  [data-note-fonts] { transition: none; }
 }
