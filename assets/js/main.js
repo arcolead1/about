@@ -12,6 +12,16 @@ const T = {
   'nav.github':   { en:'github ↗',  id:'github ↗' },
   'footer.copy':  { en:'© 2026 Arlingkin. Built with care & plain HTML.', id:'© 2026 Arlingkin. Dibuat dengan sepenuh hati, pakai HTML murni.' },
   'footer.hello': { en:'say hello ↗', id:'sapa saya ↗' },
+  'skip.main':    { en:'Skip to content', id:'Lewati ke konten' },
+
+  'err.eyebrow':  { en:'404 / Not found', id:'404 / Tidak ditemukan' },
+  'err.h1':       { en:'This page <em>wandered off.</em>', id:'Halaman ini <em>tersesat.</em>' },
+  'err.intro':    { en:"The link may be old, mistyped, or moved. Here's where things actually live.", id:'Tautannya mungkin lama, salah ketik, atau sudah pindah. Ini tempat semuanya berada sekarang.' },
+  'err.home':     { en:'BACK HOME →', id:'KEMBALI KE BERANDA →' },
+  'err.map.label':{ en:'Where to next', id:'Mau ke mana' },
+  'err.map.sub':  { en:'pages that do exist', id:'halaman yang benar-benar ada' },
+  'err.game.title':{ en:'Lost anyway? Play snake.', id:'Tersesat juga? Main ular.' },
+  'err.game.desc': { en:'Matrix-green, vanilla JS, zero ads. Eat, grow, survive.', id:'Hijau Matrix, JS vanilla, tanpa iklan. Makan, tumbuh, bertahan.' },
 
   /* home */
   'home.eyebrow':      { en:'Personal notes / 2026',   id:'Catatan pribadi / 2026' },
@@ -208,7 +218,9 @@ function applyLang(lang) {
     el.innerHTML = entry[lang] || entry.en;
   });
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('on', btn.dataset.lang === lang);
+    const active = btn.dataset.lang === lang;
+    btn.classList.toggle('on', active);
+    btn.setAttribute('aria-pressed', String(active));
   });
   /* update <html lang> */
   document.documentElement.lang = lang === 'id' ? 'id' : 'en';
@@ -232,6 +244,14 @@ function applyConfig() {
     const valueTrimmed = value.trim();
     return valueTrimmed && !valueTrimmed.startsWith('__') ? valueTrimmed : fallback;
   };
+  const esc = s => s.replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+  const override = (key, value) => {
+    const v = valueOrDefault(value, null);
+    if (v !== null) T[key] = { en: esc(v), id: esc(v) };
+  };
+  override('home.eyebrow', c.role);
+  override('home.status', c.tagline);
+  [1, 2, 3, 4].forEach(n => override(`home.now.${n}`, c[`now_${n}`]));
   Object.assign(T, {
     'about.fact.locv':  { en: valueOrDefault(c.location,       T['about.fact.locv'].en),  id: valueOrDefault(c.location,       T['about.fact.locv'].id)  },
     'about.fact.statv': { en: valueOrDefault(c.status,         T['about.fact.statv'].en), id: valueOrDefault(c.status,         T['about.fact.statv'].id) },
@@ -250,6 +270,7 @@ function setActiveNav() {
     const target = href.split('#')[0];
     if ((path === '/' && target === '/') || (path !== '/' && path === target)) {
       link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
     }
   });
 }

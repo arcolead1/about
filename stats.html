@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Arlingga's GitHub stats — live metrics, streaks, and the automation behind them.">
-  <meta name="theme-color" content="#0b1633">
+  <meta name="theme-color" content="#071a3b">
   <meta name="color-scheme" content="dark">
   <title>Arlingkin / Stats</title>
   <meta property="og:title" content="Arlingkin / Stats">
@@ -12,11 +12,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arlingkin.vercel.app/stats">
     <link rel="canonical" href="https://arlingkin.vercel.app/stats">
-<meta property="og:image" content="https://raw.githubusercontent.com/arlingkin/about/main/icons/icon.jpg">
+<meta property="og:image" content="https://arlingkin.vercel.app/icons/icon.jpg">
   <meta property="og:site_name" content="Arlingkin">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@arlingkin">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/arlingkin/about/main/icons/icon.jpg">
+  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/icon.jpg">
   <link rel="icon" type="image/jpeg" href="icons/icon.jpg">
   <link rel="apple-touch-icon" href="icons/icon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="assets/css/interactive.css">
 </head>
 <body>
+  <a class="skip-link" href="#main" data-i18n="skip.main">Skip to content</a>
   <div class="page">
     <header class="site-header">
       <a class="brand" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
@@ -45,7 +46,7 @@
 <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"><span class="theme-icon">◐</span><span class="theme-label">DARK</span></button>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
       <section class="page-head reveal reveal-zoom" aria-labelledby="stats-title">
         <p class="eyebrow" data-i18n="stats.eyebrow">04 / GitHub stats</p>
         <h1 id="stats-title" data-i18n="stats.h1">Shipping <em>in public.</em></h1>
@@ -58,14 +59,14 @@
           <span class="meta" data-i18n="stats.live.sub">auto-updated by github actions</span>
         </div>
         <div class="cyber-glass reveal">
-          <img src="https://raw.githubusercontent.com/arlingkin/arlingkin/refs/heads/main/github-metrics.svg" alt="Live GitHub metrics for arlingkin">
+          <img src="https://raw.githubusercontent.com/arlingkin/arlingkin/refs/heads/main/github-metrics.svg" alt="Live GitHub metrics for arlingkin" width="480" height="713" loading="lazy" decoding="async">
         </div>
         <div class="section-head">
           <h2 data-i18n="stats.streak.lbl">Current streak</h2>
           <span class="meta" data-i18n="stats.streak.sub">updated daily</span>
         </div>
         <div class="cyber-glass reveal has-center">
-          <img class="streak" src="https://streak-stats.demolab.com/?user=arlingkin&theme=for-the-badge&hide_border=true&card_width=280" alt="Current GitHub streak for arlingkin">
+          <img class="streak" src="https://streak-stats.demolab.com/?user=arlingkin&theme=for-the-badge&hide_border=true&card_width=280" alt="Current GitHub streak for arlingkin" loading="lazy" decoding="async">
         </div>
         <div class="auto-grid">
           <article class="auto-card reveal">

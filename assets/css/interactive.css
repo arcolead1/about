@@ -252,3 +252,37 @@
   .note-quote span { transition: none; background-size: 100% 100%; }
   [data-note-fonts] { transition: none; }
 }
+
+.skip-link {
+  position: fixed; z-index: 2000; top: 10px; left: 10px; padding: 10px 14px; border-radius: 8px;
+  background: var(--lime); color: #10152a; font: 500 12px/1 var(--font-mono);
+  transform: translateY(-160%); transition: transform .25s var(--ease);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+main:focus { outline: none; }
+.reveal.in { will-change: auto; }
+
+.err-head { border-bottom: 0; }
+.err-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; }
+.err-code {
+  margin: 0 0 6px; font: 600 clamp(5.5rem, 16vw, 11rem)/.85 var(--font-display); letter-spacing: -.06em;
+  background: linear-gradient(100deg, var(--cyan), var(--blue), var(--violet), var(--lime), var(--cyan));
+  background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: err-flow 7s linear infinite;
+}
+.err-head .intro { max-width: 420px; }
+.err-home { display: inline-block; margin-top: 28px; }
+.err-art { border-radius: var(--radius); min-height: 300px; display: grid; align-content: center; animation: personal-note-art 14s ease-in-out infinite alternate; background-size: 220% 220%; }
+.err-art .code-window { animation: float 7s ease-in-out infinite; word-break: break-all; }
+.err-game { margin: 64px 0 40px; }
+.err-game .feature-card { border-bottom: 1px solid rgba(216,224,255,.12); border-radius: var(--radius); }
+@keyframes err-flow { to { background-position: 260% 0; } }
+@media (max-width: 700px) { .err-grid { grid-template-columns: 1fr; gap: 28px; } .err-art { min-height: 240px; } }
+@media (prefers-reduced-motion: reduce) { .err-code, .err-art, .err-art .code-window, .skip-link { animation: none; transition: none; } }
+
+@media (max-width: 700px) {
+  body::after { display: none; }
+  :root body::before, :root:not([data-theme="light"]) body::before {
+    inset: -12vmax; animation: none; filter: none; will-change: auto;
+  }
+}

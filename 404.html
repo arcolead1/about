@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="404 — this page wandered off. Find your way back to Arlingga's portfolio, projects, and notes.">
+  <meta name="theme-color" content="#071a3b">
+  <meta name="color-scheme" content="dark">
+  <title>Arlingkin / 404</title>
+  <meta property="og:title" content="Arlingkin / 404">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://arlingkin.vercel.app/icons/icon.jpg">
+  <meta property="og:site_name" content="Arlingkin">
+  <link rel="icon" type="image/jpeg" href="/icons/icon.jpg">
+  <link rel="apple-touch-icon" href="/icons/icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/interactive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip.main">Skip to content</a>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
+      <nav aria-label="Primary navigation">
+        <a class="nav-link" href="/" data-i18n="nav.home">home</a>
+        <a class="nav-link" href="/about" data-i18n="nav.about">about</a>
+        <a class="nav-link" href="/skills" data-i18n="nav.skills">skills</a>
+        <a class="nav-link" href="/projects" data-i18n="nav.projects">projects</a>
+        <a class="nav-link" href="/stats" data-i18n="nav.stats">stats</a>
+        <a class="nav-link" href="/contact" data-i18n="nav.contact">contact</a>
+        <a class="nav-link" href="https://github.com/arlingkin" target="_blank" rel="noreferrer" data-i18n="nav.github">github ↗</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language selector">
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English"><span class="lang-short">EN</span><span class="lang-long">ENGLISH</span></button>
+        <button class="lang-btn" data-lang="id" aria-label="Ganti ke Bahasa Indonesia"><span class="lang-short">ID</span><span class="lang-long">INDONESIA</span></button>
+      </div>
+      <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"><span class="theme-icon">◐</span><span class="theme-label">DARK</span></button>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="page-head err-head" aria-labelledby="err-title">
+        <div class="err-grid">
+          <div>
+            <p class="eyebrow" data-i18n="err.eyebrow">404 / Not found</p>
+            <p class="err-code" aria-hidden="true">404</p>
+            <h1 id="err-title" data-i18n="err.h1">This page <em>wandered off.</em></h1>
+            <p class="intro" data-i18n="err.intro">The link may be old, mistyped, or moved. Here's where things actually live.</p>
+            <a class="read-link err-home" href="/" data-i18n="err.home">BACK HOME →</a>
+          </div>
+          <div class="code-art err-art" aria-hidden="true">
+            <div class="code-window">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <span class="pink">const</span> page = <span class="purple">'<span data-current-path>/…</span>'</span>;<br><br>
+              <span class="pink">if</span> (!<span class="green">exists</span>(page)) {<br>
+              &nbsp;&nbsp;<span class="pink">return</span> <span class="faint">home</span>;<br>
+              }<br><br>
+              <span class="faint">// no worries, keep exploring</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="err-map-title">
+        <div class="section-head">
+          <h2 id="err-map-title" data-i18n="err.map.label">Where to next</h2>
+          <span class="meta" data-i18n="err.map.sub">pages that do exist</span>
+        </div>
+        <div>
+          <a class="project-row" href="/notes/note-02"><span class="project-num">01</span><div class="project-main"><h3 data-i18n="proj.note2.title">Personal Note — The moment I stopped watching the chart.</h3><p data-i18n="proj.note2.desc">A note about trading, screen time, and learning that stepping away is part of the process.</p></div><span class="project-link" data-i18n="proj.note2.link">READ NOTE →</span></a>
+          <a class="project-row" href="/projects"><span class="project-num">02</span><div class="project-main"><h3 data-i18n="nav.projects">projects</h3><p data-i18n="proj.intro">Things I've made while learning in public — from school projects to small experiments that keep the curiosity sharp.</p></div><span class="project-link">/projects</span></a>
+          <a class="project-row" href="/about"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="nav.about">about</h3><p data-i18n="home.about.desc">Web dev, frontend + backend, devops, AI engineering. Follow the journey.</p></div><span class="project-link">/about</span></a>
+          <a class="project-row" href="/skills"><span class="project-num">04</span><div class="project-main"><h3 data-i18n="nav.skills">skills</h3><p data-i18n="home.skills.desc">JS, Python, Java, Tailwind, NextJS, Firebase, Supabase &amp; more.</p></div><span class="project-link">/skills</span></a>
+          <a class="project-row" href="/stats"><span class="project-num">05</span><div class="project-main"><h3 data-i18n="nav.stats">stats</h3><p data-i18n="home.stats.desc">Live GitHub metrics, streaks, and the little automation behind them.</p></div><span class="project-link">/stats</span></a>
+          <a class="project-row" href="/contact"><span class="project-num">06</span><div class="project-main"><h3 data-i18n="nav.contact">contact</h3><p data-i18n="contact.intro">Open to collaboration on modern website production, questions about code, or just a chat — especially about blue. 💙</p></div><span class="project-link">/contact</span></a>
+        </div>
+      </section>
+
+      <section class="err-game" aria-label="Snake game">
+        <article class="feature-card matrix">
+          <div class="feature-copy">
+            <span class="tag matrix" data-i18n="proj.feat2.tag">GAME · MATRIX</span>
+            <h3 data-i18n="err.game.title">Lost anyway? Play snake.</h3>
+            <p data-i18n="err.game.desc">Matrix-green, vanilla JS, zero ads. Eat, grow, survive.</p>
+            <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="proj.a5.link">PLAY THE GAME →</a>
+          </div>
+          <div class="code-art" aria-hidden="true">
+            <div class="code-window">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <span class="pink">const</span> snake = {<br>
+              &nbsp;&nbsp;<span class="green">theme</span>: <span class="purple">'matrix'</span>,<br>
+              &nbsp;&nbsp;<span class="green">goal</span>: <span class="purple">'eat · grow · survive'</span><br>
+              };
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span data-i18n="footer.copy">© 2026 Arlingkin. Built with care &amp; plain HTML.</span>
+      <a href="/contact" data-i18n="footer.hello">say hello ↗</a>
+    </footer>
+  </div>
+  <script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/interactive.js"></script>
+</body>
+</html>
