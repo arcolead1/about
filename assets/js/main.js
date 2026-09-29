@@ -315,47 +315,9 @@ function initCopyEmail() {
   });
 }
 
-/* ── backdrop parallax ────────────────────────────────────────── */
-function initBgParallax() {
-  const finePointer = matchMedia('(pointer: fine)');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  if (!finePointer.matches || reduced.matches) return;
-
-  const root = document.documentElement.style;
-  let raf = null, mx = 0, my = 0;
-
-  const apply = () => {
-    root.setProperty('--mx', `${mx}px`);
-    root.setProperty('--my', `${my}px`);
-    raf = null;
-  };
-  const onMove = e => {
-    mx = (e.clientX / innerWidth - .5) * 30;
-    my = (e.clientY / innerHeight - .5) * 30;
-    if (raf === null) raf = requestAnimationFrame(apply);
-  };
-  const onLeave = () => {
-    mx = 0; my = 0;
-    if (raf === null) raf = requestAnimationFrame(apply);
-  };
-
-  addEventListener('pointermove', onMove, { passive: true });
-  addEventListener('pointerleave', onLeave, { passive: true });
-
-  reduced.addEventListener('change', e => {
-    if (!e.matches) return;
-    removeEventListener('pointermove', onMove);
-    removeEventListener('pointerleave', onLeave);
-    if (raf !== null) cancelAnimationFrame(raf);
-    root.setProperty('--mx', '0px');
-    root.setProperty('--my', '0px');
-  });
-}
-
 /* ── boot ─────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   setActiveNav();
-  initBgParallax();
   applyConfig();
   revealOnScroll();
   initCopyEmail();

@@ -1,10 +1,3 @@
-@property --bg-a { syntax: "<number>"; inherits: true; initial-value: 190; }
-@property --bg-b { syntax: "<number>"; inherits: true; initial-value: 258; }
-@property --bg-c { syntax: "<number>"; inherits: true; initial-value: 72; }
-:root { transition: --bg-a 2.2s var(--ease-soft), --bg-b 2.2s var(--ease-soft), --bg-c 2.2s var(--ease-soft); }
-:root.bg-instant { transition: none; }
-@media (prefers-reduced-motion: reduce) { :root { transition: none; } }
-
 /* Arlingkin interactive header — additive layer */
 .brand { position: relative; isolation: isolate; transform: translateZ(0); transition: transform .28s cubic-bezier(.34,1.56,.64,1), filter .28s ease; }
 .brand::before { content: ""; position: absolute; inset: -12px -16px; z-index: -1; border-radius: 999px; background: radial-gradient(circle, rgba(120,166,255,.20), transparent 68%); opacity: 0; transform: scale(.72); transition: opacity .28s ease, transform .45s cubic-bezier(.34,1.56,.64,1); }
@@ -49,18 +42,6 @@
   --orange: #d85b31;
   --glow-blue: 0 0 32px rgba(66,111,218,.08);
 }
-:root[data-theme="light"] body {
-  background: linear-gradient(135deg, #f7f9ff 0%, #e9f0ff 52%, #f2f5fc 100%);
-}
-:root[data-theme="light"] body::before {
-  background:
-    radial-gradient(circle at calc(14% + var(--mx)) calc(24% + var(--my)), hsl(var(--bg-a) 90% 55% / .14) 0 2.2%, transparent 12%),
-    radial-gradient(circle at calc(72% + var(--mx) * .4) calc(16% + var(--my) * .4), hsl(var(--bg-b) 90% 62% / .13) 0 3%, transparent 15%),
-    radial-gradient(circle at calc(30% + var(--mx) * -.5) calc(78% + var(--my) * -.5), hsl(var(--bg-c) 90% 60% / .1) 0 3.5%, transparent 16%),
-    radial-gradient(ellipse at 48% 49%, hsl(calc(var(--bg-a) + 26) 70% 62% / .16) 0 18%, transparent 45%),
-    linear-gradient(135deg, hsl(calc(var(--bg-a) + 30) 100% 98%) 8%, hsl(calc(var(--bg-a) + 28) 100% 94%) 42%, hsl(calc(var(--bg-a) + 30) 100% 97%) 72%, #fff 100%);
-}
-:root[data-theme="light"] body::after { opacity: .42; }
 :root[data-theme="light"] .feature-copy p { color: #4d5870; }
 :root[data-theme="light"] .code-window { background: rgba(12,20,42,.9); color: #e7ebf5; }
 .theme-toggle {
@@ -205,30 +186,6 @@
 @keyframes personal-note-tag-flow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @keyframes personal-note-art { 0% { background-position: 0% 20%; } 100% { background-position: 100% 80%; } }
 
-:root:not([data-theme="light"]) body::before {
-  background:
-    radial-gradient(circle at calc(14% + var(--mx)) calc(24% + var(--my)), hsl(var(--bg-a) 100% 50% / .27) 0 2.2%, transparent 13%),
-    radial-gradient(circle at calc(28% + var(--mx) * -.6) calc(72% + var(--my) * -.6), hsl(calc(var(--bg-a) + 26) 100% 58% / .28) 0 4.5%, transparent 20%),
-    radial-gradient(circle at calc(72% + var(--mx) * .4) calc(16% + var(--my) * .4), hsl(calc(var(--bg-a) + 2) 100% 76% / .22) 0 3%, transparent 16%),
-    radial-gradient(circle at calc(86% + var(--mx) * -.3) calc(68% + var(--my) * -.3), hsl(var(--bg-b) 100% 76% / .26) 0 5%, transparent 22%),
-    radial-gradient(circle at 56% 94%, hsl(var(--bg-c) 100% 67% / .09) 0 3%, transparent 17%),
-    radial-gradient(circle at 40% 45%, hsl(calc(var(--bg-a) + 30) 100% 30% / .3) 0 8%, transparent 32%),
-    radial-gradient(ellipse at 90% 95%, hsl(calc(var(--bg-a) + 24) 100% 42% / .28) 0 6%, transparent 30%),
-    conic-gradient(from 210deg at 50% 50%, hsl(calc(var(--bg-a) + 21) 100% 50% / .17), hsl(var(--bg-b) 100% 75% / .14), hsl(var(--bg-a) 100% 50% / .17), hsl(calc(var(--bg-a) + 21) 100% 50% / .17)),
-    linear-gradient(135deg, hsl(calc(var(--bg-a) + 32) 70% 3%) 8%, hsl(calc(var(--bg-a) + 29) 80% 13%) 42%, hsl(calc(var(--bg-a) + 32) 80% 5%) 72%, hsl(calc(var(--bg-a) + 32) 85% 1.5%) 100%);
-}
-@keyframes aurora-shift {
-  0%   { filter: blur(14px) saturate(115%) hue-rotate(-12deg); }
-  50%  { filter: blur(16px) saturate(140%) hue-rotate(14deg); }
-  100% { filter: blur(14px) saturate(120%) hue-rotate(38deg); }
-}
-@supports (animation-timeline: scroll()) {
-  :root:not([data-theme="light"]) body::before {
-    animation: molecular-scroll linear both, aurora-shift 22s ease-in-out infinite alternate;
-    animation-timeline: scroll(root), auto;
-    animation-range: 0% 100%, normal;
-  }
-}
 
 .note-head .note-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 24px; color: var(--muted); font: 500 11px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
 .note-body { max-width: 680px; margin: 56px auto 40px; }
@@ -290,12 +247,6 @@ main:focus { outline: none; }
 @media (max-width: 700px) { .err-grid { grid-template-columns: 1fr; gap: 28px; } .err-art { min-height: 240px; } }
 @media (prefers-reduced-motion: reduce) { .err-code, .err-art, .err-art .code-window, .skip-link { animation: none; transition: none; } }
 
-@media (max-width: 700px) {
-  body::after { display: none; }
-  :root body::before, :root:not([data-theme="light"]) body::before {
-    inset: -12vmax; animation: none; filter: none; will-change: auto;
-  }
-}
 
 @view-transition { navigation: auto; }
 .site-header { view-transition-name: site-header; }
@@ -387,66 +338,74 @@ address { font-style: normal; display: grid; justify-items: start; gap: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .site-footer::before, .footer-mark { animation: none; } }
 
-:root { --bg2-a: 190; --bg2-b: 258; --bg2-c: 72; }
-html.lite { transition: none; }
-html.lite.lite body::before, html.lite.lite body::after {
-  position: fixed; inset: -14%; z-index: -1; filter: none; transform: none; will-change: transform;
-  animation: lite-rotate 44s linear infinite alternate, lite-scale 26s ease-in-out infinite alternate, lite-drift 32s ease-in-out infinite alternate;
-}
-@supports (animation-timeline: scroll()) {
-  html.lite.lite body::before, html.lite.lite body::after {
-    animation: lite-rotate 44s linear infinite alternate, lite-scale 26s ease-in-out infinite alternate, lite-scroll linear both;
-    animation-timeline: auto, auto, scroll(root);
-    animation-range: normal, normal, 0% 100%;
-  }
-}
-@keyframes lite-rotate { from { rotate: -3deg; } to { rotate: 3deg; } }
-@keyframes lite-scale { from { scale: 1.02; } to { scale: 1.14; } }
-@keyframes lite-drift { from { translate: -3% -2%; } to { translate: 3% 4%; } }
-@keyframes lite-scroll { from { translate: -4% -6%; } to { translate: 4% 8%; } }
-html.lite body::after { display: block; opacity: 0; transition: opacity 1.4s var(--ease-soft); will-change: transform, opacity; }
-@media (prefers-reduced-motion: reduce) { html.lite.lite body::before, html.lite.lite body::after { animation: none; } }
-html.lite.bg-alt body::after { opacity: 1; }
-html.lite.bg-instant body::after { transition: none; }
-html.lite:not([data-theme="light"]) body::before {
-  background:
-    radial-gradient(circle at 12% 8%, hsl(var(--bg-a) 100% 50% / .3), transparent 38%),
-    radial-gradient(circle at 88% 22%, hsl(calc(var(--bg-a) + 26) 100% 58% / .3), transparent 42%),
-    radial-gradient(circle at 20% 55%, hsl(calc(var(--bg-a) + 14) 100% 45% / .26), transparent 46%),
-    radial-gradient(circle at 60% 38%, hsl(calc(var(--bg-a) + 40) 100% 30% / .28), transparent 50%),
-    radial-gradient(circle at 92% 62%, hsl(var(--bg-b) 100% 76% / .2), transparent 40%),
-    radial-gradient(ellipse at 50% 100%, hsl(calc(var(--bg-a) + 22) 100% 40% / .36), transparent 55%),
-    radial-gradient(circle at 8% 92%, hsl(var(--bg-c) 100% 67% / .07), transparent 30%),
-    linear-gradient(170deg, hsl(calc(var(--bg-a) + 32) 80% 10%) 0%, hsl(calc(var(--bg-a) + 29) 85% 14%) 38%, hsl(calc(var(--bg-a) + 32) 85% 6%) 72%, hsl(calc(var(--bg-a) + 32) 90% 3%) 100%);
-}
-html.lite:not([data-theme="light"]) body::after {
-  background:
-    radial-gradient(circle at 12% 8%, hsl(var(--bg2-a) 100% 50% / .3), transparent 38%),
-    radial-gradient(circle at 88% 22%, hsl(calc(var(--bg2-a) + 26) 100% 58% / .3), transparent 42%),
-    radial-gradient(circle at 20% 55%, hsl(calc(var(--bg2-a) + 14) 100% 45% / .26), transparent 46%),
-    radial-gradient(circle at 60% 38%, hsl(calc(var(--bg2-a) + 40) 100% 30% / .28), transparent 50%),
-    radial-gradient(circle at 92% 62%, hsl(var(--bg2-b) 100% 76% / .2), transparent 40%),
-    radial-gradient(ellipse at 50% 100%, hsl(calc(var(--bg2-a) + 22) 100% 40% / .36), transparent 55%),
-    radial-gradient(circle at 8% 92%, hsl(var(--bg2-c) 100% 67% / .07), transparent 30%),
-    linear-gradient(170deg, hsl(calc(var(--bg2-a) + 32) 80% 10%) 0%, hsl(calc(var(--bg2-a) + 29) 85% 14%) 38%, hsl(calc(var(--bg2-a) + 32) 85% 6%) 72%, hsl(calc(var(--bg2-a) + 32) 90% 3%) 100%);
-}
-html.lite[data-theme="light"] body::before {
-  background:
-    radial-gradient(circle at 12% 8%, hsl(var(--bg-a) 90% 60% / .16), transparent 40%),
-    radial-gradient(circle at 88% 20%, hsl(var(--bg-b) 90% 65% / .15), transparent 42%),
-    radial-gradient(circle at 25% 80%, hsl(var(--bg-c) 90% 62% / .11), transparent 44%),
-    radial-gradient(circle at 55% 45%, hsl(calc(var(--bg-a) + 26) 70% 65% / .14), transparent 50%),
-    linear-gradient(170deg, hsl(calc(var(--bg-a) + 30) 100% 98%), hsl(calc(var(--bg-a) + 28) 100% 94%) 45%, hsl(calc(var(--bg-a) + 30) 100% 97%) 80%, #fff);
-}
-html.lite[data-theme="light"] body::after {
-  background:
-    radial-gradient(circle at 12% 8%, hsl(var(--bg2-a) 90% 60% / .16), transparent 40%),
-    radial-gradient(circle at 88% 20%, hsl(var(--bg2-b) 90% 65% / .15), transparent 42%),
-    radial-gradient(circle at 25% 80%, hsl(var(--bg2-c) 90% 62% / .11), transparent 44%),
-    radial-gradient(circle at 55% 45%, hsl(calc(var(--bg2-a) + 26) 70% 65% / .14), transparent 50%),
-    linear-gradient(170deg, hsl(calc(var(--bg2-a) + 30) 100% 98%), hsl(calc(var(--bg2-a) + 28) 100% 94%) 45%, hsl(calc(var(--bg2-a) + 30) 100% 97%) 80%, #fff);
-}
 html.lite .featured .feature-card.personal-note::after { display: none; }
 html.lite .personal-note .code-art, html.lite .err-art, html.lite .personal-note-tag,
 html.lite .err-code, html.lite .footer-mark, html.lite .site-footer::before,
 html.lite .cyber-glass .scanline { animation: none; }
+
+html { --bg-a: 48; --bg-b: 104; --bg-c: 228; --bg2-a: 48; --bg2-b: 104; --bg2-c: 228; --acc-max: 1; background: #030814; }
+html[data-theme="light"] { --acc-max: .5; background: #eef3ff; }
+html::before, body::before, body::after { content: ""; position: fixed; pointer-events: none; z-index: -1; will-change: transform; }
+html::before {
+  inset: -10%;
+  background:
+    radial-gradient(circle at 15% 10%, hsl(212 100% 52% / .34), transparent 40%),
+    radial-gradient(circle at 85% 20%, hsl(226 100% 60% / .3), transparent 44%),
+    radial-gradient(circle at 25% 60%, hsl(205 100% 45% / .28), transparent 46%),
+    radial-gradient(circle at 70% 45%, hsl(222 100% 32% / .34), transparent 52%),
+    radial-gradient(circle at 90% 85%, hsl(214 100% 46% / .3), transparent 46%),
+    radial-gradient(ellipse at 45% 100%, hsl(208 100% 38% / .34), transparent 55%),
+    radial-gradient(circle at 8% 92%, hsl(196 100% 55% / .16), transparent 32%),
+    linear-gradient(165deg, #020817 0%, #071a3b 38%, #040d24 70%, #01040d 100%);
+  animation: bd-base 48s ease-in-out infinite alternate;
+}
+html[data-theme="light"]::before {
+  background:
+    radial-gradient(circle at 15% 10%, hsl(212 100% 70% / .3), transparent 42%),
+    radial-gradient(circle at 85% 22%, hsl(224 100% 78% / .26), transparent 44%),
+    radial-gradient(circle at 30% 70%, hsl(200 100% 72% / .24), transparent 46%),
+    linear-gradient(165deg, #f8fbff, #e6efff 45%, #f1f5ff 75%, #fff);
+}
+body::before, body::after {
+  inset: -14%;
+  animation: bd-rotate 52s linear infinite alternate, bd-scale 30s ease-in-out infinite alternate, bd-drift 36s ease-in-out infinite alternate;
+  transition: opacity 1.8s var(--ease-soft);
+}
+body::before {
+  opacity: var(--acc-max);
+  background:
+    radial-gradient(circle at 78% 12%, hsl(var(--bg-a) 100% 58% / .26), transparent 36%),
+    radial-gradient(circle at 10% 38%, hsl(var(--bg-b) 100% 60% / .2), transparent 38%),
+    radial-gradient(circle at 92% 70%, hsl(var(--bg-a) 100% 55% / .2), transparent 40%),
+    radial-gradient(circle at 30% 88%, hsl(var(--bg-b) 100% 58% / .22), transparent 42%),
+    radial-gradient(circle at 55% 50%, hsl(var(--bg-c) 100% 70% / .07), transparent 30%);
+}
+body::after {
+  opacity: 0; animation-direction: alternate-reverse; animation-delay: -14s;
+  background:
+    radial-gradient(circle at 78% 12%, hsl(var(--bg2-a) 100% 58% / .26), transparent 36%),
+    radial-gradient(circle at 10% 38%, hsl(var(--bg2-b) 100% 60% / .2), transparent 38%),
+    radial-gradient(circle at 92% 70%, hsl(var(--bg2-a) 100% 55% / .2), transparent 40%),
+    radial-gradient(circle at 30% 88%, hsl(var(--bg2-b) 100% 58% / .22), transparent 42%),
+    radial-gradient(circle at 55% 50%, hsl(var(--bg2-c) 100% 70% / .07), transparent 30%);
+}
+html.bg-alt body::before { opacity: 0; }
+html.bg-alt body::after { opacity: var(--acc-max); }
+html.bg-instant body::before, html.bg-instant body::after { transition: none; }
+@supports (animation-timeline: scroll()) {
+  body::before, body::after {
+    animation: bd-rotate 52s linear infinite alternate, bd-scale 30s ease-in-out infinite alternate, bd-scroll linear both;
+    animation-timeline: auto, auto, scroll(root);
+    animation-range: normal, normal, 0% 100%;
+    animation-direction: alternate, alternate, normal;
+    animation-delay: 0s;
+  }
+}
+@keyframes bd-base { from { translate: -2% -1.5%; scale: 1.02; } to { translate: 2% 2%; scale: 1.08; } }
+@keyframes bd-rotate { from { rotate: -4deg; } to { rotate: 4deg; } }
+@keyframes bd-scale { from { scale: 1.02; } to { scale: 1.14; } }
+@keyframes bd-drift { from { translate: -3% -2%; } to { translate: 3% 4%; } }
+@keyframes bd-scroll { from { translate: -4% -6%; } to { translate: 4% 8%; } }
+@media (prefers-reduced-motion: reduce) {
+  html::before, body::before, body::after { animation: none; transition: none; }
+}

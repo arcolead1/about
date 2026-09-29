@@ -179,8 +179,8 @@
   const rand = (min, max) => min + Math.random() * (max - min);
   const isPalette = v => v && [v.a, v.b, v.c].every(Number.isFinite);
   const detectLite = () => liteQuery.matches || (navigator.deviceMemory ?? 8) <= 4 || navigator.connection?.saveData === true;
-  let current = { a: 190, b: 258, c: 72 };
-  let lite = null;
+  let current = { a: 48, b: 104, c: 228 };
+  let lite = false;
   let alt = false;
 
   const setVars = (prefix, palette) => {
@@ -191,7 +191,6 @@
 
   const paint = palette => {
     current = palette;
-    if (!lite) { setVars('--bg-', palette); return; }
     alt = !alt;
     setVars(alt ? '--bg2-' : '--bg-', palette);
     root.classList.toggle('bg-alt', alt);
@@ -207,12 +206,9 @@
     requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('bg-instant')));
   };
 
-  const applyMode = () => {
-    const next = detectLite();
-    if (next === lite) return;
-    lite = next;
+  const applyLite = () => {
+    lite = detectLite();
     root.classList.toggle('lite', lite);
-    paintInstant(current);
   };
 
   const readStored = () => {
@@ -222,9 +218,20 @@
     } catch { return null; }
   };
 
+  const pickHue = () => {
+    let hue = 0;
+    for (let i = 0; i < 6; i++) {
+      hue = rand(0, 305);
+      if (hue > 195) hue += 60;
+      const diff = Math.abs(hue - current.a) % 360;
+      if (Math.min(diff, 360 - diff) >= 50) break;
+    }
+    return Math.round(hue);
+  };
+
   const nextPalette = () => {
-    const a = current.a + (Math.random() < .5 ? -1 : 1) * rand(70, 200);
-    return { a: Math.round(a), b: Math.round(a + rand(35, 85)), c: Math.round(a + rand(150, 260)) };
+    const a = pickHue();
+    return { a, b: Math.round(a + rand(28, 70)), c: Math.round(a + rand(150, 210)) };
   };
 
   const shuffle = () => {
@@ -239,9 +246,9 @@
   };
 
   const stored = readStored();
-  if (stored) current = stored;
-  applyMode();
-  liteQuery.addEventListener('change', applyMode, opts);
+  paintInstant(stored || current);
+  applyLite();
+  liteQuery.addEventListener('change', applyLite, opts);
 
   channel?.addEventListener('message', e => receive(e.data), opts);
   addEventListener('storage', e => {
@@ -261,8 +268,7 @@
       if (nextDir !== dir) { dir = nextDir; travelled = 0; }
       travelled += Math.abs(delta);
       const now = performance.now();
-      const gap = lite ? 4000 : 2500;
-      if (travelled >= Math.max(360, innerHeight * .6) && now - lastChange > gap) {
+      if (travelled >= Math.max(360, innerHeight * .6) && now - lastChange > 3000) {
         travelled = 0;
         lastChange = now;
         shuffle();

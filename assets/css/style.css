@@ -48,9 +48,6 @@
   --shadow-card: 0 6px 24px -12px rgba(0,0,0,.55);
   --glow-blue: 0 0 32px rgba(120,166,255,.06), 0 0 80px rgba(174,140,255,.03);
 
-  /* pointer-reactive backdrop offset, driven by main.js, 0 by default */
-  --mx: 0px;
-  --my: 0px;
 }
 
 /* ── 02 · RESET & BASE ────────────────────────────────────────── */
@@ -67,67 +64,9 @@ body {
   isolation: isolate;
   min-height: 100vh;
   color: var(--ink);
-  background:
-    linear-gradient(135deg, #080c19 0%, #101a37 52%, #10172c 100%);
   font-family: var(--font-sans);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-}
-
-/*
-   Fixed molecular backdrop. The large colour fields and the smaller bright
-   cells move independently, so scrolling feels like travelling through a
-   blue/cyan/black fluid rather than across a static page background.
-*/
-body::before {
-  content: "";
-  position: fixed;
-  z-index: -1;
-  inset: -35vmax;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at calc(14% + var(--mx)) calc(24% + var(--my)), rgba(0, 223, 255, .24) 0 2.2%, transparent 12%),
-    radial-gradient(circle at calc(28% + var(--mx) * -.6) calc(72% + var(--my) * -.6), rgba(43, 130, 255, .25) 0 4.5%, transparent 19%),
-    radial-gradient(circle at calc(72% + var(--mx) * .4) calc(16% + var(--my) * .4), rgba(0, 238, 255, .21) 0 3%, transparent 15%),
-    radial-gradient(circle at calc(85% + var(--mx) * -.3) calc(69% + var(--my) * -.3), rgba(21, 100, 228, .25) 0 5%, transparent 20%),
-    radial-gradient(ellipse at 48% 49%, rgba(8, 53, 135, .48) 0 18%, transparent 45%),
-    linear-gradient(135deg, #02050d 8%, #071a3b 42%, #020816 72%, #000207 100%);
-  background-size: 100% 100%;
-  transform-origin: center;
-  animation: molecular-drift 26s var(--ease-soft) infinite alternate;
-  will-change: transform, filter;
-}
-
-/* Fine molecules drift on a separate layer to add depth without blocking UI. */
-body::after {
-  content: "";
-  position: fixed;
-  z-index: -1;
-  inset: -12vmax;
-  pointer-events: none;
-  opacity: .72;
-  background:
-    radial-gradient(circle, rgba(135, 246, 255, .56) 0 1px, transparent 1.8px) calc(var(--mx) * .5) calc(var(--my) * .5) / 128px 128px,
-    radial-gradient(circle, rgba(21, 150, 255, .36) 0 2px, transparent 3px) calc(42px + var(--mx) * -.3) calc(76px + var(--my) * -.3) / 196px 196px,
-    radial-gradient(ellipse at 50% 50%, transparent 0 42%, rgba(0, 217, 255, .06) 43% 44%, transparent 45%) 17px 34px / 238px 238px;
-  filter: blur(.2px);
-  animation: molecular-particles 18s linear infinite alternate;
-  will-change: transform, opacity;
-}
-
-/* Link both layers to page progress where scroll-driven animations are available. */
-@supports (animation-timeline: scroll()) {
-  body::before {
-    animation: molecular-scroll linear both;
-    animation-timeline: scroll(root);
-    animation-range: 0% 100%;
-  }
-
-  body::after {
-    animation: particles-scroll linear both;
-    animation-timeline: scroll(root);
-    animation-range: 0% 100%;
-  }
 }
 
 a { color: inherit; text-decoration: none; }
@@ -463,26 +402,6 @@ footer a:hover { color: var(--lime); border-color: var(--lime); }
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); animation: pulse 2s infinite; }
 
 /* ── 06 · MOTION & SCROLL-REVEAL ──────────────────────────────── */
-@keyframes molecular-drift {
-  0%   { transform: translate3d(-3%, -2%, 0) scale(1.02) rotate(-2deg); filter: blur(14px) saturate(118%) hue-rotate(0deg); }
-  45%  { transform: translate3d(4%, 3%, 0) scale(1.1) rotate(2deg); filter: blur(16px) saturate(134%) hue-rotate(16deg); }
-  100% { transform: translate3d(-1%, 5%, 0) scale(1.05) rotate(-1deg); filter: blur(14px) saturate(118%) hue-rotate(-10deg); }
-}
-@keyframes molecular-particles {
-  0%   { transform: translate3d(-2%, -3%, 0) scale(1); opacity: .48; }
-  50%  { transform: translate3d(3%, 2%, 0) scale(1.08); opacity: .8; }
-  100% { transform: translate3d(-1%, 5%, 0) scale(1.03); opacity: .58; }
-}
-@keyframes molecular-scroll {
-  0%   { transform: translate3d(-5%, -7%, 0) scale(1.04) rotate(-3deg); }
-  45%  { transform: translate3d(6%, 2%, 0) scale(1.12) rotate(2deg); }
-  100% { transform: translate3d(-3%, 11%, 0) scale(1.07) rotate(-2deg); }
-}
-@keyframes particles-scroll {
-  0%   { transform: translate3d(-4%, -5%, 0) scale(1); opacity: .42; }
-  50%  { transform: translate3d(4%, 4%, 0) scale(1.12); opacity: .82; }
-  100% { transform: translate3d(-2%, 9%, 0) scale(1.04); opacity: .52; }
-}
 @keyframes pulse {
   70%  { box-shadow: 0 0 0 6px rgba(217,255,89,0); }
   100% { box-shadow: 0 0 0 0 rgba(217,255,89,0); }
@@ -543,8 +462,6 @@ footer a:hover { color: var(--lime); border-color: var(--lime); }
   .reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur, .reveal-fade, .reveal-spring {
     opacity: 1; transform: none; filter: none; transition: none;
   }
-  body::before, body::after { animation: none; }
-  :root { --mx: 0px !important; --my: 0px !important; }
 }
 
 /* ── 07 · RESPONSIVE ──────────────────────────────────────────── */
