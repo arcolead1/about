@@ -389,10 +389,23 @@ address { font-style: normal; display: grid; justify-items: start; gap: 14px; }
 
 :root { --bg2-a: 190; --bg2-b: 258; --bg2-c: 72; }
 html.lite { transition: none; }
-html.lite body::before, html.lite body::after {
-  position: fixed; inset: 0; z-index: -1; animation: none; filter: none; transform: none; will-change: auto;
+html.lite.lite body::before, html.lite.lite body::after {
+  position: fixed; inset: -14%; z-index: -1; filter: none; transform: none; will-change: transform;
+  animation: lite-rotate 44s linear infinite alternate, lite-scale 26s ease-in-out infinite alternate, lite-drift 32s ease-in-out infinite alternate;
 }
-html.lite body::after { display: block; opacity: 0; transition: opacity 1.4s var(--ease-soft); will-change: opacity; }
+@supports (animation-timeline: scroll()) {
+  html.lite.lite body::before, html.lite.lite body::after {
+    animation: lite-rotate 44s linear infinite alternate, lite-scale 26s ease-in-out infinite alternate, lite-scroll linear both;
+    animation-timeline: auto, auto, scroll(root);
+    animation-range: normal, normal, 0% 100%;
+  }
+}
+@keyframes lite-rotate { from { rotate: -3deg; } to { rotate: 3deg; } }
+@keyframes lite-scale { from { scale: 1.02; } to { scale: 1.14; } }
+@keyframes lite-drift { from { translate: -3% -2%; } to { translate: 3% 4%; } }
+@keyframes lite-scroll { from { translate: -4% -6%; } to { translate: 4% 8%; } }
+html.lite body::after { display: block; opacity: 0; transition: opacity 1.4s var(--ease-soft); will-change: transform, opacity; }
+@media (prefers-reduced-motion: reduce) { html.lite.lite body::before, html.lite.lite body::after { animation: none; } }
 html.lite.bg-alt body::after { opacity: 1; }
 html.lite.bg-instant body::after { transition: none; }
 html.lite:not([data-theme="light"]) body::before {
