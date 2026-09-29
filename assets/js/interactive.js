@@ -133,3 +133,88 @@
     controller.abort();
   }, { once: true });
 })();
+
+(() => {
+  const KEY = 'arlingkin-bg';
+  const root = document.documentElement;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const controller = new AbortController();
+  const opts = { signal: controller.signal };
+  let channel = null;
+  try { channel = new BroadcastChannel(KEY); } catch {}
+
+  const rand = (min, max) => min + Math.random() * (max - min);
+  const isPalette = v => v && [v.a, v.b, v.c].every(Number.isFinite);
+  let current = { a: 190, b: 258, c: 72 };
+
+  const paint = palette => {
+    current = palette;
+    root.style.setProperty('--bg-a', palette.a);
+    root.style.setProperty('--bg-b', palette.b);
+    root.style.setProperty('--bg-c', palette.c);
+  };
+
+  const paintInstant = palette => {
+    root.classList.add('bg-instant');
+    paint(palette);
+    requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('bg-instant')));
+  };
+
+  const readStored = () => {
+    try {
+      const value = JSON.parse(localStorage.getItem(KEY));
+      return isPalette(value) ? value : null;
+    } catch { return null; }
+  };
+
+  const nextPalette = () => {
+    const a = current.a + (Math.random() < .5 ? -1 : 1) * rand(70, 200);
+    return { a: Math.round(a), b: Math.round(a + rand(35, 85)), c: Math.round(a + rand(150, 260)) };
+  };
+
+  const shuffle = () => {
+    const palette = nextPalette();
+    paint(palette);
+    try { localStorage.setItem(KEY, JSON.stringify(palette)); } catch {}
+    channel?.postMessage(palette);
+  };
+
+  const receive = palette => {
+    if (isPalette(palette) && palette.a !== current.a) paint(palette);
+  };
+
+  const stored = readStored();
+  if (stored) paintInstant(stored);
+
+  channel?.addEventListener('message', e => receive(e.data), opts);
+  addEventListener('storage', e => {
+    if (e.key !== KEY || !e.newValue) return;
+    try { receive(JSON.parse(e.newValue)); } catch {}
+  }, opts);
+
+  if (!reduced.matches) {
+    let lastY = scrollY, dir = 0, travelled = 0, lastChange = 0, frame = null;
+    const step = () => {
+      frame = null;
+      const y = scrollY;
+      const delta = y - lastY;
+      lastY = y;
+      if (!delta) return;
+      const nextDir = Math.sign(delta);
+      if (nextDir !== dir) { dir = nextDir; travelled = 0; }
+      travelled += Math.abs(delta);
+      const now = performance.now();
+      if (travelled >= Math.max(360, innerHeight * .6) && now - lastChange > 2500) {
+        travelled = 0;
+        lastChange = now;
+        shuffle();
+      }
+    };
+    addEventListener('scroll', () => { if (frame === null) frame = requestAnimationFrame(step); }, { ...opts, passive: true });
+  }
+
+  addEventListener('pagehide', () => {
+    channel?.close();
+    controller.abort();
+  }, { once: true });
+})();
