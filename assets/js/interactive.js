@@ -218,3 +218,23 @@
     controller.abort();
   }, { once: true });
 })();
+
+(() => {
+  if (HTMLScriptElement.supports?.('speculationrules')) return;
+  const controller = new AbortController();
+  const seen = new Set();
+  const prefetch = event => {
+    const link = event.target.closest?.('a[href^="/"]');
+    if (!link || link.target === '_blank' || seen.has(link.pathname)) return;
+    seen.add(link.pathname);
+    const tag = document.createElement('link');
+    tag.rel = 'prefetch';
+    tag.href = link.href;
+    document.head.appendChild(tag);
+  };
+  const opts = { signal: controller.signal, passive: true, capture: true };
+  document.addEventListener('pointerover', prefetch, opts);
+  document.addEventListener('touchstart', prefetch, opts);
+  document.addEventListener('focusin', prefetch, opts);
+  addEventListener('pagehide', () => controller.abort(), { once: true });
+})();

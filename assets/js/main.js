@@ -284,6 +284,10 @@ function revealOnScroll() {
   }, { threshold: 0.12 });
   els.forEach(el => {
     if (el.dataset.delay) el.style.setProperty('--d', `${el.dataset.delay}ms`);
+    if (el.getBoundingClientRect().top < innerHeight * .95) {
+      el.classList.add('in', 'reveal-instant');
+      return;
+    }
     io.observe(el);
   });
 }

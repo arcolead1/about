@@ -294,3 +294,11 @@ main:focus { outline: none; }
     inset: -12vmax; animation: none; filter: none; will-change: auto;
   }
 }
+
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: site-header; }
+::view-transition-group(site-header) { animation-duration: 0s; }
+::view-transition-old(root) { animation-duration: .12s; }
+::view-transition-new(root) { animation-duration: .2s; }
+.reveal-instant { transition: none !important; }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
