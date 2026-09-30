@@ -374,20 +374,20 @@ body::before, body::after {
 body::before {
   opacity: var(--acc-max);
   background:
-    radial-gradient(circle at 88% 9%, hsl(var(--bg-a) 100% 60% / .36), transparent 23%),
-    radial-gradient(circle at 3% 44%, hsl(var(--bg-b) 100% 62% / .28), transparent 25%),
-    radial-gradient(circle at 97% 74%, hsl(var(--bg-a) 100% 58% / .28), transparent 27%),
-    radial-gradient(circle at 22% 97%, hsl(var(--bg-b) 100% 60% / .3), transparent 29%),
-    radial-gradient(circle at 62% 50%, hsl(var(--bg-c) 100% 72% / .06), transparent 20%);
+    radial-gradient(circle at 88% 9%, hsl(var(--bg-a) 100% 60% / .5), transparent 27%),
+    radial-gradient(circle at 3% 44%, hsl(var(--bg-b) 100% 62% / .4), transparent 29%),
+    radial-gradient(circle at 97% 74%, hsl(var(--bg-a) 100% 58% / .42), transparent 31%),
+    radial-gradient(circle at 22% 97%, hsl(var(--bg-b) 100% 60% / .44), transparent 33%),
+    radial-gradient(circle at 62% 50%, hsl(var(--bg-c) 100% 72% / .09), transparent 22%);
 }
 body::after {
   opacity: 0; animation-direction: alternate-reverse; animation-delay: -14s;
   background:
-    radial-gradient(circle at 88% 9%, hsl(var(--bg2-a) 100% 60% / .36), transparent 23%),
-    radial-gradient(circle at 3% 44%, hsl(var(--bg2-b) 100% 62% / .28), transparent 25%),
-    radial-gradient(circle at 97% 74%, hsl(var(--bg2-a) 100% 58% / .28), transparent 27%),
-    radial-gradient(circle at 22% 97%, hsl(var(--bg2-b) 100% 60% / .3), transparent 29%),
-    radial-gradient(circle at 62% 50%, hsl(var(--bg2-c) 100% 72% / .06), transparent 20%);
+    radial-gradient(circle at 88% 9%, hsl(var(--bg2-a) 100% 60% / .5), transparent 27%),
+    radial-gradient(circle at 3% 44%, hsl(var(--bg2-b) 100% 62% / .4), transparent 29%),
+    radial-gradient(circle at 97% 74%, hsl(var(--bg2-a) 100% 58% / .42), transparent 31%),
+    radial-gradient(circle at 22% 97%, hsl(var(--bg2-b) 100% 60% / .44), transparent 33%),
+    radial-gradient(circle at 62% 50%, hsl(var(--bg2-c) 100% 72% / .09), transparent 22%);
 }
 html.bg-alt body::before { opacity: 0; }
 html.bg-alt body::after { opacity: var(--acc-max); }
@@ -461,11 +461,7 @@ h1 em, .display em {
   animation: eyebrow-line 3.6s ease-in-out infinite;
 }
 @keyframes eyebrow-line { 0%, 100% { transform: scaleX(.35); opacity: .5; } 50% { transform: scaleX(1); opacity: 1; } }
-.greeting::after {
-  content: ""; display: inline-block; width: .55ch; height: 1.05em; margin-left: .45ch; vertical-align: text-bottom;
-  background: var(--accent); animation: caret 1.05s steps(1) infinite;
-}
-@keyframes caret { 50% { opacity: 0; } }
+.greeting::before { animation: none; transform: none; opacity: 1; }
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(217,255,89,.55); }
   70% { box-shadow: 0 0 0 8px rgba(217,255,89,0); }
@@ -509,11 +505,12 @@ h1 em, .display em {
 @keyframes burst-ring { from { transform: scale(.3); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
 @keyframes burst-fly { to { transform: translate(var(--x), var(--y)) scale(.2); opacity: 0; } }
 
-html.lite h1 em, html.lite .display em, html.lite .eyebrow::before, html.lite .portrait::after { animation: none; }
+html.lite h1 em, html.lite .display em, html.lite .eyebrow::before { animation: none; }
 @media (prefers-reduced-motion: reduce) {
   .cursor-glow, .burst { display: none; }
   .skill .bar i { transform: none; }
-  h1 em, .display em, .eyebrow::before, .greeting::after, .portrait::after { animation: none; }
+  h1 em, .display em, .eyebrow::before, .portrait::after { animation: none; }
+  .portrait::after { background: linear-gradient(135deg, var(--accent), transparent 55%); }
 }
 
 :root[data-theme="light"] .eyebrow { color: #3f62b8; }
