@@ -179,7 +179,7 @@
   const rand = (min, max) => min + Math.random() * (max - min);
   const isPalette = v => v && [v.a, v.b, v.c].every(Number.isFinite);
   const detectLite = () => liteQuery.matches || (navigator.deviceMemory ?? 8) <= 4 || navigator.connection?.saveData === true;
-  let current = { a: 48, b: 104, c: 228 };
+  let current = { a: 158, b: 196, c: 330 };
   let lite = false;
   let alt = false;
 
@@ -191,6 +191,7 @@
 
   const paint = palette => {
     current = palette;
+    root.style.setProperty('--acc-h', palette.a);
     alt = !alt;
     setVars(alt ? '--bg2-' : '--bg-', palette);
     root.classList.toggle('bg-alt', alt);
@@ -199,6 +200,7 @@
   const paintInstant = palette => {
     root.classList.add('bg-instant');
     current = palette;
+    root.style.setProperty('--acc-h', palette.a);
     alt = false;
     setVars('--bg-', palette);
     setVars('--bg2-', palette);
@@ -301,4 +303,104 @@
   document.addEventListener('touchstart', prefetch, opts);
   document.addEventListener('focusin', prefetch, opts);
   addEventListener('pagehide', () => controller.abort(), { once: true });
+})();
+
+(() => {
+  const finePointer = matchMedia('(pointer: fine)');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const controller = new AbortController();
+  const opts = { signal: controller.signal, passive: true };
+  const SPOT = '.article, .skill, .icon-card, .auto-card, .contact-card, .project-row';
+  const MAGNET = '.cta, .read-link, .to-top, .footer-copy, .theme-toggle';
+  let glow = null, frame = null, last = null, magnet = null, glowOn = false, live = 0;
+
+  const resetMagnet = () => {
+    if (!magnet) return;
+    magnet.style.translate = '';
+    magnet = null;
+  };
+
+  const render = () => {
+    frame = null;
+    if (!last) return;
+    const { x, y, target } = last;
+    if (glow) {
+      glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      if (!glowOn) { glowOn = true; glow.classList.add('on'); }
+    }
+    const card = target?.closest?.(SPOT);
+    if (card) {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--px', `${x - rect.left}px`);
+      card.style.setProperty('--py', `${y - rect.top}px`);
+    }
+    if (reduced.matches) return;
+    const el = target?.closest?.(MAGNET);
+    if (el !== magnet) resetMagnet();
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const dx = (x - rect.left - rect.width / 2) / rect.width;
+    const dy = (y - rect.top - rect.height / 2) / rect.height;
+    el.style.translate = `${(dx * 10).toFixed(1)}px ${(dy * 8).toFixed(1)}px`;
+    magnet = el;
+  };
+
+  if (finePointer.matches) {
+    if (!reduced.matches) {
+      glow = document.createElement('div');
+      glow.className = 'cursor-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(glow);
+    }
+    document.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      last = { x: e.clientX, y: e.clientY, target: e.target };
+      if (frame === null) frame = requestAnimationFrame(render);
+    }, opts);
+    document.documentElement.addEventListener('pointerleave', () => {
+      resetMagnet();
+      glowOn = false;
+      glow?.classList.remove('on');
+    }, opts);
+  }
+
+  const burst = (x, y) => {
+    if (live >= 5) return;
+    live += 1;
+    const wrap = document.createElement('span');
+    wrap.className = 'burst';
+    wrap.style.left = `${x}px`;
+    wrap.style.top = `${y}px`;
+    const count = 8;
+    const offset = Math.random() * 45;
+    for (let i = 0; i < count; i++) {
+      const spark = document.createElement('i');
+      const angle = ((i * 360) / count + offset) * Math.PI / 180;
+      const dist = 24 + Math.random() * 22;
+      spark.style.setProperty('--x', `${(Math.cos(angle) * dist).toFixed(1)}px`);
+      spark.style.setProperty('--y', `${(Math.sin(angle) * dist).toFixed(1)}px`);
+      wrap.appendChild(spark);
+    }
+    let done = false;
+    const end = () => {
+      if (done) return;
+      done = true;
+      wrap.remove();
+      live -= 1;
+    };
+    wrap.addEventListener('animationend', e => { if (e.target === wrap) end(); });
+    setTimeout(end, 1200);
+    document.body.appendChild(wrap);
+  };
+
+  document.addEventListener('pointerdown', e => {
+    if (reduced.matches || e.button > 0) return;
+    if (e.target.closest?.('a, button')) burst(e.clientX, e.clientY);
+  }, opts);
+
+  addEventListener('pagehide', () => {
+    if (frame !== null) cancelAnimationFrame(frame);
+    glow?.remove();
+    controller.abort();
+  }, { once: true });
 })();
