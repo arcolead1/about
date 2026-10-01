@@ -4,21 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Arlingga's GitHub stats and streak, updated automatically.">
+  <meta name="keywords" content="GitHub stats, GitHub streak, contribution metrics, GitHub Actions, Arlingkin, Arlingga">
+  <meta name="author" content="Arlingga">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#071a3b">
   <meta name="color-scheme" content="dark">
-  <title>Arlingkin / Stats</title>
-  <meta property="og:title" content="Arlingkin / Stats">
+  <title>Arlingkin - Stats</title>
+  <meta property="og:title" content="Arlingkin - Stats">
   <meta property="og:description" content="Arlingga's GitHub stats and streak, updated automatically.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arlingkin.vercel.app/stats">
     <link rel="canonical" href="https://arlingkin.vercel.app/stats">
-<meta property="og:image" content="https://arlingkin.vercel.app/icons/icon.jpg">
+<meta property="og:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Arlingkin - personal site of Arlingga">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="id_ID">
   <meta property="og:site_name" content="Arlingkin">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@arlingkin">
-  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/icon.jpg">
-  <link rel="icon" type="image/jpeg" href="icons/icon.jpg">
-  <link rel="apple-touch-icon" href="icons/icon.jpg">
+  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -49,39 +58,79 @@
 
     <main id="main" tabindex="-1">
       <section class="page-head reveal reveal-zoom" aria-labelledby="stats-title">
-        <p class="eyebrow" data-i18n="stats.eyebrow">04 / GitHub stats</p>
+        <p class="eyebrow" data-i18n="stats.eyebrow">04 - GitHub stats</p>
         <h1 id="stats-title" data-i18n="stats.h1">My GitHub <em>activity.</em></h1>
         <p class="intro" data-i18n="stats.intro">These numbers are generated automatically from my GitHub account, the same way as my profile README.</p>
       </section>
 
-      <section class="stats-panel reveal reveal-zoom" aria-label="GitHub metrics">
-        <div class="featured section-head">
+      <section class="stats-panel" aria-label="GitHub metrics">
+        <div class="section-head">
+          <h2 data-i18n="stats.cron.label">Next update</h2>
+          <span class="meta" data-i18n="stats.cron.sub">read from the repo workflow</span>
+        </div>
+        <div class="cyber-glass cron-panel reveal" data-cron>
+          <div class="glass-bar"><i></i><i></i><i></i><span data-cron-file>metrics.yml</span></div>
+          <span class="scanline" aria-hidden="true"></span>
+          <div class="glass-body cron-body">
+            <div class="cron-ring-wrap" data-ring>
+              <div class="cron-ring"></div>
+              <div class="cron-ring-inner"><b data-pct>0%</b><small data-i18n="stats.cron.cycle">of the cycle</small></div>
+            </div>
+            <div class="cron-main">
+              <div class="cron-tabs" role="group" aria-label="Workflow">
+                <button class="cron-tab" type="button" data-wf="metrics" aria-pressed="true">metrics</button>
+                <button class="cron-tab" type="button" data-wf="streak" aria-pressed="false">streak badge</button>
+              </div>
+              <div class="cron-clock" role="timer" aria-label="Time until the next run">
+                <div class="cron-cell"><b data-d>00</b><span data-i18n="stats.cron.days">days</span></div>
+                <div class="cron-cell"><b data-h>00</b><span data-i18n="stats.cron.hours">hours</span></div>
+                <div class="cron-cell"><b data-m>00</b><span data-i18n="stats.cron.mins">min</span></div>
+                <div class="cron-cell"><b data-s>00</b><span data-i18n="stats.cron.secs">sec</span></div>
+              </div>
+              <p class="cron-next" data-next></p>
+              <dl class="cron-meta">
+                <div><dt data-i18n="stats.cron.schedule">schedule (UTC)</dt><dd data-expr>0 0 * * *</dd></div>
+                <div><dt data-i18n="stats.cron.last">last run</dt><dd data-last>-</dd></div>
+                <div><dt data-i18n="stats.cron.status">status</dt><dd><span class="cron-chip unk" data-chip><i></i><span data-status>-</span></span></dd></div>
+                <div><dt data-i18n="stats.cron.source">source</dt><dd><a class="cron-src" data-src href="https://github.com/arlingkin/arlingkin/actions" target="_blank" rel="noreferrer">arlingkin/arlingkin &#8599;</a></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head">
           <h2 data-i18n="stats.live.lbl">Live metrics</h2>
           <span class="meta" data-i18n="stats.live.sub">auto-updated by github actions</span>
         </div>
         <div class="cyber-glass reveal">
-          <img src="https://raw.githubusercontent.com/arlingkin/arlingkin/refs/heads/main/github-metrics.svg" alt="Live GitHub metrics for arlingkin" width="480" height="713" loading="lazy" decoding="async">
+          <div class="glass-bar"><i></i><i></i><i></i><span>github-metrics.svg</span></div>
+          <span class="scanline" aria-hidden="true"></span>
+          <div class="glass-body"><img src="https://raw.githubusercontent.com/arlingkin/arlingkin/refs/heads/main/github-metrics.svg" alt="Live GitHub metrics for arlingkin" width="480" height="713" loading="lazy" decoding="async"></div>
         </div>
+
         <div class="section-head">
           <h2 data-i18n="stats.streak.lbl">Current streak</h2>
           <span class="meta" data-i18n="stats.streak.sub">updated daily</span>
         </div>
         <div class="cyber-glass reveal has-center">
-          <img class="streak" src="https://streak-stats.demolab.com/?user=arlingkin&theme=for-the-badge&hide_border=true&card_width=280" alt="Current GitHub streak for arlingkin" loading="lazy" decoding="async">
+          <div class="glass-bar"><i></i><i></i><i></i><span>streak card</span></div>
+          <span class="scanline" aria-hidden="true"></span>
+          <div class="glass-body"><img class="streak" src="https://streak-stats.demolab.com/?user=arlingkin&amp;theme=for-the-badge&amp;hide_border=true&amp;card_width=280" alt="Current GitHub streak for arlingkin" loading="lazy" decoding="async"></div>
         </div>
+
         <div class="auto-grid">
           <article class="auto-card reveal">
-            <span class="ico">⚙</span>
+            <span class="ico">&#9881;</span>
             <h3>metrics.yml</h3>
             <p data-i18n="stats.auto1.desc">A scheduled GitHub Action that turns my activity into <span class="kbd">github-metrics.svg</span>.</p>
           </article>
           <article class="auto-card reveal">
-            <span class="ico">🔥</span>
+            <span class="ico">&#128293;</span>
             <h3>streak-badge</h3>
             <p data-i18n="stats.auto2.desc">A streak card that pulls its numbers from a streak API.</p>
           </article>
           <article class="auto-card reveal">
-            <span class="ico">⚡</span>
+            <span class="ico">&#9889;</span>
             <h3>github_streak.py</h3>
             <p data-i18n="stats.auto3.desc">A small Python script in the repo that feeds the streak automation.</p>
           </article>
@@ -135,5 +184,6 @@
   <script src="assets/js/site-config.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/interactive.js"></script>
+  <script src="/assets/js/stats.js" defer></script>
 </body>
 </html>

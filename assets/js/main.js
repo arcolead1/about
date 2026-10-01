@@ -20,7 +20,7 @@ const T = {
   'footer.top': { en: "Back to top ↑", id: "Ke atas ↑" },
   'skip.main':    { en:'Skip to content', id:'Lewati ke konten' },
 
-  'err.eyebrow': { en: "404 / Not found", id: "404 / Tidak ketemu" },
+  'err.eyebrow': { en: "404 - Not found", id: "404 - Tidak ketemu" },
   'err.h1': { en: "Nothing <em>here.</em>", id: "Di sini <em>kosong.</em>" },
   'err.intro': { en: "The link is broken or the page moved. Try one of these instead.", id: "Tautannya salah atau halamannya sudah pindah. Coba salah satu dari ini." },
   'err.home': { en: "BACK HOME →", id: "KE BERANDA →" },
@@ -30,18 +30,18 @@ const T = {
   'err.game.desc': { en: "A Matrix-style snake game I made in vanilla JS.", id: "Game snake bertema Matrix, dibuat pakai JS biasa." },
 
   /* home */
-  'home.eyebrow':      { en:'Personal notes / 2026',   id:'Catatan pribadi / 2026' },
+  'home.eyebrow':      { en:'Personal notes - 2026',   id:'Catatan pribadi - 2026' },
   'home.h1':           { en:'Making sense of <em>code.</em>',  id:'Menerka makna <em>kode.</em>' },
   'home.intro': { en: "This is my personal site. I make things for the web and keep notes on what I'm <strong>learning.</strong>", id: "Ini situs pribadi saya. Saya bikin hal-hal untuk web dan mencatat apa yang lagi <strong>saya pelajari.</strong>" },
   'home.status':       { en:'vibe code, but with <em>human</em> sense', id:'vibe code, tapi tetap pakai akal <em>manusia</em>' },
-  'home.latest.label': { en:'01 / LATEST NOTE', id:'01 / CATATAN TERBARU' },
+  'home.latest.label': { en:'01 - LATEST NOTE', id:'01 - CATATAN TERBARU' },
   'home.latest.link':  { en:'view projects',   id:'lihat proyek' },
   'home.latest.tag':   { en:'PERSONAL NOTE',  id:'CATATAN PRIBADI' },
   'home.latest.title': { en:'Learn to code without letting AI do the thinking.', id:'Belajar coding tanpa membiarkan AI memikirkan semuanya untukmu.' },
   'home.latest.desc': { en: "Some thoughts on why I still try to figure things out myself, even when AI gives the answer in seconds.", id: "Sedikit pikiran soal kenapa saya tetap mencoba paham sendiri, padahal AI bisa kasih jawaban dalam hitungan detik." },
   'home.latest.read':  { en:'READ THE NOTE →',  id:'BACA CATATAN →' },
   'note2.h1':    { en:'The moment I stopped <em>watching the chart.</em>', id:'Saat saya berhenti <em>menatap chart.</em>' },
-  'note2.meta1': { en:'trading / psychology', id:'trading / psikologi' },
+  'note2.meta1': { en:'trading - psychology', id:'trading - psikologi' },
   'note2.meta2': { en:'6 min read', id:'6 menit baca' },
   'note2.meta3': { en:'personal log', id:'catatan pribadi' },
   'note2.lead': { en:"There was a point where checking the chart felt like doing the work. It wasn't.", id:'Pernah ada titik ketika mengecek chart terasa seperti sedang bekerja. Padahal tidak.' },
@@ -52,7 +52,7 @@ const T = {
   'note2.p4': { en: "For me, stepping away isn't wasted time, it's part of the system. I have school, prayer, family, exercise and coding, and a life outside the candles. If a plan needs me to watch every second, it's not really freedom.", id: "Buat saya, menjauh sejenak bukan waktu yang terbuang, itu bagian dari sistem. Saya punya sekolah, ibadah, keluarga, olahraga, dan coding, juga hidup di luar candle. Kalau sebuah plan mengharuskan saya menonton setiap detik, itu belum benar-benar bebas." },
   'note2.p5': { en: "I'm still learning this. Some days I break my own rule and go back to the screen too fast. The difference is that I notice now, and I can reset before one bad decision ruins the whole session.", id: "Saya masih belajar soal ini. Beberapa hari saya masih melanggar aturan sendiri dan kembali ke layar terlalu cepat. Bedanya sekarang saya sadar, dan bisa reset sebelum satu keputusan buruk merusak satu sesi penuh." },
   'note2.back': { en:'← back to projects', id:'← kembali ke proyek' },
-  'home.where.label':  { en:'02 / WHERE I AM',  id:'02 / DI MANA SAYA' },
+  'home.where.label':  { en:'02 - WHERE I AM',  id:'02 - DI MANA SAYA' },
   'home.where.sub': { en: "based in indonesia", id: "tinggal di indonesia" },
   'home.about.tag':    { en:'ABOUT · 01', id:'TENTANG · 01' },
   'home.about.title':  { en:"Hi, I'm Arlingga", id:'Hai, saya Arlingga' },
@@ -63,7 +63,7 @@ const T = {
   'home.stats.tag':    { en:'STATS · 03', id:'STATISTIK · 03' },
   'home.stats.title': { en: "GitHub stats", id: "Statistik GitHub" },
   'home.stats.desc': { en: "My GitHub activity and streak, updated automatically.", id: "Aktivitas GitHub dan streak saya, diperbarui otomatis." },
-  'home.now.label':    { en:'03 / RIGHT NOW', id:'03 / SEKARANG' },
+  'home.now.label':    { en:'03 - RIGHT NOW', id:'03 - SEKARANG' },
   'home.now.h2': { en: "What I'm<br><em>up to.</em>", id: "Lagi<br><em>ngapain.</em>" },
   'home.now.1': { en: "Working on a personal project, one feature at a time.", id: "Ngerjain proyek pribadi, satu fitur setiap kali." },
   'home.now.2': { en: "Learning JavaScript, CSS and HTML by building stuff.", id: "Belajar JavaScript, CSS, dan HTML sambil langsung bikin sesuatu." },
@@ -75,7 +75,7 @@ const T = {
   'proj.note2.link':  { en:'READ NOTE →', id:'BACA CATATAN →' },
 
   /* about */
-  'about.eyebrow':    { en:'01 / About me', id:'01 / Tentang saya' },
+  'about.eyebrow':    { en:'01 - About me', id:'01 - Tentang saya' },
   'about.h1':         { en:"Hi, I'm<br><em>Arlingga.</em>", id:'Hai, saya<br><em>Arlingga.</em>' },
   'about.intro': { en: "I do web development: frontend, backend, some devops and AI work.", id: "Saya mengerjakan web development: frontend, backend, sedikit devops dan AI." },
   'about.lead': { en: "I build things for the web and <em>learn by doing.</em>", id: "Saya bikin hal-hal untuk web dan <em>belajar sambil jalan.</em>" },
@@ -101,7 +101,7 @@ const T = {
   'about.now.4': { en: "Open to building websites with other people.", id: "Terbuka untuk bikin website bareng orang lain." },
 
   /* skills */
-  'skills.eyebrow':  { en:'02 / Skills', id:'02 / Keahlian' },
+  'skills.eyebrow':  { en:'02 - Skills', id:'02 - Keahlian' },
   'skills.h1':       { en:'The <em>toolbox.</em>', id:'Kotak <em>perkakas</em> saya.' },
   'skills.intro': { en: "The languages, frameworks and tools I use most.", id: "Bahasa, framework, dan tool yang paling sering saya pakai." },
   'skills.lang.lbl': { en:'Languages', id:'Bahasa' },
@@ -138,7 +138,7 @@ const T = {
   'skills.tools.sub': { en:'tap any icon for the docs', id:'ketuk ikon mana pun untuk dokumentasi' },
 
   /* projects */
-  'proj.eyebrow':    { en:'03 / Projects', id:'03 / Proyek' },
+  'proj.eyebrow':    { en:'03 - Projects', id:'03 - Proyek' },
   'proj.h1': { en: "Things I <em>built.</em>", id: "Yang sudah <em>saya buat.</em>" },
   'proj.intro': { en: "Stuff I made while learning, from school projects to small experiments.", id: "Yang saya buat sambil belajar, dari proyek sekolah sampai eksperimen kecil." },
   'proj.feat.label': { en:'Featured', id:'Unggulan' },
@@ -175,19 +175,30 @@ const T = {
   'skills.oc.desc': { en:'AI coding agent for terminal workflows.', id:'AI coding agent untuk alur kerja coding di terminal.' },
 
   /* stats */
-  'stats.eyebrow':    { en:'04 / GitHub stats', id:'04 / Statistik GitHub' },
+  'stats.eyebrow':    { en:'04 - GitHub stats', id:'04 - Statistik GitHub' },
   'stats.h1': { en: "My GitHub <em>activity.</em>", id: "Aktivitas <em>GitHub</em> saya." },
   'stats.intro': { en: "These numbers are generated automatically from my GitHub account, the same way as my profile README.", id: "Angka-angka ini dibuat otomatis dari akun GitHub saya, sama seperti README profil saya." },
   'stats.live.lbl':   { en:'Live metrics', id:'Metrik langsung' },
   'stats.live.sub':   { en:'auto-updated by github actions', id:'diperbarui otomatis oleh github actions' },
   'stats.streak.lbl': { en:'Current streak', id:'Streak saat ini' },
   'stats.streak.sub': { en:'updated daily', id:'diperbarui setiap hari' },
+  'stats.cron.label': { en: "Next update", id: "Update berikutnya" },
+  'stats.cron.sub': { en: "read from the repo workflow", id: "dibaca dari workflow repo" },
+  'stats.cron.cycle': { en: "of the cycle", id: "dari siklus" },
+  'stats.cron.days': { en: "days", id: "hari" },
+  'stats.cron.hours': { en: "hours", id: "jam" },
+  'stats.cron.mins': { en: "min", id: "mnt" },
+  'stats.cron.secs': { en: "sec", id: "dtk" },
+  'stats.cron.schedule': { en: "schedule (UTC)", id: "jadwal (UTC)" },
+  'stats.cron.last': { en: "last run", id: "run terakhir" },
+  'stats.cron.status': { en: "status", id: "status" },
+  'stats.cron.source': { en: "source", id: "sumber" },
   'stats.auto1.desc': { en: "A scheduled GitHub Action that turns my activity into <span class=\"kbd\">github-metrics.svg</span>.", id: "GitHub Action terjadwal yang mengubah aktivitas saya menjadi <span class=\"kbd\">github-metrics.svg</span>." },
   'stats.auto2.desc': { en: "A streak card that pulls its numbers from a streak API.", id: "Kartu streak yang angkanya diambil dari streak API." },
   'stats.auto3.desc': { en: "A small Python script in the repo that feeds the streak automation.", id: "Skrip Python kecil di repo yang menyuplai otomasi streak." },
 
   /* contact */
-  'contact.eyebrow':    { en:'05 / Contact', id:'05 / Kontak' },
+  'contact.eyebrow':    { en:'05 - Contact', id:'05 - Kontak' },
   'contact.h1':         { en:'Say <em>hello.</em>', id:'Tinggalkan <em>halo.</em>' },
   'contact.intro': { en: "Message me about a website project, a coding question, or just to chat. Talking about blue is a plus. 💙", id: "Kirim pesan soal proyek website, pertanyaan kode, atau sekadar ngobrol. Kalau bahas warna biru, lebih seru. 💙" },
   'contact.email.desc': { en:'For work, projects, or collaboration. I usually reply within a couple of days.', id:'Untuk kerja, proyek, atau kolaborasi. Biasanya saya balas dalam beberapa hari.' },
