@@ -1,42 +1,69 @@
 # Arlingkin
 
-A personal portfolio and learning site for Arlingga (`arlingkin`), built as a static multi-page website using plain HTML, CSS, and JavaScript.
+A personal portfolio and learning website built with plain HTML, CSS, and JavaScript.
 
-> Repo description: "Let's learn to code without ai"
+Visit the live site: [arlingkin.vercel.app](https://arlingkin.vercel.app)
 
-This project showcases:
-- personal profile and about page
-- skills and projects sections
-- notes / learning journal entries
-- contact and social links
-- responsive dark-themed portfolio design
-- static deployment setup for Vercel, Firebase, and GitHub Pages
+> “Let’s learn to code without AI.”
+
+This repository contains the source for Arlingga’s personal site and notes hub. It is designed as a lightweight static website with multiple pages, a responsive dark theme, and a clean layout for portfolio content, skill highlights, projects, and notes.
+
+## Highlights
+
+- Personal portfolio landing page
+- About, skills, projects, stats, and contact pages
+- Notes / learning journal entries
+- Responsive design for desktop and mobile
+- Static deployment setup for Vercel, Firebase, and GitHub Pages
+- Generated content via a build script
 
 ## Tech stack
 
-The repository is primarily composed of:
+This project is primarily built with:
+
 - HTML: 45.9%
 - JavaScript: 27.3%
 - CSS: 26.8%
 
 ## Project structure
 
-- `index.html` — home landing page
-- `about.html` — about section
-- `skills.html` — skills overview
-- `projects.html` — portfolio/projects
-- `stats.html` — stats and activity info
-- `contact.html` — contact info
-- `assets/` — shared CSS, JS, images, and site config
-- `data/` — structured data such as tools and content metadata
-- `partials/` — shared header/footer include content
-- `scripts/build.mjs` — builds generated sections and i18n data
-- `notes/` — personal notes/content pages
-- `SETUP.md` — deployment and hosting instructions
+```text
+.
+├── README.md
+├── SETUP.md
+├── LICENSE
+├── index.html
+├── about.html
+├── skills.html
+├── projects.html
+├── stats.html
+├── contact.html
+├── 404.html
+├── sitemap.xml
+├── robots.txt
+├── firebase.json
+├── vercel.json
+├── app/
+│   └── public/
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── data/
+│   └── tools.json
+├── icons/
+├── notes/
+├── partials/
+├── scripts/
+│   └── build.mjs
+└── .github/
+```
 
 ## Local development
 
-Because this is a static site, you can run it locally with any simple web server:
+Because this is a static site, you can run it locally with any basic local web server.
+
+### Option 1: Python
 
 ```bash
 python -m http.server 8000
@@ -48,19 +75,34 @@ Then open:
 http://localhost:8000
 ```
 
+### Option 2: VS Code Live Server
+
+Open the project in VS Code and run it with the Live Server extension if preferred.
+
 ## Deployment
 
-This repo is configured for static hosting and includes setup for:
+The repository includes setup for multiple static hosting targets:
+
 - Vercel
 - Firebase Hosting
 - GitHub Pages
 
-See `SETUP.md` for the full deployment instructions.
+For hosting and deployment details, see [SETUP.md](SETUP.md).
+
+## Content generation
+
+The project includes a build script that generates shared section content and UI metadata:
+
+```bash
+node scripts/build.mjs
+```
+
+This helps keep generated navigation and tool sections consistent across pages.
 
 ## Notes
 
-The site uses generated content patterns and static assets rather than a framework, which keeps it lightweight and easy to host on simple static infrastructure.
+This project follows a lightweight static-site approach rather than a framework-based app. That keeps the site easy to host, easy to inspect, and fast to deploy.
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE` for details.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
