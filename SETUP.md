@@ -69,3 +69,19 @@ Lihat `assets/js/site-config.js`. Override dari GitHub:
 **Settings → Secrets and variables → Actions → Variables** dengan alias:
 `SITE_LOCATION`, `SITE_STATUS`, `SITE_WORKING_ON`, `SITE_OPEN_TO`,
 `SITE_FAV_COLOR`, `SITE_EMAIL`, `SITE_ROLE`, `SITE_TAGLINE`, `SITE_NOW_1..4`.
+
+## Daftar tool, header, footer (generator)
+
+Daftar tool (marquee beranda, Quick tools index, kartu skills) dan header/footer
+dibuat oleh `scripts/build.mjs`. Hasilnya di-commit, jadi deploy tetap statis.
+
+- Tambah atau ubah tool: edit `data/tools.json`, taruh ikon di `icons/tools/<id>.svg`.
+- Ubah header/footer: edit `partials/header.html` atau `partials/footer.html`.
+- Jalankan `node scripts/build.mjs`, lalu commit semua file yang berubah.
+- `node scripts/build.mjs --check` dipakai CI (`build-check.yml`) dan gagal kalau hasil belum di-commit.
+- Ikon dimuat dari `https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/`.
+
+## Nilai skill
+
+Edit angka 0-100 di `assets/js/valueskills.js` (kunci = `id` di `data/tools.json`).
+Angka saat ini masih acak 56-87 sebagai placeholder.

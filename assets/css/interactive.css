@@ -634,3 +634,7 @@ html.lite .cyber-glass::before { animation: none; background: linear-gradient(13
   100% { transform: scale(1, 1) rotate(0); }
 }
 @media (prefers-reduced-motion: reduce) { .footer-mark.is-hopping .fm-l { animation: none; } }
+
+.skill { position: relative; }
+.skill-val { position: absolute; top: 16px; right: 18px; font: 500 12px/1 var(--font-mono); letter-spacing: .04em; color: var(--muted); font-variant-numeric: tabular-nums; }
+.skill:hover .skill-val { color: var(--lime); }

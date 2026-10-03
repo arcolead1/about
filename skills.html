@@ -38,7 +38,7 @@
 <body>
   <a class="skip-link" href="#main" data-i18n="skip.main">Skip to content</a>
   <div class="page">
-    <header class="site-header">
+    <header class="site-header" data-build="header">
       <a class="brand" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
       <nav aria-label="Primary navigation">
         <a class="nav-link" href="/" data-i18n="nav.home">home</a>
@@ -50,10 +50,10 @@
         <a class="nav-link" href="https://github.com/arlingkin" target="_blank" rel="noreferrer" data-i18n="nav.github">github ↗</a>
       </nav>
       <div class="lang-switch" aria-label="Language selector">
-  <button class="lang-btn" data-lang="en" aria-label="Switch to English"><span class="lang-short">EN</span><span class="lang-long">ENGLISH</span></button>
-  <button class="lang-btn" data-lang="id" aria-label="Ganti ke Bahasa Indonesia"><span class="lang-short">ID</span><span class="lang-long">INDONESIA</span></button>
-</div>
-<button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"><span class="theme-icon">◐</span><span class="theme-label">DARK</span></button>
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English"><span class="lang-short">EN</span><span class="lang-long">ENGLISH</span></button>
+        <button class="lang-btn" data-lang="id" aria-label="Ganti ke Bahasa Indonesia"><span class="lang-short">ID</span><span class="lang-long">INDONESIA</span></button>
+      </div>
+      <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"><span class="theme-icon">◐</span><span class="theme-label">DARK</span></button>
     </header>
 
     <main id="main" tabindex="-1">
@@ -68,36 +68,36 @@
           <h2 data-i18n="skills.tools">Quick tools index</h2>
           <span class="meta" data-i18n="skills.tools.sub">tap any icon for the docs</span>
         </div>
-        <div class="icon-grid">
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="JavaScript"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" alt="JavaScript" width="36" height="36"><span>JavaScript</span></a>
-          <a href="https://git-scm.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Git"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg" alt="Git" width="36" height="36"><span>Git</span></a>
-          <a href="https://www.python.org/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Python"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg" alt="Python" width="36" height="36"><span>Python</span></a>
-          <a href="https://www.oracle.com/java/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Java"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg" alt="Java" width="36" height="36"><span>Java</span></a>
-          <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="VS Code"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/visualstudiocode-colored.svg" alt="VS Code" width="36" height="36"><span>VS Code</span></a>
-          <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="HTML5"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" alt="HTML5" width="36" height="36"><span>HTML5</span></a>
-          <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="TailwindCSS"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" alt="TailwindCSS" width="36" height="36"><span>TailwindCSS</span></a>
-          <a href="https://nextjs.org/docs" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="NextJs"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored-dark.svg" alt="NextJs" width="36" height="36"><span>NextJs</span></a>
-          <a href="https://firebase.google.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Firebase"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg" alt="Firebase" width="36" height="36"><span>Firebase</span></a>
-          <a href="https://supabase.io/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Supabase"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/supabase-colored.svg" alt="Supabase" width="36" height="36"><span>Supabase</span></a>
-          <a href="https://opencode.ai/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="OpenCode"><img src="https://opencode.ai/favicon.svg" alt="OpenCode" width="36" height="36"><span>OpenCode</span></a>
-          <a href="https://claude.ai/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Claude"><img src="https://cdn.simpleicons.org/claude" alt="Claude" width="36" height="36"><span>Claude</span></a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="GitHub"><img class="ico-mono" src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub" width="36" height="36"><span>GitHub</span></a>
-          <a href="https://vercel.com/docs" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Vercel"><img class="ico-mono" src="https://cdn.simpleicons.org/vercel/ffffff" alt="Vercel" width="36" height="36"><span>Vercel</span></a>
-          <a href="https://www.netlify.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Netlify"><img src="https://cdn.simpleicons.org/netlify" alt="Netlify" width="36" height="36"><span>Netlify</span></a>
-          <a href="https://onesignal.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="OneSignal"><img src="https://cdn.simpleicons.org/onesignal" alt="OneSignal" width="36" height="36"><span>OneSignal</span></a>
+        <div class="icon-grid" data-build="quick">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="JavaScript"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/javascript.svg" alt="JavaScript" width="36" height="36"><span>JavaScript</span></a>
+          <a href="https://git-scm.com/docs" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Git"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/git.svg" alt="Git" width="36" height="36"><span>Git</span></a>
+          <a href="https://www.python.org/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Python"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/python.svg" alt="Python" width="36" height="36"><span>Python</span></a>
+          <a href="https://www.oracle.com/java/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Java"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/java.svg" alt="Java" width="36" height="36"><span>Java</span></a>
+          <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="VS Code"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/vscode.svg" alt="VS Code" width="36" height="36"><span>VS Code</span></a>
+          <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="HTML5"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/html5.svg" alt="HTML5" width="36" height="36"><span>HTML5</span></a>
+          <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="TailwindCSS"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/tailwindcss.svg" alt="TailwindCSS" width="36" height="36"><span>TailwindCSS</span></a>
+          <a href="https://nextjs.org/docs" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="NextJS"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/nextjs.svg" alt="NextJS" width="36" height="36"><span>NextJS</span></a>
+          <a href="https://firebase.google.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Firebase"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/firebase.svg" alt="Firebase" width="36" height="36"><span>Firebase</span></a>
+          <a href="https://supabase.io/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Supabase"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/supabase.svg" alt="Supabase" width="36" height="36"><span>Supabase</span></a>
+          <a href="https://opencode.ai/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="OpenCode"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/opencode.svg" alt="OpenCode" width="36" height="36"><span>OpenCode</span></a>
+          <a href="https://claude.ai/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Claude"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/claude.svg" alt="Claude" width="36" height="36"><span>Claude</span></a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="GitHub"><img class="ico-mono" src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/github.svg" alt="GitHub" width="36" height="36"><span>GitHub</span></a>
+          <a href="https://vercel.com/docs" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Vercel"><img class="ico-mono" src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/vercel.svg" alt="Vercel" width="36" height="36"><span>Vercel</span></a>
+          <a href="https://www.netlify.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="Netlify"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/netlify.svg" alt="Netlify" width="36" height="36"><span>Netlify</span></a>
+          <a href="https://onesignal.com/" target="_blank" rel="noreferrer" class="icon-card reveal" aria-label="OneSignal"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/onesignal.svg" alt="OneSignal" width="36" height="36"><span>OneSignal</span></a>
         </div>
       </section>
 
-      <section aria-label="Skills grid">
+      <section aria-label="Skills grid" data-build="skill-groups">
         <div class="section-head">
           <h2 data-i18n="skills.lang.lbl">Languages</h2>
           <span class="meta" data-i18n="skills.lang.sub">the core</span>
         </div>
         <div class="skill-grid">
-          <a class="skill reveal" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer" aria-label="JavaScript docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.js.title">JavaScript</h3><p data-i18n="skills.js.desc">Scripting, DOM, ES modules.</p><span class="bar"><i style="width:82%"></i></span></a>
-          <a class="skill reveal" href="https://www.python.org/" target="_blank" rel="noreferrer" aria-label="Python docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.py.title">Python</h3><p data-i18n="skills.py.desc">Logic, automation, tooling.</p><span class="bar"><i style="width:70%"></i></span></a>
-          <a class="skill reveal" href="https://www.oracle.com/java/" target="_blank" rel="noreferrer" aria-label="Java docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.jv.title">Java</h3><p data-i18n="skills.jv.desc">Object-oriented fundamentals.</p><span class="bar"><i style="width:55%"></i></span></a>
-          <a class="skill reveal" href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer" aria-label="HTML5 docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.html.title">HTML5</h3><p data-i18n="skills.html.desc">Semantic, accessible markup.</p><span class="bar"><i style="width:88%"></i></span></a>
+          <a class="skill reveal" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer" aria-label="JavaScript" data-skill="javascript"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/javascript.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.js.title">JavaScript</h3><p data-i18n="skills.js.desc">Scripting, DOM, ES modules.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://www.python.org/" target="_blank" rel="noreferrer" aria-label="Python" data-skill="python"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/python.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.py.title">Python</h3><p data-i18n="skills.py.desc">Logic, automation, tooling.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://www.oracle.com/java/" target="_blank" rel="noreferrer" aria-label="Java" data-skill="java"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/java.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.jv.title">Java</h3><p data-i18n="skills.jv.desc">Object-oriented fundamentals.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer" aria-label="HTML5" data-skill="html5"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/html5.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.html.title">HTML5</h3><p data-i18n="skills.html.desc">Semantic, accessible markup.</p><span class="bar"><i></i></span></a>
         </div>
 
         <div class="section-head">
@@ -105,10 +105,21 @@
           <span class="meta" data-i18n="skills.fe.sub">looks &amp; feel</span>
         </div>
         <div class="skill-grid">
-          <a class="skill reveal" href="https://tailwindcss.com/" target="_blank" rel="noreferrer" aria-label="TailwindCSS docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.tw.title">TailwindCSS</h3><p data-i18n="skills.tw.desc">Utility-first styling.</p><span class="bar"><i style="width:76%"></i></span></a>
-          <a class="skill reveal" href="https://nextjs.org/docs" target="_blank" rel="noreferrer" aria-label="NextJS docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored-dark.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.nx.title">NextJS</h3><p data-i18n="skills.nx.desc">React-based web apps.</p><span class="bar"><i style="width:66%"></i></span></a>
-          <a class="skill reveal" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer" aria-label="CSS docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.css.title">CSS</h3><p data-i18n="skills.css.desc">Layout, animation, design.</p><span class="bar"><i style="width:80%"></i></span></a>
-          <a class="skill reveal" href="https://code.visualstudio.com/" target="_blank" rel="noreferrer" aria-label="VS Code docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/visualstudiocode-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.vsc.title">VS Code</h3><p data-i18n="skills.vsc.desc">My daily driver editor.</p><span class="bar"><i style="width:90%"></i></span></a>
+          <a class="skill reveal" href="https://tailwindcss.com/" target="_blank" rel="noreferrer" aria-label="TailwindCSS" data-skill="tailwindcss"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/tailwindcss.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.tw.title">TailwindCSS</h3><p data-i18n="skills.tw.desc">Utility-first styling.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://nextjs.org/docs" target="_blank" rel="noreferrer" aria-label="NextJS" data-skill="nextjs"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/nextjs.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.nx.title">NextJS</h3><p data-i18n="skills.nx.desc">React-based web apps.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer" aria-label="CSS" data-skill="css3"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/css3.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.css.title">CSS</h3><p data-i18n="skills.css.desc">Layout, animation, design.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://code.visualstudio.com/" target="_blank" rel="noreferrer" aria-label="VS Code" data-skill="vscode"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/vscode.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.vsc.title">VS Code</h3><p data-i18n="skills.vsc.desc">My daily driver editor.</p><span class="bar"><i></i></span></a>
+        </div>
+
+        <div class="section-head">
+          <h2 data-i18n="skills.toolsai.lbl">Tools &amp; AI</h2>
+          <span class="meta" data-i18n="skills.toolsai.sub">build, collaborate &amp; assist</span>
+        </div>
+        <div class="skill-grid">
+          <a class="skill reveal" href="https://claude.ai/" target="_blank" rel="noreferrer" aria-label="Claude" data-skill="claude"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/claude.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.cl.title">Claude</h3><p data-i18n="skills.cl.desc">AI assistant for coding, writing, and review.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub" data-skill="github"><span class="ico"><img class="ico-mono" src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/github.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.gh.title">GitHub</h3><p data-i18n="skills.gh.desc">Repos, Actions, and Pages.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://opencode.ai/" target="_blank" rel="noreferrer" aria-label="OpenCode" data-skill="opencode"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/opencode.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.oc.title">OpenCode</h3><p data-i18n="skills.oc.desc">AI coding agent for terminal workflows.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://git-scm.com/docs" target="_blank" rel="noreferrer" aria-label="Git" data-skill="git"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/git.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.git.title">Git</h3><p data-i18n="skills.git.desc">Version control &amp; workflows.</p><span class="bar"><i></i></span></a>
         </div>
 
         <div class="section-head">
@@ -116,21 +127,17 @@
           <span class="meta" data-i18n="skills.bp.sub">ship &amp; run</span>
         </div>
         <div class="skill-grid">
-          <a class="skill reveal" href="https://firebase.google.com/" target="_blank" rel="noreferrer" aria-label="Firebase docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.fb.title">Firebase</h3><p data-i18n="skills.fb.desc">Hosting, auth, realtime data.</p><span class="bar"><i style="width:78%"></i></span></a>
-          <a class="skill reveal" href="https://supabase.io/" target="_blank" rel="noreferrer" aria-label="Supabase docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/supabase-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.sb.title">Supabase</h3><p data-i18n="skills.sb.desc">Postgres as a service.</p><span class="bar"><i style="width:64%"></i></span></a>
-          <a class="skill reveal" href="https://git-scm.com/docs" target="_blank" rel="noreferrer" aria-label="Git docs"><span class="ico"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.git.title">Git</h3><p data-i18n="skills.git.desc">Version control &amp; workflows.</p><span class="bar"><i style="width:80%"></i></span></a>
-          <a class="skill reveal" href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side" target="_blank" rel="noreferrer" aria-label="DevOps docs"><span class="ico">DC</span><h3 data-i18n="skills.dc.title">DevOps</h3><p data-i18n="skills.dc.desc">Deployment, CI/CD, infra.</p><span class="bar"><i style="width:60%"></i></span></a>
-          <a class="skill reveal" href="https://opencode.ai/" target="_blank" rel="noreferrer" aria-label="OpenCode"><span class="ico"><img src="https://opencode.ai/favicon.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.oc.title">OpenCode</h3><p data-i18n="skills.oc.desc">AI coding agent for terminal workflows.</p><span class="bar"><i style="width:72%"></i></span></a>
-          <a class="skill reveal" href="https://claude.ai/" target="_blank" rel="noreferrer" aria-label="Claude"><span class="ico"><img src="https://cdn.simpleicons.org/claude" alt="" width="22" height="22"></span><h3 data-i18n="skills.cl.title">Claude</h3><p data-i18n="skills.cl.desc">AI assistant for coding, writing, and review.</p><span class="bar"><i style="width:75%"></i></span></a>
-          <a class="skill reveal" href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"><span class="ico"><img class="ico-mono" src="https://cdn.simpleicons.org/github/ffffff" alt="" width="22" height="22"></span><h3 data-i18n="skills.gh.title">GitHub</h3><p data-i18n="skills.gh.desc">Repos, Actions, and Pages.</p><span class="bar"><i style="width:85%"></i></span></a>
-          <a class="skill reveal" href="https://vercel.com/docs" target="_blank" rel="noreferrer" aria-label="Vercel"><span class="ico"><img class="ico-mono" src="https://cdn.simpleicons.org/vercel/ffffff" alt="" width="22" height="22"></span><h3 data-i18n="skills.vc.title">Vercel</h3><p data-i18n="skills.vc.desc">Production deploys and edge hosting.</p><span class="bar"><i style="width:80%"></i></span></a>
-          <a class="skill reveal" href="https://www.netlify.com/" target="_blank" rel="noreferrer" aria-label="Netlify"><span class="ico"><img src="https://cdn.simpleicons.org/netlify" alt="" width="22" height="22"></span><h3 data-i18n="skills.nl.title">Netlify</h3><p data-i18n="skills.nl.desc">Static hosting and deploy previews.</p><span class="bar"><i style="width:55%"></i></span></a>
-          <a class="skill reveal" href="https://onesignal.com/" target="_blank" rel="noreferrer" aria-label="OneSignal"><span class="ico"><img src="https://cdn.simpleicons.org/onesignal" alt="" width="22" height="22"></span><h3 data-i18n="skills.os.title">OneSignal</h3><p data-i18n="skills.os.desc">Push notifications for web and mobile.</p><span class="bar"><i style="width:40%"></i></span></a>
+          <a class="skill reveal" href="https://firebase.google.com/" target="_blank" rel="noreferrer" aria-label="Firebase" data-skill="firebase"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/firebase.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.fb.title">Firebase</h3><p data-i18n="skills.fb.desc">Hosting, auth, realtime data.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://supabase.io/" target="_blank" rel="noreferrer" aria-label="Supabase" data-skill="supabase"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/supabase.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.sb.title">Supabase</h3><p data-i18n="skills.sb.desc">Postgres as a service.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://vercel.com/docs" target="_blank" rel="noreferrer" aria-label="Vercel" data-skill="vercel"><span class="ico"><img class="ico-mono" src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/vercel.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.vc.title">Vercel</h3><p data-i18n="skills.vc.desc">Production deploys and edge hosting.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://www.netlify.com/" target="_blank" rel="noreferrer" aria-label="Netlify" data-skill="netlify"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/netlify.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.nl.title">Netlify</h3><p data-i18n="skills.nl.desc">Static hosting and deploy previews.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://onesignal.com/" target="_blank" rel="noreferrer" aria-label="OneSignal" data-skill="onesignal"><span class="ico"><img src="https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/onesignal.svg" alt="" width="22" height="22"></span><h3 data-i18n="skills.os.title">OneSignal</h3><p data-i18n="skills.os.desc">Push notifications for web and mobile.</p><span class="bar"><i></i></span></a>
+          <a class="skill reveal" href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side" target="_blank" rel="noreferrer" aria-label="DevOps" data-skill="devops"><span class="ico">DC</span><h3 data-i18n="skills.dc.title">DevOps</h3><p data-i18n="skills.dc.desc">Deployment, CI/CD, infra.</p><span class="bar"><i></i></span></a>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" data-build="footer">
       <div class="footer-top">
         <div class="footer-col footer-brand">
           <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
@@ -175,6 +182,8 @@
   </div>
   <script src="assets/js/site-config.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/tools-i18n.js"></script>
+  <script src="assets/js/valueskills.js"></script>
   <script src="assets/js/interactive.js"></script>
 </body>
 </html>

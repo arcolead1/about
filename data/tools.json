@@ -1,0 +1,299 @@
+{
+  "base": "https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/",
+  "featured": [
+    "javascript",
+    "git",
+    "python",
+    "java",
+    "vscode",
+    "html5",
+    "tailwindcss",
+    "nextjs",
+    "firebase",
+    "supabase",
+    "opencode",
+    "claude",
+    "github",
+    "vercel",
+    "netlify",
+    "onesignal"
+  ],
+  "groups": [
+    {
+      "id": "languages",
+      "key": "lang",
+      "label": {
+        "en": "Languages",
+        "id": "Bahasa"
+      },
+      "sub": {
+        "en": "the core",
+        "id": "bagian inti"
+      },
+      "tools": [
+        "javascript",
+        "python",
+        "java",
+        "html5"
+      ]
+    },
+    {
+      "id": "frontend",
+      "key": "fe",
+      "label": {
+        "en": "Frontend",
+        "id": "Frontend"
+      },
+      "sub": {
+        "en": "looks & feel",
+        "id": "tampilan & nuansa"
+      },
+      "tools": [
+        "tailwindcss",
+        "nextjs",
+        "css3",
+        "vscode"
+      ]
+    },
+    {
+      "id": "tools-ai",
+      "key": "toolsai",
+      "label": {
+        "en": "Tools & AI",
+        "id": "Tools & AI"
+      },
+      "sub": {
+        "en": "build, collaborate & assist",
+        "id": "membangun, berkolaborasi & membantu"
+      },
+      "tools": [
+        "claude",
+        "github",
+        "opencode",
+        "git"
+      ]
+    },
+    {
+      "id": "platform",
+      "key": "bp",
+      "label": {
+        "en": "Backend & Platform",
+        "id": "Backend & Platform"
+      },
+      "sub": {
+        "en": "ship & run",
+        "id": "men-deploy & menjalankan"
+      },
+      "tools": [
+        "firebase",
+        "supabase",
+        "vercel",
+        "netlify",
+        "onesignal",
+        "devops"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "javascript",
+      "key": "js",
+      "name": "JavaScript",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      "icon": "javascript",
+      "desc": {
+        "en": "Scripting, DOM, ES modules.",
+        "id": "Scripting, DOM, ES modules."
+      }
+    },
+    {
+      "id": "git",
+      "key": "git",
+      "name": "Git",
+      "url": "https://git-scm.com/docs",
+      "icon": "git",
+      "desc": {
+        "en": "Version control & workflows.",
+        "id": "Kontrol versi & alur kerja."
+      }
+    },
+    {
+      "id": "python",
+      "key": "py",
+      "name": "Python",
+      "url": "https://www.python.org/",
+      "icon": "python",
+      "desc": {
+        "en": "Logic, automation, tooling.",
+        "id": "Logika, otomasi, dan tooling."
+      }
+    },
+    {
+      "id": "java",
+      "key": "jv",
+      "name": "Java",
+      "url": "https://www.oracle.com/java/",
+      "icon": "java",
+      "desc": {
+        "en": "Object-oriented fundamentals.",
+        "id": "Dasar-dasar object-oriented."
+      }
+    },
+    {
+      "id": "vscode",
+      "key": "vsc",
+      "name": "VS Code",
+      "url": "https://code.visualstudio.com/",
+      "icon": "vscode",
+      "desc": {
+        "en": "My daily driver editor.",
+        "id": "Editor andalan sehari-hari."
+      }
+    },
+    {
+      "id": "html5",
+      "key": "html",
+      "name": "HTML5",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/HTML5",
+      "icon": "html5",
+      "desc": {
+        "en": "Semantic, accessible markup.",
+        "id": "Markup semantik dan ramah akses."
+      }
+    },
+    {
+      "id": "tailwindcss",
+      "key": "tw",
+      "name": "TailwindCSS",
+      "url": "https://tailwindcss.com/",
+      "icon": "tailwindcss",
+      "desc": {
+        "en": "Utility-first styling.",
+        "id": "Styling ala utility-first."
+      }
+    },
+    {
+      "id": "nextjs",
+      "key": "nx",
+      "name": "NextJS",
+      "url": "https://nextjs.org/docs",
+      "icon": "nextjs",
+      "desc": {
+        "en": "React-based web apps.",
+        "id": "Aplikasi web berbasis React."
+      }
+    },
+    {
+      "id": "css3",
+      "key": "css",
+      "name": "CSS",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+      "icon": "css3",
+      "desc": {
+        "en": "Layout, animation, design.",
+        "id": "Layout, animasi, dan desain."
+      }
+    },
+    {
+      "id": "firebase",
+      "key": "fb",
+      "name": "Firebase",
+      "url": "https://firebase.google.com/",
+      "icon": "firebase",
+      "desc": {
+        "en": "Hosting, auth, realtime data.",
+        "id": "Hosting, auth, dan data realtime."
+      }
+    },
+    {
+      "id": "supabase",
+      "key": "sb",
+      "name": "Supabase",
+      "url": "https://supabase.io/",
+      "icon": "supabase",
+      "desc": {
+        "en": "Postgres as a service.",
+        "id": "Postgres sebagai layanan."
+      }
+    },
+    {
+      "id": "devops",
+      "key": "dc",
+      "name": "DevOps",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side",
+      "glyph": "DC",
+      "desc": {
+        "en": "Deployment, CI/CD, infra.",
+        "id": "Deployment, CI/CD, dan infra."
+      }
+    },
+    {
+      "id": "opencode",
+      "key": "oc",
+      "name": "OpenCode",
+      "url": "https://opencode.ai/",
+      "icon": "opencode",
+      "desc": {
+        "en": "AI coding agent for terminal workflows.",
+        "id": "AI coding agent untuk alur kerja coding di terminal."
+      }
+    },
+    {
+      "id": "claude",
+      "key": "cl",
+      "name": "Claude",
+      "url": "https://claude.ai/",
+      "icon": "claude",
+      "desc": {
+        "en": "AI assistant for coding, writing, and review.",
+        "id": "Asisten AI untuk coding, menulis, dan review."
+      }
+    },
+    {
+      "id": "github",
+      "key": "gh",
+      "name": "GitHub",
+      "url": "https://github.com/",
+      "icon": "github",
+      "mono": true,
+      "desc": {
+        "en": "Repos, Actions, and Pages.",
+        "id": "Repo, Actions, dan Pages."
+      }
+    },
+    {
+      "id": "vercel",
+      "key": "vc",
+      "name": "Vercel",
+      "url": "https://vercel.com/docs",
+      "icon": "vercel",
+      "mono": true,
+      "desc": {
+        "en": "Production deploys and edge hosting.",
+        "id": "Deploy production dan hosting edge."
+      }
+    },
+    {
+      "id": "netlify",
+      "key": "nl",
+      "name": "Netlify",
+      "url": "https://www.netlify.com/",
+      "icon": "netlify",
+      "desc": {
+        "en": "Static hosting and deploy previews.",
+        "id": "Hosting statis dan preview deploy."
+      }
+    },
+    {
+      "id": "onesignal",
+      "key": "os",
+      "name": "OneSignal",
+      "url": "https://onesignal.com/",
+      "icon": "onesignal",
+      "desc": {
+        "en": "Push notifications for web and mobile.",
+        "id": "Notifikasi push untuk web dan mobile."
+      }
+    }
+  ]
+}
