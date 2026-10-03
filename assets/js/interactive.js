@@ -302,7 +302,7 @@
   document.addEventListener('pointerover', prefetch, opts);
   document.addEventListener('touchstart', prefetch, opts);
   document.addEventListener('focusin', prefetch, opts);
-  addEventListener('pagehide', () => controller.abort(), { once: true });
+  addEventListener('pagehide', () => { observer.disconnect(); controller.abort(); }, { once: true });
 })();
 
 (() => {
@@ -422,15 +422,26 @@
   });
   const last = mark.lastElementChild;
   let running = false;
-  mark.addEventListener('click', () => {
+  let inView = false;
+  const hop = () => {
     if (running || reduced.matches || !last) return;
     running = true;
     mark.classList.add('is-hopping');
-  }, { signal: controller.signal });
+  };
+  mark.addEventListener('click', hop, { signal: controller.signal });
   mark.addEventListener('animationend', (event) => {
     if (event.target !== last) return;
     mark.classList.remove('is-hopping');
     running = false;
   }, { signal: controller.signal });
-  addEventListener('pagehide', () => controller.abort(), { once: true });
+  let prevY = scrollY;
+  const observer = new IntersectionObserver(([entry]) => {
+    const down = scrollY > prevY;
+    prevY = scrollY;
+    if (!entry.isIntersecting) { inView = false; return; }
+    if (!inView && down) hop();
+    inView = true;
+  }, { threshold: 0.55 });
+  observer.observe(mark);
+  addEventListener('pagehide', () => { observer.disconnect(); controller.abort(); }, { once: true });
 })();

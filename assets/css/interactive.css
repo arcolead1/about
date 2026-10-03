@@ -612,10 +612,8 @@ html.lite .cyber-glass::before { animation: none; background: linear-gradient(13
 .footer-mark { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .fm-l { display: inline-block; transform-origin: 50% 88%; transition: color .4s var(--ease); }
 .footer-mark.is-hopping { background: none; opacity: .9; }
-.footer-mark.is-hopping .fm-l { color: var(--cyan); animation: fm-hop .9s var(--ease-soft) calc(var(--i) * 55ms) 1; }
-.footer-mark.is-hopping .fm-l:nth-child(4n+2) { color: var(--blue); }
-.footer-mark.is-hopping .fm-l:nth-child(4n+3) { color: var(--violet); }
-.footer-mark.is-hopping .fm-l:nth-child(4n) { color: var(--lime); }
+.footer-mark.is-hopping .fm-l { color: hsl(calc(175 + var(--i) * 40) 100% 64%); animation: fm-hop .9s var(--ease-soft) calc(var(--i) * 55ms) 1; }
+:root[data-theme="light"] .footer-mark.is-hopping .fm-l { color: hsl(calc(175 + var(--i) * 40) 92% 46%); }
 .footer-mark.is-hopping .fm-l[data-hero] { animation-name: fm-hop-hero; animation-duration: 1.1s; }
 @keyframes fm-hop {
   0%   { transform: scale(1, 1); }
