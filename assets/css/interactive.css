@@ -640,3 +640,7 @@ html.lite .cyber-glass::before { animation: none; background: linear-gradient(13
 .skill:hover .skill-val { color: var(--lime); }
 
 .note-save { display: inline-block; margin: 4px 0 8px; }
+
+.inline-link { color: var(--lime); border-bottom: 1px solid rgba(217,255,89,.5); white-space: nowrap; transition: color .2s ease, border-color .2s ease; }
+.inline-link:hover { color: var(--cyan); border-color: var(--cyan); }
+.inline-ico { display: inline-block; width: 1.1em; height: 1.1em; margin-right: .3em; vertical-align: -.2em; border-radius: 3px; }
