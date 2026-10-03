@@ -1,0 +1,31 @@
+{
+  "site": "https://arlingkin.vercel.app",
+  "notes": [
+    {
+      "slug": "mindustry",
+      "date": "2026-10-03",
+      "featured": true,
+      "title": {
+        "en": "Where it started: Mindustry logic.",
+        "id": "Awalnya dari logic Mindustry."
+      },
+      "desc": {
+        "en": "How a phone game and its logic processor led me into web development.",
+        "id": "Bagaimana game di ponsel dan logic processor-nya membawa saya ke web development."
+      }
+    },
+    {
+      "slug": "note-02",
+      "date": "2026-10-01",
+      "featured": false,
+      "title": {
+        "en": "The moment I stopped watching the chart.",
+        "id": "Saat saya berhenti menatap chart."
+      },
+      "desc": {
+        "en": "A note about trading, screen time, and learning that stepping away is part of the process.",
+        "id": "Catatan tentang trading, waktu di depan layar, dan belajar bahwa menjauh sejenak juga bagian dari proses."
+      }
+    }
+  ]
+}

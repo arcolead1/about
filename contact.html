@@ -25,6 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@arlingkin">
   <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <link rel="alternate" type="application/rss+xml" title="Arlingkin - Notes" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -66,9 +67,9 @@
       <section class="contact-grid reveal reveal-right d2" aria-label="Contact options">
         <article class="contact-card card-mail reveal">
           <span class="kbd" data-i18n="contact.email.kbd">email · fastest</span>
-          <h3>linggasaja03@gmail.com</h3>
+          <h3 data-mail-text>Email</h3>
           <p data-i18n="contact.email.desc">For work, projects, or collaboration. I usually reply within a couple of days.</p>
-          <button class="cta" type="button" data-copy="linggasaja03@gmail.com" data-i18n="contact.email.btn">copy email</button>
+          <button class="cta" type="button" data-copy="" data-i18n="contact.email.btn">copy email</button>
         </article>
 
         <article class="contact-card reveal">
@@ -129,6 +130,7 @@
             <li><a class="footer-link" href="/about" data-i18n="nav.about">about</a></li>
             <li><a class="footer-link" href="/skills" data-i18n="nav.skills">skills</a></li>
             <li><a class="footer-link" href="/projects" data-i18n="nav.projects">projects</a></li>
+            <li><a class="footer-link" href="/notes" data-i18n="nav.notes">notes</a></li>
             <li><a class="footer-link" href="/stats" data-i18n="nav.stats">stats</a></li>
             <li><a class="footer-link" href="/contact" data-i18n="nav.contact">contact</a></li>
           </ul>
@@ -141,13 +143,14 @@
             <li><a class="footer-link" href="https://tiktok.com/@arlingkin" target="_blank" rel="noreferrer">TikTok ↗</a></li>
             <li><a class="footer-link" href="https://youtube.com/@arlingkin" target="_blank" rel="noreferrer">YouTube ↗</a></li>
             <li><a class="footer-link" href="https://t.me/arlingkin" target="_blank" rel="noreferrer">Telegram ↗</a></li>
+            <li><a class="footer-link" href="/feed.xml" type="application/rss+xml">RSS</a></li>
           </ul>
         </nav>
         <div class="footer-col">
           <h2 class="footer-title" data-i18n="footer.contact">Contact</h2>
           <address>
-            <a class="footer-link" href="mailto:linggasaja03@gmail.com" data-i18n="footer.hello">say hello ↗</a>
-            <button class="footer-copy cta" type="button" data-copy="linggasaja03@gmail.com" data-i18n="contact.email.btn">copy email</button>
+            <a class="footer-link" href="/contact" data-mail-link data-i18n="footer.hello">say hello ↗</a>
+            <button class="footer-copy cta" type="button" data-copy="" data-i18n="contact.email.btn">copy email</button>
           </address>
         </div>
       </div>
@@ -158,7 +161,7 @@
       </div>
     </footer>
   </div>
-  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/mail.js"></script><script src="assets/js/site-config.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/interactive.js"></script>
 </body>

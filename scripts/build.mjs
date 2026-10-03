@@ -3,6 +3,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 const check = process.argv.includes('--check');
 const read = (path) => readFileSync(path, 'utf8');
 const data = JSON.parse(read('data/tools.json'));
+const notesData = JSON.parse(read('data/notes.json'));
 const byId = new Map(data.tools.map((tool) => [tool.id, tool]));
 
 const esc = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -36,6 +37,14 @@ const group = (g) =>
 
 const featured = data.featured.map((id) => byId.get(id));
 
+const sortedNotes = [...notesData.notes].sort((a, b) => b.date.localeCompare(a.date));
+const mainNotes = sortedNotes.filter((note) => note.featured);
+const moreNotes = sortedNotes.filter((note) => !note.featured);
+const noteRow = (note, index) =>
+  `          <a class="project-row reveal" href="/notes/${note.slug}"><span class="project-num">${String(index).padStart(2, '0')}</span><div class="project-main"><h3 data-i18n="notes.${note.slug}.title">${esc(note.title.en)}</h3><p data-i18n="notes.${note.slug}.desc">${esc(note.desc.en)}</p></div><span class="project-link" data-i18n="notes.read">READ NOTE →</span></a>`;
+const mainHtml = mainNotes.map((note, i) => noteRow(note, i + 1)).join('\n');
+const moreHtml = moreNotes.map((note, i) => noteRow(note, mainNotes.length + i + 1)).join('\n');
+
 const replaceInner = (src, open, close, body) => {
   const at = src.indexOf(open);
   if (at < 0) return src;
@@ -61,6 +70,8 @@ const pages = {
   'stats.html': '/stats',
   'contact.html': '/contact',
   '404.html': null,
+  'notes/index.html': null,
+  'notes/mindustry.html': null,
   'notes/note-02.html': null,
 };
 
@@ -83,6 +94,8 @@ for (const [path, active] of Object.entries(pages)) {
   src = replaceInner(src, '<div class="tool-marquee-track" data-build="marquee">', '</div>', featured.map(chip).join('\n') + '\n          ');
   src = replaceInner(src, '<div class="icon-grid" data-build="quick">', '</div>', featured.map(quick).join('\n') + '\n        ');
   src = replaceInner(src, '<section aria-label="Skills grid" data-build="skill-groups">', '</section>', data.groups.map(group).join('\n\n') + '\n      ');
+  src = replaceInner(src, '<div data-build="notes-main">', '\n        </div>\n      </section>', mainHtml);
+  src = replaceInner(src, '<div data-build="notes-more">', '\n        </div>\n      </section>', moreHtml);
   write(path, src);
 }
 
@@ -93,8 +106,21 @@ for (const g of data.groups) {
 for (const tool of data.tools) {
   entries.push([`skills.${tool.key}.title`, { en: tool.name, id: tool.name }], [`skills.${tool.key}.desc`, tool.desc]);
 }
+for (const note of notesData.notes) {
+  entries.push([`notes.${note.slug}.title`, note.title], [`notes.${note.slug}.desc`, note.desc]);
+}
 const i18n = `Object.assign(T, {\n${entries.map(([key, value]) => `  ${JSON.stringify(key)}: ${JSON.stringify(value)},`).join('\n')}\n});\n`;
 write('assets/js/tools-i18n.js', i18n);
+
+const xml = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const items = sortedNotes
+  .map((note) => {
+    const url = `${notesData.site}/notes/${note.slug}`;
+    return `    <item>\n      <title>${xml(note.title.en)}</title>\n      <link>${url}</link>\n      <guid isPermaLink="true">${url}</guid>\n      <pubDate>${new Date(`${note.date}T00:00:00Z`).toUTCString()}</pubDate>\n      <description>${xml(note.desc.en)}</description>\n    </item>`;
+  })
+  .join('\n');
+const feed = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>Arlingkin - Notes</title>\n    <link>${notesData.site}/notes</link>\n    <atom:link href="${notesData.site}/feed.xml" rel="self" type="application/rss+xml"/>\n    <description>Short notes from Arlingga.</description>\n    <language>en</language>\n    <lastBuildDate>${new Date(`${sortedNotes[0].date}T00:00:00Z`).toUTCString()}</lastBuildDate>\n${items}\n  </channel>\n</rss>\n`;
+write('feed.xml', feed);
 
 if (changed.length) console.log(`${check ? 'out of date' : 'updated'}: ${changed.join(', ')}`);
 else console.log('up to date');

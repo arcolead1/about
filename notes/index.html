@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <meta name="description" content="404: this page doesn't exist. Head back to Arlingga's site.">
+  <meta name="description" content="Short notes from Arlingga: learning to program, trading habits, and building for the web.">
+  <meta name="keywords" content="notes, blog, mindustry, programming, Arlingkin, Arlingga">
+  <meta name="author" content="Arlingga">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#071a3b">
   <meta name="color-scheme" content="dark">
-  <title>Arlingkin - 404</title>
-  <meta property="og:title" content="Arlingkin - 404">
+  <title>Arlingkin - Notes</title>
+  <meta property="og:title" content="Arlingkin - Notes">
+  <meta property="og:description" content="Short notes from Arlingga: learning to program, trading habits, and building for the web.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arlingkin.vercel.app/notes">
+  <link rel="canonical" href="https://arlingkin.vercel.app/notes">
   <meta property="og:image" content="https://arlingkin.vercel.app/icons/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -17,13 +22,16 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="id_ID">
   <meta property="og:site_name" content="Arlingkin">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@arlingkin">
+  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.png">
   <link rel="alternate" type="application/rss+xml" title="Arlingkin - Notes" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Lora:ital,wght@1,400;1,500&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/interactive.css">
   <script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script>
@@ -50,64 +58,32 @@
     </header>
 
     <main id="main" tabindex="-1">
-      <section class="page-head err-head" aria-labelledby="err-title">
-        <div class="err-grid">
-          <div>
-            <p class="eyebrow" data-i18n="err.eyebrow">404 - Not found</p>
-            <p class="err-code" aria-hidden="true">404</p>
-            <h1 id="err-title" data-i18n="err.h1">Nothing <em>here.</em></h1>
-            <p class="intro" data-i18n="err.intro">The link is broken or the page moved. Try one of these instead.</p>
-            <a class="read-link err-home" href="/" data-i18n="err.home">BACK HOME →</a>
-          </div>
-          <div class="code-art err-art" aria-hidden="true">
-            <div class="code-window">
-              <div class="dots"><i></i><i></i><i></i></div>
-              <span class="pink">const</span> page = <span class="purple">'<span data-current-path>/…</span>'</span>;<br><br>
-              <span class="pink">if</span> (!<span class="green">exists</span>(page)) {<br>
-              &nbsp;&nbsp;<span class="pink">return</span> <span class="faint">home</span>;<br>
-              }<br><br>
-              <span class="faint">// back to home</span>
-            </div>
-          </div>
-        </div>
+      <section class="page-head reveal reveal-zoom" aria-labelledby="notes-title">
+        <p class="eyebrow" data-i18n="notes.eyebrow">Notes</p>
+        <h1 id="notes-title" data-i18n="notes.h1">Short <em>notes.</em></h1>
+        <p class="intro" data-i18n="notes.intro">Things I write down while learning. No fixed schedule.</p>
       </section>
 
-      <section aria-labelledby="err-map-title">
+      <section aria-label="Main note">
         <div class="section-head">
-          <h2 id="err-map-title" data-i18n="err.map.label">Try these</h2>
-          <span class="meta" data-i18n="err.map.sub">pages that exist</span>
+          <h2 data-i18n="notes.main.label">Main note</h2>
+          <span class="meta" data-i18n="notes.main.sub">start here</span>
         </div>
-        <div>
-          <a class="project-row" href="/notes/note-02"><span class="project-num">01</span><div class="project-main"><h3 data-i18n="proj.note2.title">Personal Note — The moment I stopped watching the chart.</h3><p data-i18n="proj.note2.desc">About trading, screen time, and learning to step away from the chart.</p></div><span class="project-link" data-i18n="proj.note2.link">READ NOTE →</span></a>
-          <a class="project-row" href="/projects"><span class="project-num">02</span><div class="project-main"><h3 data-i18n="nav.projects">projects</h3><p data-i18n="proj.intro">Stuff I made while learning, from school projects to small experiments.</p></div><span class="project-link">/projects</span></a>
-          <a class="project-row" href="/about"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="nav.about">about</h3><p data-i18n="home.about.desc">Web dev: frontend, backend, a bit of devops and AI.</p></div><span class="project-link">/about</span></a>
-          <a class="project-row" href="/skills"><span class="project-num">04</span><div class="project-main"><h3 data-i18n="nav.skills">skills</h3><p data-i18n="home.skills.desc">JS, Python, Java, Tailwind, NextJS, Firebase, Supabase and more.</p></div><span class="project-link">/skills</span></a>
-          <a class="project-row" href="/stats"><span class="project-num">05</span><div class="project-main"><h3 data-i18n="nav.stats">stats</h3><p data-i18n="home.stats.desc">My GitHub activity and streak, updated automatically.</p></div><span class="project-link">/stats</span></a>
-          <a class="project-row" href="/contact"><span class="project-num">06</span><div class="project-main"><h3 data-i18n="nav.contact">contact</h3><p data-i18n="contact.intro">Message me about a website project, a coding question, or just to chat. Talking about blue is a plus. 💙</p></div><span class="project-link">/contact</span></a>
+        <div data-build="notes-main">
+          <a class="project-row reveal" href="/notes/mindustry"><span class="project-num">01</span><div class="project-main"><h3 data-i18n="notes.mindustry.title">Where it started: Mindustry logic.</h3><p data-i18n="notes.mindustry.desc">How a phone game and its logic processor led me into web development.</p></div><span class="project-link" data-i18n="notes.read">READ NOTE →</span></a>
         </div>
       </section>
 
-      <section class="err-game" aria-label="Snake game">
-        <article class="feature-card matrix">
-          <div class="feature-copy">
-            <span class="tag matrix" data-i18n="proj.feat2.tag">GAME · MATRIX</span>
-            <h3 data-i18n="err.game.title">Bored? Play snake.</h3>
-            <p data-i18n="err.game.desc">A Matrix-style snake game I made in vanilla JS.</p>
-            <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="proj.a5.link">PLAY THE GAME →</a>
-          </div>
-          <div class="code-art" aria-hidden="true">
-            <div class="code-window">
-              <div class="dots"><i></i><i></i><i></i></div>
-              <span class="pink">const</span> snake = {<br>
-              &nbsp;&nbsp;<span class="green">theme</span>: <span class="purple">'matrix'</span>,<br>
-              &nbsp;&nbsp;<span class="green">goal</span>: <span class="purple">'eat · grow · survive'</span><br>
-              };
-            </div>
-          </div>
-        </article>
+      <section aria-label="More notes">
+        <div class="section-head">
+          <h2 data-i18n="notes.more.label">More notes</h2>
+          <span class="meta" data-i18n="notes.more.sub">smaller ones</span>
+        </div>
+        <div data-build="notes-more">
+          <a class="project-row reveal" href="/notes/note-02"><span class="project-num">02</span><div class="project-main"><h3 data-i18n="notes.note-02.title">The moment I stopped watching the chart.</h3><p data-i18n="notes.note-02.desc">A note about trading, screen time, and learning that stepping away is part of the process.</p></div><span class="project-link" data-i18n="notes.read">READ NOTE →</span></a>
+        </div>
       </section>
     </main>
-
     <footer class="site-footer" data-build="footer">
       <div class="footer-top">
         <div class="footer-col footer-brand">
@@ -155,6 +131,7 @@
   </div>
   <script src="/assets/js/mail.js"></script><script src="/assets/js/site-config.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/tools-i18n.js"></script>
   <script src="/assets/js/interactive.js"></script>
 </body>
 </html>

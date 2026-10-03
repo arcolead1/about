@@ -26,6 +26,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@arlingkin">
   <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <link rel="alternate" type="application/rss+xml" title="Arlingkin - Notes" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -73,8 +74,8 @@
         </div>
       </section>
       <section class="featured" aria-labelledby="featured-title" id="writing">
-        <div class="section-head"><h2 id="featured-title" data-i18n="home.latest.label">01 - LATEST NOTE</h2><a href="/projects" data-i18n="home.latest.link">view projects</a></div>
-        <article class="feature-card personal-note"><div class="feature-copy reveal"><span class="tag personal-note-tag" data-i18n="home.latest.tag">PERSONAL NOTE</span><h3 data-i18n="home.latest.title">Learn to code without letting AI do the thinking.</h3><p data-i18n="home.latest.desc">Some thoughts on why I still try to figure things out myself, even when AI gives the answer in seconds.</p><a class="read-link" href="/notes/note-02.html" data-i18n="home.latest.read">READ THE NOTE →</a></div><div class="code-art reveal"><div class="code-window"><div class="dots"><i></i><i></i><i></i></div><span class="pink">const</span> curiosity = <span class="purple">true</span>;<br><br><span class="pink">function</span> <span class="green">learn</span>() {<br>&nbsp;&nbsp;<span class="pink">return</span> <span class="faint">question</span> + practice;<br>}<br><br><span class="faint">// figure it out yourself</span></div></div></article>
+        <div class="section-head"><h2 id="featured-title" data-i18n="home.latest.label">01 - LATEST NOTE</h2><a href="/notes" data-i18n="home.latest.link">all notes</a></div>
+        <article class="feature-card personal-note"><div class="feature-copy reveal"><span class="tag personal-note-tag" data-i18n="home.latest.tag">PERSONAL NOTE</span><h3 data-i18n="home.latest.title">Where it started: Mindustry logic.</h3><p data-i18n="home.latest.desc">How a phone game and its logic processor led me into web development.</p><a class="read-link" href="/notes/mindustry" data-i18n="home.latest.read">READ THE NOTE →</a></div><div class="code-art reveal"><div class="code-window"><div class="dots"><i></i><i></i><i></i></div><span class="pink">sensor</span> n pad1 <span class="purple">@copper</span><br><span class="pink">draw</span> rect x 0 1 <span class="green">n</span><br><span class="pink">drawflush</span> display1<br><br><span class="faint">// items in, graph out</span></div></div></article>
       </section>
       <section aria-labelledby="archive-title"><div class="section-head"><h2 id="archive-title" data-i18n="home.where.label">02 - WHERE I AM</h2><span class="meta" data-i18n="home.where.sub">based in indonesia</span></div><div class="article-grid"><a class="article reveal reveal-left d1" href="/about"><p class="meta" data-i18n="home.about.tag">ABOUT · 01</p><h3 data-i18n="home.about.title">Hi, I'm Arlingga</h3><p data-i18n="home.about.desc">Web dev: frontend, backend, a bit of devops and AI.</p></a><a class="article reveal d2" href="/skills"><p class="meta" data-i18n="home.skills.tag">SKILLS · 02</p><h3 data-i18n="home.skills.title">The toolbox</h3><p data-i18n="home.skills.desc">JS, Python, Java, Tailwind, NextJS, Firebase, Supabase and more.</p></a><a class="article reveal reveal-right d3" href="/stats"><p class="meta" data-i18n="home.stats.tag">STATS · 03</p><h3 data-i18n="home.stats.title">GitHub stats</h3><p data-i18n="home.stats.desc">My GitHub activity and streak, updated automatically.</p></a></div></section>
       <section class="now reveal reveal-right" id="now" aria-labelledby="now-title"><div><p class="eyebrow" data-i18n="home.now.label">03 - RIGHT NOW</p><h2 id="now-title" data-i18n="home.now.h2">What I'm<br><em>up to.</em></h2></div><ul class="now-list"><li><span>01</span><span data-i18n="home.now.1">Working on a personal project, one feature at a time.</span></li><li><span>02</span><span data-i18n="home.now.2">Learning JavaScript, CSS and HTML by building stuff.</span></li><li><span>03</span><span data-i18n="home.now.3">Still tweaking this site.</span></li><li><span>04</span><span data-i18n="home.now.4">Blue is my favorite color.</span></li></ul></section>
@@ -119,6 +120,7 @@
             <li><a class="footer-link" href="/about" data-i18n="nav.about">about</a></li>
             <li><a class="footer-link" href="/skills" data-i18n="nav.skills">skills</a></li>
             <li><a class="footer-link" href="/projects" data-i18n="nav.projects">projects</a></li>
+            <li><a class="footer-link" href="/notes" data-i18n="nav.notes">notes</a></li>
             <li><a class="footer-link" href="/stats" data-i18n="nav.stats">stats</a></li>
             <li><a class="footer-link" href="/contact" data-i18n="nav.contact">contact</a></li>
           </ul>
@@ -131,13 +133,14 @@
             <li><a class="footer-link" href="https://tiktok.com/@arlingkin" target="_blank" rel="noreferrer">TikTok ↗</a></li>
             <li><a class="footer-link" href="https://youtube.com/@arlingkin" target="_blank" rel="noreferrer">YouTube ↗</a></li>
             <li><a class="footer-link" href="https://t.me/arlingkin" target="_blank" rel="noreferrer">Telegram ↗</a></li>
+            <li><a class="footer-link" href="/feed.xml" type="application/rss+xml">RSS</a></li>
           </ul>
         </nav>
         <div class="footer-col">
           <h2 class="footer-title" data-i18n="footer.contact">Contact</h2>
           <address>
-            <a class="footer-link" href="mailto:linggasaja03@gmail.com" data-i18n="footer.hello">say hello ↗</a>
-            <button class="footer-copy cta" type="button" data-copy="linggasaja03@gmail.com" data-i18n="contact.email.btn">copy email</button>
+            <a class="footer-link" href="/contact" data-mail-link data-i18n="footer.hello">say hello ↗</a>
+            <button class="footer-copy cta" type="button" data-copy="" data-i18n="contact.email.btn">copy email</button>
           </address>
         </div>
       </div>
@@ -148,7 +151,7 @@
       </div>
     </footer>
   </div>
-  <script src="assets/js/site-config.js"></script><script src="assets/js/main.js"></script>
+  <script src="assets/js/mail.js"></script><script src="assets/js/site-config.js"></script><script src="assets/js/main.js"></script>
   <script src="assets/js/interactive.js"></script>
 </body>
 </html>

@@ -43,4 +43,8 @@ Object.assign(T, {
   "skills.nl.desc": {"en":"Static hosting and deploy previews.","id":"Hosting statis dan preview deploy."},
   "skills.os.title": {"en":"OneSignal","id":"OneSignal"},
   "skills.os.desc": {"en":"Push notifications for web and mobile.","id":"Notifikasi push untuk web dan mobile."},
+  "notes.mindustry.title": {"en":"Where it started: Mindustry logic.","id":"Awalnya dari logic Mindustry."},
+  "notes.mindustry.desc": {"en":"How a phone game and its logic processor led me into web development.","id":"Bagaimana game di ponsel dan logic processor-nya membawa saya ke web development."},
+  "notes.note-02.title": {"en":"The moment I stopped watching the chart.","id":"Saat saya berhenti menatap chart."},
+  "notes.note-02.desc": {"en":"A note about trading, screen time, and learning that stepping away is part of the process.","id":"Catatan tentang trading, waktu di depan layar, dan belajar bahwa menjauh sejenak juga bagian dari proses."},
 });
