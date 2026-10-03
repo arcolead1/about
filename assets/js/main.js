@@ -173,6 +173,16 @@ const T = {
   'proj.a5.archive.desc': { en: "A small Matrix-themed browser game in vanilla JavaScript.", id: "Game browser kecil bertema Matrix, dibuat pakai JavaScript vanilla." },
   'skills.oc.title': { en:'OpenCode', id:'OpenCode' },
   'skills.oc.desc': { en:'AI coding agent for terminal workflows.', id:'AI coding agent untuk alur kerja coding di terminal.' },
+  'skills.cl.title': { en:'Claude', id:'Claude' },
+  'skills.cl.desc': { en:'AI assistant for coding, writing, and review.', id:'Asisten AI untuk coding, menulis, dan review.' },
+  'skills.gh.title': { en:'GitHub', id:'GitHub' },
+  'skills.gh.desc': { en:'Repos, Actions, and Pages.', id:'Repo, Actions, dan Pages.' },
+  'skills.vc.title': { en:'Vercel', id:'Vercel' },
+  'skills.vc.desc': { en:'Production deploys and edge hosting.', id:'Deploy production dan hosting edge.' },
+  'skills.nl.title': { en:'Netlify', id:'Netlify' },
+  'skills.nl.desc': { en:'Static hosting and deploy previews.', id:'Hosting statis dan preview deploy.' },
+  'skills.os.title': { en:'OneSignal', id:'OneSignal' },
+  'skills.os.desc': { en:'Push notifications for web and mobile.', id:'Notifikasi push untuk web dan mobile.' },
 
   /* stats */
   'stats.eyebrow':    { en:'04 - GitHub stats', id:'04 - Statistik GitHub' },
