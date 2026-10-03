@@ -6,8 +6,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    env:
+      TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    steps:
+      - id: check
+        run: |
+          if [ -n "$TOKEN" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"; else echo "ready=false" >> "$GITHUB_OUTPUT"; fi
+
   deploy:
-    if: ${{ secrets.FIREBASE_TOKEN != '' }}
+    needs: gate
+    if: needs.gate.outputs.ready == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
