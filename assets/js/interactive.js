@@ -404,3 +404,33 @@
     controller.abort();
   }, { once: true });
 })();
+
+(() => {
+  const mark = document.querySelector('.footer-mark');
+  if (!mark) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const controller = new AbortController();
+  const letters = [...mark.textContent.trim()];
+  mark.textContent = '';
+  letters.forEach((ch, i) => {
+    const span = document.createElement('span');
+    span.className = 'fm-l';
+    span.textContent = ch;
+    span.style.setProperty('--i', i);
+    if (ch === 'i') span.dataset.hero = '';
+    mark.appendChild(span);
+  });
+  const last = mark.lastElementChild;
+  let running = false;
+  mark.addEventListener('click', () => {
+    if (running || reduced.matches || !last) return;
+    running = true;
+    mark.classList.add('is-hopping');
+  }, { signal: controller.signal });
+  mark.addEventListener('animationend', (event) => {
+    if (event.target !== last) return;
+    mark.classList.remove('is-hopping');
+    running = false;
+  }, { signal: controller.signal });
+  addEventListener('pagehide', () => controller.abort(), { once: true });
+})();
