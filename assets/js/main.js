@@ -119,8 +119,6 @@ const T = {
   'skills.eyebrow':  { en:'02 - Skills', id:'02 - Keahlian' },
   'skills.h1':       { en:'The <em>toolbox.</em>', id:'Kotak <em>perkakas</em> saya.' },
   'skills.intro': { en: "The languages, frameworks and tools I use most.", id: "Bahasa, framework, dan tool yang paling sering saya pakai." },
-  'skills.tools':     { en:'Quick tools index', id:'Indeks tool cepat' },
-  'skills.tools.sub': { en:'tap any icon for the docs', id:'ketuk ikon mana pun untuk dokumentasi' },
 
   /* projects */
   'proj.eyebrow':    { en:'03 - Projects', id:'03 - Proyek' },
@@ -196,11 +194,13 @@ const T = {
 };
 
 /* ── language ─────────────────────────────────────────────────── */
-function getLang() { return localStorage.getItem(LANG_KEY) || 'en'; }
+function getLang() {
+  try { return localStorage.getItem(LANG_KEY) === 'id' ? 'id' : 'en'; } catch { return 'en'; }
+}
 
 function applyLang(lang) {
   document.documentElement.setAttribute('data-lang', lang);
-  localStorage.setItem(LANG_KEY, lang);
+  try { localStorage.setItem(LANG_KEY, lang); } catch {}
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const entry = T[key];

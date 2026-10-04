@@ -72,7 +72,7 @@ Lihat `assets/js/site-config.js`. Override dari GitHub:
 
 ## Daftar tool, header, footer (generator)
 
-Daftar tool (marquee beranda, Quick tools index, kartu skills) dan header/footer
+Daftar tool (marquee beranda, kartu skills) dan header/footer
 dibuat oleh `scripts/build.mjs`. Hasilnya di-commit, jadi deploy tetap statis.
 
 - Tambah atau ubah tool: edit `data/tools.json`, taruh ikon di `icons/tools/<id>.svg`.

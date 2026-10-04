@@ -9,6 +9,16 @@
   const { signal } = controller;
   const opts = { signal };
 
+  const navToggle = header.querySelector('.nav-toggle');
+  const menu = header.querySelector('nav');
+  if (navToggle && menu) {
+    const setNav = open => { header.classList.toggle('nav-open', open); navToggle.setAttribute('aria-expanded', String(open)); };
+    navToggle.addEventListener('click', () => setNav(!header.classList.contains('nav-open')), opts);
+    menu.addEventListener('click', e => { if (e.target.closest('a')) setNav(false); }, opts);
+    header.addEventListener('keydown', e => { if (e.key === 'Escape' && header.classList.contains('nav-open')) { setNav(false); navToggle.focus(); } }, opts);
+    matchMedia('(min-width: 701px)').addEventListener('change', e => { if (e.matches) setNav(false); }, opts);
+  }
+
   let popTimeout = null;
   const pop = () => {
     brand.classList.remove('is-popping');
@@ -302,7 +312,7 @@
   document.addEventListener('pointerover', prefetch, opts);
   document.addEventListener('touchstart', prefetch, opts);
   document.addEventListener('focusin', prefetch, opts);
-  addEventListener('pagehide', () => { observer.disconnect(); controller.abort(); }, { once: true });
+  addEventListener('pagehide', () => controller.abort(), { once: true });
 })();
 
 (() => {

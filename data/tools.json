@@ -221,7 +221,7 @@
       "key": "dc",
       "name": "DevOps",
       "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side",
-      "glyph": "DC",
+      "icon": "devops",
       "desc": {
         "en": "Deployment, CI/CD, infra.",
         "id": "Deployment, CI/CD, dan infra."

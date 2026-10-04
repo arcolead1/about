@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';if(localStorage.getItem('arlingkin-lang')==='id'){d.lang='id';d.dataset.lang='id';}}catch(e){}})();</script>
   <meta name="description" content="Contact Arlingga by email, GitHub, Instagram, TikTok, YouTube or Telegram.">
   <meta name="keywords" content="contact Arlingga, email, GitHub, Instagram, TikTok, YouTube, Telegram, Arlingkin">
   <meta name="author" content="Arlingga">
@@ -41,7 +42,7 @@
   <div class="page">
     <header class="site-header" data-build="header">
       <a class="brand" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
-      <nav aria-label="Primary navigation">
+      <nav id="primary-nav" aria-label="Primary navigation">
         <a class="nav-link" href="/" data-i18n="nav.home">home</a>
         <a class="nav-link" href="/about" data-i18n="nav.about">about</a>
         <a class="nav-link" href="/skills" data-i18n="nav.skills">skills</a>
@@ -55,6 +56,7 @@
         <button class="lang-btn" data-lang="id" aria-label="Ganti ke Bahasa Indonesia"><span class="lang-short">ID</span><span class="lang-long">INDONESIA</span></button>
       </div>
       <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"><span class="theme-icon">◐</span><span class="theme-label">DARK</span></button>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><span aria-hidden="true"></span></button>
     </header>
 
     <main id="main" tabindex="-1">
