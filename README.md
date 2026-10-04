@@ -1,108 +1,122 @@
 # Arlingkin
 
-A personal portfolio and learning website built with plain HTML, CSS, and JavaScript.
+Personal site and learning journal of **Arlingga**, built with plain HTML, CSS and a bit of JavaScript. No framework, no bundler.
 
-Visit the live site: [arlingkin.vercel.app](https://arlingkin.vercel.app)
+**Live:** [arlingkin.vercel.app](https://arlingkin.vercel.app)
 
-> “Let’s learn to code without AI.”
+> "Let's learn to code without AI."
 
-This repository contains the source for Arlingga’s personal site and notes hub. It is designed as a lightweight static website with multiple pages, a responsive dark theme, and a clean layout for portfolio content, skill highlights, projects, and notes.
+## Features
 
-## Highlights
-
-- Personal portfolio landing page
-- About, skills, projects, stats, and contact pages
-- Notes / learning journal entries
-- Responsive design for desktop and mobile
-- Static deployment setup for Vercel, Firebase, and GitHub Pages
-- Generated content via a build script
-
-## Tech stack
-
-This project is primarily built with:
-
-- HTML: 45.9%
-- JavaScript: 27.3%
-- CSS: 26.8%
+- Pages: home, about, skills, projects, stats, contact, notes and a custom 404
+- Notes (a short learning journal) with an RSS feed at `/feed.xml`
+- English / Indonesian switcher and a dark / light theme, both remembered per visitor
+- Live GitHub stats and a countdown to the next scheduled workflow run
+- Responsive layout, reduced-motion support and a lighter mode for low-end devices
+- Profile details (location, status, "now" list, and so on) can be changed from GitHub variables without editing code
+- Deploys to Vercel, Firebase Hosting and GitHub Pages
 
 ## Project structure
 
 ```text
 .
-├── README.md
-├── SETUP.md
-├── LICENSE
-├── index.html
-├── about.html
-├── skills.html
-├── projects.html
-├── stats.html
-├── contact.html
-├── 404.html
-├── sitemap.xml
-├── robots.txt
-├── firebase.json
-├── vercel.json
-├── app/
-│   └── public/
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
+├── index.html, about.html, skills.html, projects.html,
+│   stats.html, contact.html, 404.html     # pages (clean URLs: /about, /skills, ...)
+├── notes/                                 # notes index and individual notes
+├── partials/                              # shared header.html and footer.html
 ├── data/
-│   └── tools.json
-├── icons/
-├── notes/
-├── partials/
+│   ├── tools.json                         # tools, groups, icons, descriptions (EN/ID)
+│   └── notes.json                         # notes list, dates, featured flag (EN/ID)
+├── assets/
+│   ├── css/                               # style.css (design system), interactive.css (effects)
+│   └── js/                                # main.js (i18n, nav, reveal), interactive.js,
+│                                          # stats.js, mail.js, site-config.js, valueskills.js,
+│                                          # tools-i18n.js (generated)
+├── icons/                                 # site icons and icons/tools/*.svg
 ├── scripts/
-│   └── build.mjs
-└── .github/
+│   ├── build.mjs                          # generator (header, footer, tools, notes, feed)
+│   └── inject-config.mjs                  # injects GitHub variables into site-config.js
+├── app/public/                            # starter for the Firebase "app" subdomain
+├── .github/workflows/                     # build-check, vercel-deploy, firebase-hosting, github-pages
+├── feed.xml, sitemap.xml, robots.txt
+├── vercel.json, firebase.json, .firebaserc
+├── SETUP.md                               # hosting and CI setup (Indonesian)
+└── LICENSE
 ```
 
 ## Local development
 
-Because this is a static site, you can run it locally with any basic local web server.
-
-### Option 1: Python
+It is a static site, so any local web server works:
 
 ```bash
 python -m http.server 8000
+# open http://localhost:8000
 ```
 
-Then open:
+Or use the VS Code Live Server extension.
 
-```text
-http://localhost:8000
+Clean URLs such as `/about` need a server that maps them to `about.html`. With the plain Python server, open `/about.html` instead.
+
+## Generated content
+
+Some parts are generated so they stay identical on every page:
+
+- header and footer, from `partials/`
+- tool chips, the quick tools index and skill cards, from `data/tools.json`
+- the notes list, `feed.xml` and `assets/js/tools-i18n.js`, from `data/notes.json` and `data/tools.json`
+
+After changing any of those sources, run:
+
+```bash
+node scripts/build.mjs          # regenerate and write files
+node scripts/build.mjs --check  # verify only (used by CI, exits 1 if out of date)
 ```
 
-### Option 2: VS Code Live Server
+Commit the regenerated files. The Node.js version in CI is 20.
 
-Open the project in VS Code and run it with the Live Server extension if preferred.
+### Adding a tool
+
+1. Add an entry to `data/tools.json` (and to `featured` or a group if it should show up).
+2. Put its icon in `icons/tools/<id>.svg`.
+3. Run `node scripts/build.mjs`.
+
+### Adding a note
+
+1. Copy `notes/mindustry.html` to `notes/<slug>.html` and add its text keys in `assets/js/main.js`.
+2. Add the entry to `data/notes.json` and a URL to `sitemap.xml`.
+3. Add `notes/<slug>.html` to the `pages` map in `scripts/build.mjs`.
+4. Run `node scripts/build.mjs`.
+
+## Site config variables
+
+`assets/js/site-config.js` holds `__SITE_*__` placeholders. In CI, `scripts/inject-config.mjs` replaces them with GitHub Actions variables (**Settings → Secrets and variables → Actions → Variables**). A missing variable simply keeps the default text.
+
+| Variable | Used for |
+| --- | --- |
+| `SITE_LOCATION`, `SITE_STATUS`, `SITE_WORKING_ON`, `SITE_OPEN_TO`, `SITE_FAV_COLOR`, `SITE_EMAIL` | facts list on the About page |
+| `SITE_ROLE`, `SITE_TAGLINE` | home page eyebrow and status line |
+| `SITE_NOW_1` to `SITE_NOW_4` | "Right now" list on the home page |
 
 ## Deployment
 
-The repository includes setup for multiple static hosting targets:
+Pushing to `main` triggers the workflows in `.github/workflows/`:
 
-- Vercel
-- Firebase Hosting
-- GitHub Pages
+| Workflow | Target | Requires |
+| --- | --- | --- |
+| `build-check.yml` | verifies generated files are committed | nothing |
+| `vercel-deploy.yml` | Vercel (`arlingkin.vercel.app`) | secret `VERCEL_TOKEN` |
+| `firebase-hosting.yml` | Firebase Hosting (main site and `app` subdomain) | secret `FIREBASE_TOKEN` |
+| `github-pages.yml` | GitHub Pages | Pages source set to GitHub Actions |
 
-For hosting and deployment details, see [SETUP.md](SETUP.md).
+The Vercel and Firebase workflows skip themselves when their secret is not set. Full step-by-step instructions are in [SETUP.md](SETUP.md).
 
-## Content generation
+## Tech notes
 
-The project includes a build script that generates shared section content and UI metadata:
-
-```bash
-node scripts/build.mjs
-```
-
-This helps keep generated navigation and tool sections consistent across pages.
-
-## Notes
-
-This project follows a lightweight static-site approach rather than a framework-based app. That keeps the site easy to host, easy to inspect, and fast to deploy.
+- Vanilla JavaScript only, loaded as classic scripts
+- Translations live in the `T` object in `assets/js/main.js` and are applied through `data-i18n` attributes
+- Fonts: DM Sans, DM Mono and Playfair Display via Google Fonts
+- Tool icons are loaded from `raw.githubusercontent.com/arlingkin/about/main/icons/tools/`
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+[MIT](LICENSE)
