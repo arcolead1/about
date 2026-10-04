@@ -27,6 +27,59 @@
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/interactive.css">
   <script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script>
+  <style>
+    /* ── 404 · "bukan halaman yang kamu cari" ─────────────────── */
+    .nf { position: relative; display: grid; justify-items: center; text-align: center; padding: 84px 0 72px; }
+    .nf > *:not(.nf-sky) { position: relative; z-index: 1; }
+
+    /* langit bintang: 3 lapis, bergeser mengikuti kursor (parallax) */
+    .nf-sky { position: absolute; z-index: 0; top: 0; bottom: 0; left: 50%; width: 100vw; margin-left: -50vw; overflow: hidden; pointer-events: none;
+      -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 78%, transparent);
+      mask-image: linear-gradient(180deg, transparent, #000 18%, #000 78%, transparent); }
+    .nf-layer { position: absolute; inset: -6%;
+      transform: translate3d(calc(var(--mx, 0) * var(--k) * 1px), calc(var(--my, 0) * var(--k) * 1px), 0);
+      transition: transform .35s var(--ease); }
+    .nf-dot { position: absolute; width: calc(var(--s) * 1px); height: calc(var(--s) * 1px); border-radius: 50%; background: var(--ink); }
+
+    /* angka 404 + denyut 3x */
+    .nf-core { position: relative; display: inline-block; padding: 0 .06em; }
+    .nf-code {
+      margin: 0; padding-bottom: .04em; user-select: none;
+      font: 600 clamp(7rem, 27vw, 17rem)/.82 var(--font-display); letter-spacing: -.06em;
+      background: linear-gradient(100deg, var(--cyan), var(--blue), var(--violet), var(--lime), var(--cyan));
+      background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+      transform-origin: 50% 60%;
+      animation: err-flow 14s linear infinite, nf-beat 1.1s ease-out .35s 3;
+    }
+    .nf-ring { position: absolute; inset: -4% -2%; border: 1.5px solid var(--accent); border-radius: 50%; opacity: 0; pointer-events: none;
+      animation: nf-ring 1.1s ease-out .35s 3; }
+    .nf-ring + .nf-ring { animation-delay: .5s; border-color: var(--accent-2); }
+    @keyframes nf-beat {
+      0%   { transform: scale(1);    filter: drop-shadow(0 0 0 hsl(var(--acc-h) 100% 62% / 0)); }
+      16%  { transform: scale(1.07); filter: drop-shadow(0 0 30px hsl(var(--acc-h) 100% 62% / .75)); }
+      32%  { transform: scale(1);    filter: drop-shadow(0 0 6px hsl(var(--acc-h) 100% 62% / .2)); }
+      46%  { transform: scale(1.035); filter: drop-shadow(0 0 18px hsl(var(--acc-h) 100% 62% / .5)); }
+      70%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 hsl(var(--acc-h) 100% 62% / 0)); }
+    }
+    @keyframes nf-ring { 0% { opacity: .85; transform: scale(.6); } 80%, 100% { opacity: 0; transform: scale(1.55); } }
+
+    .nf h1 { margin-top: 26px; max-width: 760px; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.04; letter-spacing: -.055em; }
+    .nf-sub { max-width: 460px; margin: 18px auto 0; color: var(--muted); font-size: 17px; line-height: 1.55; }
+    .nf-path { margin: 14px 0 0; color: var(--muted); font-size: 14px; }
+    .nf-path code { display: inline-block; max-width: 100%; padding: 3px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
+      color: var(--ink); font: 500 13px/1.5 var(--font-mono); word-break: break-all; vertical-align: middle; }
+    .nf-suggest { margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+    .nf-suggest[hidden] { display: none; }
+    .nf-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 32px; }
+    .nf-actions .read-link { margin-top: 0; }
+    .nf-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 40px; max-width: 640px; }
+    .nf-links-label { width: 100%; margin: 0 0 4px; color: var(--faint); }
+    .nf-help { margin-top: 36px; color: var(--faint); }
+    .nf-help a { color: var(--lime); border-bottom: 1px solid rgba(217,255,89,.5); }
+
+    :root[data-theme="light"] .nf-sub, :root[data-theme="light"] .nf-path { color: #3d4760; }
+    @media (max-width: 700px) { .nf { padding: 56px 0 48px; } .nf-sub { font-size: 16px; } }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip.main">Skip to content</a>
@@ -50,61 +103,38 @@
     </header>
 
     <main id="main" tabindex="-1">
-      <section class="page-head err-head" aria-labelledby="err-title">
-        <div class="err-grid">
-          <div>
-            <p class="eyebrow" data-i18n="err.eyebrow">404 - Not found</p>
-            <p class="err-code" aria-hidden="true">404</p>
-            <h1 id="err-title" data-i18n="err.h1">Nothing <em>here.</em></h1>
-            <p class="intro" data-i18n="err.intro">The link is broken or the page moved. Try one of these instead.</p>
-            <a class="read-link err-home" href="/" data-i18n="err.home">BACK HOME →</a>
-          </div>
-          <div class="code-art err-art" aria-hidden="true">
-            <div class="code-window">
-              <div class="dots"><i></i><i></i><i></i></div>
-              <span class="pink">const</span> page = <span class="purple">'<span data-current-path>/…</span>'</span>;<br><br>
-              <span class="pink">if</span> (!<span class="green">exists</span>(page)) {<br>
-              &nbsp;&nbsp;<span class="pink">return</span> <span class="faint">home</span>;<br>
-              }<br><br>
-              <span class="faint">// back to home</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section class="nf" aria-labelledby="nf-title">
+        <div class="nf-sky" aria-hidden="true" data-sky></div>
 
-      <section aria-labelledby="err-map-title">
-        <div class="section-head">
-          <h2 id="err-map-title" data-i18n="err.map.label">Try these</h2>
-          <span class="meta" data-i18n="err.map.sub">pages that exist</span>
-        </div>
-        <div>
-          <a class="project-row" href="/notes/note-02"><span class="project-num">01</span><div class="project-main"><h3 data-i18n="proj.note2.title">Personal Note — The moment I stopped watching the chart.</h3><p data-i18n="proj.note2.desc">About trading, screen time, and learning to step away from the chart.</p></div><span class="project-link" data-i18n="proj.note2.link">READ NOTE →</span></a>
-          <a class="project-row" href="/projects"><span class="project-num">02</span><div class="project-main"><h3 data-i18n="nav.projects">projects</h3><p data-i18n="proj.intro">Stuff I made while learning, from school projects to small experiments.</p></div><span class="project-link">/projects</span></a>
-          <a class="project-row" href="/about"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="nav.about">about</h3><p data-i18n="home.about.desc">Web dev: frontend, backend, a bit of devops and AI.</p></div><span class="project-link">/about</span></a>
-          <a class="project-row" href="/skills"><span class="project-num">04</span><div class="project-main"><h3 data-i18n="nav.skills">skills</h3><p data-i18n="home.skills.desc">JS, Python, Java, Tailwind, NextJS, Firebase, Supabase and more.</p></div><span class="project-link">/skills</span></a>
-          <a class="project-row" href="/stats"><span class="project-num">05</span><div class="project-main"><h3 data-i18n="nav.stats">stats</h3><p data-i18n="home.stats.desc">My GitHub activity and streak, updated automatically.</p></div><span class="project-link">/stats</span></a>
-          <a class="project-row" href="/contact"><span class="project-num">06</span><div class="project-main"><h3 data-i18n="nav.contact">contact</h3><p data-i18n="contact.intro">Message me about a website project, a coding question, or just to chat. Talking about blue is a plus. 💙</p></div><span class="project-link">/contact</span></a>
-        </div>
-      </section>
+        <p class="eyebrow" data-i18n="err.eyebrow">404 - Not found</p>
 
-      <section class="err-game" aria-label="Snake game">
-        <article class="feature-card matrix">
-          <div class="feature-copy">
-            <span class="tag matrix" data-i18n="proj.feat2.tag">GAME · MATRIX</span>
-            <h3 data-i18n="err.game.title">Bored? Play snake.</h3>
-            <p data-i18n="err.game.desc">A Matrix-style snake game I made in vanilla JS.</p>
-            <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="proj.a5.link">PLAY THE GAME →</a>
-          </div>
-          <div class="code-art" aria-hidden="true">
-            <div class="code-window">
-              <div class="dots"><i></i><i></i><i></i></div>
-              <span class="pink">const</span> snake = {<br>
-              &nbsp;&nbsp;<span class="green">theme</span>: <span class="purple">'matrix'</span>,<br>
-              &nbsp;&nbsp;<span class="green">goal</span>: <span class="purple">'eat · grow · survive'</span><br>
-              };
-            </div>
-          </div>
-        </article>
+        <div class="nf-core" aria-hidden="true">
+          <span class="nf-ring"></span>
+          <span class="nf-ring"></span>
+          <p class="nf-code">404</p>
+        </div>
+
+        <h1 id="nf-title" data-i18n="e404.h1">This is not the page <em>you're looking for.</em></h1>
+        <p class="nf-sub" data-i18n="e404.sub">The link may be broken, or the page moved. Pick a way back below.</p>
+        <p class="nf-path"><span data-i18n="e404.path">You tried to open</span> <code data-current-path>/…</code></p>
+        <p class="nf-suggest" data-suggest hidden><span data-i18n="e404.mean">Did you mean</span> <a class="inline-link" data-suggest-link href="/">/</a>?</p>
+
+        <div class="nf-actions">
+          <a class="read-link" href="/" data-i18n="err.home">BACK HOME →</a>
+          <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="proj.a5.link">PLAY THE GAME →</a>
+        </div>
+
+        <nav class="nf-links" aria-labelledby="nf-links-title">
+          <p class="meta nf-links-label" id="nf-links-title" data-i18n="e404.jump">Or jump to</p>
+          <a class="to-top" href="/about" data-i18n="nav.about">about</a>
+          <a class="to-top" href="/skills" data-i18n="nav.skills">skills</a>
+          <a class="to-top" href="/projects" data-i18n="nav.projects">projects</a>
+          <a class="to-top" href="/notes" data-i18n="nav.notes">notes</a>
+          <a class="to-top" href="/stats" data-i18n="nav.stats">stats</a>
+          <a class="to-top" href="/contact" data-i18n="nav.contact">contact</a>
+        </nav>
+
+        <p class="meta nf-help"><span data-i18n="e404.help">Still stuck?</span> <a href="/contact" data-i18n="footer.hello">say hello ↗</a></p>
       </section>
     </main>
 
@@ -155,6 +185,84 @@
   </div>
   <script src="/assets/js/mail.js"></script><script src="/assets/js/site-config.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script>
+    /* teks khusus halaman 404 (main.js menerapkannya saat DOMContentLoaded) */
+    Object.assign(T, {
+      'e404.h1':   { en: "This is not the page <em>you're looking for.</em>", id: "Ini bukan halaman <em>yang kamu cari.</em>" },
+      'e404.sub':  { en: "The link may be broken, or the page moved. Pick a way back below.", id: "Tautannya mungkin salah atau halamannya pindah. Pilih jalan kembali di bawah." },
+      'e404.path': { en: "You tried to open", id: "Kamu mencoba membuka" },
+      'e404.mean': { en: "Did you mean", id: "Maksudmu" },
+      'e404.jump': { en: "Or jump to", id: "Atau langsung ke" },
+      'e404.help': { en: "Still stuck?", id: "Masih bingung?" }
+    });
+  </script>
   <script src="/assets/js/interactive.js"></script>
+  <script>
+    (() => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const rand = (a, b) => a + Math.random() * (b - a);
+
+      /* 1) tebak halaman yang dimaksud (jarak edit terdekat) */
+      const PAGES = ['/', '/about', '/skills', '/projects', '/stats', '/contact', '/notes', '/notes/mindustry', '/notes/note-02'];
+      const dist = (a, b) => {
+        let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+        for (let i = 1; i <= a.length; i++) {
+          const row = [i];
+          for (let j = 1; j <= b.length; j++) {
+            row[j] = Math.min(prev[j] + 1, row[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+          }
+          prev = row;
+        }
+        return prev[b.length];
+      };
+      let want = location.pathname;
+      try { want = decodeURIComponent(want); } catch {}
+      want = want.toLowerCase().replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+      const box = document.querySelector('[data-suggest]');
+      const link = document.querySelector('[data-suggest-link]');
+      if (box && link && want !== '/') {
+        let best = null, bestD = Infinity;
+        PAGES.forEach(p => { const d = dist(want, p); if (d < bestD) { bestD = d; best = p; } });
+        if (best && bestD <= Math.max(2, Math.ceil(want.length * 0.3))) {
+          link.href = best;
+          link.textContent = best;
+          box.hidden = false;
+        }
+      }
+
+      /* 2) langit bintang 3 lapis + parallax kursor */
+      const sky = document.querySelector('[data-sky]');
+      if (!sky) return;
+      [
+        { n: 46, k: 8,  s: [1, 1.6],   o: [.25, .5] },
+        { n: 26, k: 20, s: [1.6, 2.4], o: [.35, .65] },
+        { n: 12, k: 42, s: [2.4, 3.4], o: [.5, .85] }
+      ].forEach(l => {
+        const layer = document.createElement('div');
+        layer.className = 'nf-layer';
+        layer.style.setProperty('--k', l.k);
+        for (let i = 0; i < l.n; i++) {
+          const dot = document.createElement('i');
+          dot.className = 'nf-dot';
+          dot.style.cssText = `left:${rand(0, 100).toFixed(1)}%;top:${rand(0, 100).toFixed(1)}%;--s:${rand(...l.s).toFixed(2)};opacity:${rand(...l.o).toFixed(2)}`;
+          layer.appendChild(dot);
+        }
+        sky.appendChild(layer);
+      });
+      if (!reduced && matchMedia('(pointer: fine)').matches) {
+        let frame = null, mx = 0, my = 0;
+        const paint = () => {
+          sky.style.setProperty('--mx', mx.toFixed(3));
+          sky.style.setProperty('--my', my.toFixed(3));
+          frame = null;
+        };
+        addEventListener('pointermove', e => {
+          mx = (e.clientX / innerWidth - .5) * -2;
+          my = (e.clientY / innerHeight - .5) * -2;
+          if (frame === null) frame = requestAnimationFrame(paint);
+        }, { passive: true });
+      }
+    })();
+  </script>
 </body>
 </html>
