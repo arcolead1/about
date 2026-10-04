@@ -14,9 +14,6 @@ const link = (tool) => `href="${tool.url}" target="_blank" rel="noreferrer"`;
 const chip = (tool) =>
   `            <a class="tool-chip" ${link(tool)} aria-label="${tool.name}"><img${monoClass(tool)} src="${iconUrl(tool)}" alt="" width="42" height="42"><span>${esc(tool.name)}</span></a>`;
 
-const quick = (tool) =>
-  `          <a ${link(tool)} class="icon-card reveal" aria-label="${tool.name}"><img${monoClass(tool)} src="${iconUrl(tool)}" alt="${tool.name}" width="36" height="36"><span>${esc(tool.name)}</span></a>`;
-
 const card = (tool) => {
   const glyph = tool.icon
     ? `<img${monoClass(tool)} src="${iconUrl(tool)}" alt="" width="22" height="22">`
@@ -30,7 +27,7 @@ const group = (g) =>
     `          <h2 data-i18n="skills.${g.key}.lbl">${esc(g.label.en)}</h2>`,
     `          <span class="meta" data-i18n="skills.${g.key}.sub">${esc(g.sub.en)}</span>`,
     '        </div>',
-    '        <div class="skill-grid">',
+    `        <div class="skill-grid${g.tools.length % 4 && g.tools.length % 3 === 0 ? ' skill-grid--3' : ''}">`,
     g.tools.map((id) => card(byId.get(id))).join('\n'),
     '        </div>',
   ].join('\n');
@@ -92,7 +89,6 @@ for (const [path, active] of Object.entries(pages)) {
   src = replaceElement(src, '<header class="site-header" data-build="header">', '</header>', activate(header, active));
   src = replaceElement(src, '<footer class="site-footer" data-build="footer">', '</footer>', footer);
   src = replaceInner(src, '<div class="tool-marquee-track" data-build="marquee">', '</div>', featured.map(chip).join('\n') + '\n          ');
-  src = replaceInner(src, '<div class="icon-grid" data-build="quick">', '</div>', featured.map(quick).join('\n') + '\n        ');
   src = replaceInner(src, '<section aria-label="Skills grid" data-build="skill-groups">', '</section>', data.groups.map(group).join('\n\n') + '\n      ');
   src = replaceInner(src, '<div data-build="notes-main">', '\n        </div>\n      </section>', mainHtml);
   src = replaceInner(src, '<div data-build="notes-more">', '\n        </div>\n      </section>', moreHtml);

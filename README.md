@@ -62,7 +62,7 @@ Clean URLs such as `/about` need a server that maps them to `about.html`. With t
 Some parts are generated so they stay identical on every page:
 
 - header and footer, from `partials/`
-- tool chips, the quick tools index and skill cards, from `data/tools.json`
+- tool chips and skill cards, from `data/tools.json`
 - the notes list, `feed.xml` and `assets/js/tools-i18n.js`, from `data/notes.json` and `data/tools.json`
 
 After changing any of those sources, run:

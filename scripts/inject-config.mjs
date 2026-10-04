@@ -22,7 +22,7 @@ let injected = 0;
 
 for (const [placeholder, val] of Object.entries(entries)) {
   if (!val) continue;
-  src = src.split(placeholder).join(val);
+  src = src.split(`'${placeholder}'`).join(JSON.stringify(val));
   injected += 1;
 }
 
