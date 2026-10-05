@@ -98,16 +98,18 @@
   progress.className = 'scroll-progress';
   progress.setAttribute('aria-hidden', 'true');
   document.body.appendChild(progress);
-  let progressFrame = null;
+  let progressFrame = null, maxScroll = 0;
   const paintProgress = () => {
-    const max = document.documentElement.scrollHeight - innerHeight;
-    progress.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
+    progress.style.transform = `scaleX(${maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0})`;
     progressFrame = null;
   };
   const scheduleProgress = () => { if (progressFrame === null) progressFrame = requestAnimationFrame(paintProgress); };
+  const measureProgress = () => { maxScroll = document.documentElement.scrollHeight - innerHeight; scheduleProgress(); };
+  const progressObserver = 'ResizeObserver' in window ? new ResizeObserver(measureProgress) : null;
+  progressObserver?.observe(document.body);
   addEventListener('scroll', scheduleProgress, { ...opts, passive: true });
-  addEventListener('resize', scheduleProgress, opts);
-  paintProgress();
+  addEventListener('resize', measureProgress, opts);
+  measureProgress();
 
   const marqueeWrap = document.querySelector('[data-marquee]');
   const firstTrack = marqueeWrap?.querySelector('.tool-marquee-track');
@@ -171,6 +173,7 @@
     stopAmbient();
     clearTimeout(popTimeout);
     if (progressFrame !== null) cancelAnimationFrame(progressFrame);
+    progressObserver?.disconnect();
     marqueeObserver?.disconnect();
     controller.abort();
   }, { once: true });
@@ -187,6 +190,7 @@
   try { channel = new BroadcastChannel(KEY); } catch {}
 
   const rand = (min, max) => min + Math.random() * (max - min);
+  const idle = cb => ('requestIdleCallback' in window ? requestIdleCallback(cb, { timeout: 1000 }) : setTimeout(cb, 150));
   const isPalette = v => v && [v.a, v.b, v.c].every(Number.isFinite);
   const detectLite = () => liteQuery.matches || (navigator.deviceMemory ?? 8) <= 4 || navigator.connection?.saveData === true;
   let current = { a: 158, b: 196, c: 330 };
@@ -199,12 +203,19 @@
     root.style.setProperty(`${prefix}c`, palette.c);
   };
 
+  let swapping = false, swapTimer = null;
+  /* Crossfade guard: one swap at a time; slow time-based layer animations pause while the fade runs (bg-swap). */
   const paint = palette => {
+    if (swapping) return false;
+    swapping = true;
     current = palette;
-    root.style.setProperty('--acc-h', palette.a);
     alt = !alt;
     setVars(alt ? '--bg2-' : '--bg-', palette);
+    root.classList.add('bg-swap');
+    root.style.setProperty('--acc-h', palette.a);
     root.classList.toggle('bg-alt', alt);
+    swapTimer = setTimeout(() => { root.classList.remove('bg-swap'); swapping = false; }, 1900);
+    return true;
   };
 
   const paintInstant = palette => {
@@ -247,8 +258,9 @@
   };
 
   const shuffle = () => {
+    if (document.hidden) return;
     const palette = nextPalette();
-    paint(palette);
+    if (!paint(palette)) return;
     try { localStorage.setItem(KEY, JSON.stringify(palette)); } catch {}
     channel?.postMessage(palette);
   };
@@ -283,13 +295,14 @@
       if (travelled >= Math.max(360, innerHeight * .6) && now - lastChange > 3000) {
         travelled = 0;
         lastChange = now;
-        shuffle();
+        idle(shuffle);
       }
     };
     addEventListener('scroll', () => { if (frame === null) frame = requestAnimationFrame(step); }, { ...opts, passive: true });
   }
 
   addEventListener('pagehide', () => {
+    clearTimeout(swapTimer);
     channel?.close();
     controller.abort();
   }, { once: true });
@@ -419,7 +432,9 @@
   const mark = document.querySelector('.footer-mark');
   if (!mark) return;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = matchMedia('(pointer: fine)');
   const controller = new AbortController();
+  const opts = { signal: controller.signal };
   const letters = [...mark.textContent.trim()];
   mark.textContent = '';
   letters.forEach((ch, i) => {
@@ -427,31 +442,68 @@
     span.className = 'fm-l';
     span.textContent = ch;
     span.style.setProperty('--i', i);
+    span.style.setProperty('--r', i % 2 ? 1 : -1);
     if (ch === 'i') span.dataset.hero = '';
     mark.appendChild(span);
   });
   const last = mark.lastElementChild;
-  let running = false;
-  let inView = false;
+  let running = false, seen = false, inView = false, guard = null, frame = null;
+  const release = () => {
+    clearTimeout(guard);
+    mark.classList.remove('is-hopping', 'is-entering');
+    running = false;
+  };
   const hop = () => {
     if (running || reduced.matches || !last) return;
     running = true;
     mark.classList.add('is-hopping');
+    guard = setTimeout(release, 3500);
   };
-  mark.addEventListener('click', hop, { signal: controller.signal });
-  mark.addEventListener('animationend', (event) => {
+  const enter = () => {
+    if (running || reduced.matches || !last) return;
+    running = true;
+    mark.classList.remove('is-armed');
+    mark.classList.add('is-entering');
+    guard = setTimeout(release, 4500);
+  };
+  if (!reduced.matches && last) mark.classList.add('is-armed');
+  mark.addEventListener('click', hop, opts);
+  mark.addEventListener('animationend', event => {
     if (event.target !== last) return;
-    mark.classList.remove('is-hopping');
-    running = false;
-  }, { signal: controller.signal });
+    if (event.animationName === 'fm-in') { release(); hop(); }
+    else if (event.animationName.startsWith('fm-hop')) release();
+  }, opts);
+
+  if (finePointer.matches && !reduced.matches) {
+    let px = -9999, py = 0;
+    const paint = () => {
+      mark.style.setProperty('--mx', `${px}px`);
+      mark.style.setProperty('--my', `${py}px`);
+      frame = null;
+    };
+    mark.addEventListener('pointermove', e => {
+      const rect = mark.getBoundingClientRect();
+      px = e.clientX - rect.left;
+      py = e.clientY - rect.top;
+      if (frame === null) frame = requestAnimationFrame(paint);
+    }, { ...opts, passive: true });
+    mark.addEventListener('pointerleave', () => { px = -9999; paint(); }, opts);
+  }
+
   let prevY = scrollY;
   const observer = new IntersectionObserver(([entry]) => {
     const down = scrollY > prevY;
     prevY = scrollY;
     if (!entry.isIntersecting) { inView = false; return; }
-    if (!inView && down) hop();
+    if (!seen) { seen = true; enter(); }
+    else if (!inView && down) hop();
     inView = true;
   }, { threshold: 0.55 });
   observer.observe(mark);
-  addEventListener('pagehide', () => { observer.disconnect(); controller.abort(); }, { once: true });
+  addEventListener('pagehide', () => {
+    clearTimeout(guard);
+    if (frame !== null) cancelAnimationFrame(frame);
+    observer.disconnect();
+    controller.abort();
+  }, { once: true });
 })();
