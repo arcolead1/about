@@ -98,16 +98,18 @@
   progress.className = 'scroll-progress';
   progress.setAttribute('aria-hidden', 'true');
   document.body.appendChild(progress);
-  let progressFrame = null;
+  let progressFrame = null, maxScroll = 0;
   const paintProgress = () => {
-    const max = document.documentElement.scrollHeight - innerHeight;
-    progress.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
+    progress.style.transform = `scaleX(${maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0})`;
     progressFrame = null;
   };
   const scheduleProgress = () => { if (progressFrame === null) progressFrame = requestAnimationFrame(paintProgress); };
+  const measureProgress = () => { maxScroll = document.documentElement.scrollHeight - innerHeight; scheduleProgress(); };
+  const progressObserver = 'ResizeObserver' in window ? new ResizeObserver(measureProgress) : null;
+  progressObserver?.observe(document.body);
   addEventListener('scroll', scheduleProgress, { ...opts, passive: true });
-  addEventListener('resize', scheduleProgress, opts);
-  paintProgress();
+  addEventListener('resize', measureProgress, opts);
+  measureProgress();
 
   const marqueeWrap = document.querySelector('[data-marquee]');
   const firstTrack = marqueeWrap?.querySelector('.tool-marquee-track');
@@ -171,6 +173,7 @@
     stopAmbient();
     clearTimeout(popTimeout);
     if (progressFrame !== null) cancelAnimationFrame(progressFrame);
+    progressObserver?.disconnect();
     marqueeObserver?.disconnect();
     controller.abort();
   }, { once: true });
@@ -187,6 +190,7 @@
   try { channel = new BroadcastChannel(KEY); } catch {}
 
   const rand = (min, max) => min + Math.random() * (max - min);
+  const idle = cb => ('requestIdleCallback' in window ? requestIdleCallback(cb, { timeout: 1000 }) : setTimeout(cb, 150));
   const isPalette = v => v && [v.a, v.b, v.c].every(Number.isFinite);
   const detectLite = () => liteQuery.matches || (navigator.deviceMemory ?? 8) <= 4 || navigator.connection?.saveData === true;
   let current = { a: 158, b: 196, c: 330 };
@@ -199,12 +203,19 @@
     root.style.setProperty(`${prefix}c`, palette.c);
   };
 
+  let swapping = false, swapTimer = null;
+  /* Crossfade guard: one swap at a time; slow time-based layer animations pause while the fade runs (bg-swap). */
   const paint = palette => {
+    if (swapping) return false;
+    swapping = true;
     current = palette;
-    root.style.setProperty('--acc-h', palette.a);
     alt = !alt;
     setVars(alt ? '--bg2-' : '--bg-', palette);
+    root.classList.add('bg-swap');
+    root.style.setProperty('--acc-h', palette.a);
     root.classList.toggle('bg-alt', alt);
+    swapTimer = setTimeout(() => { root.classList.remove('bg-swap'); swapping = false; }, 1900);
+    return true;
   };
 
   const paintInstant = palette => {
@@ -247,8 +258,9 @@
   };
 
   const shuffle = () => {
+    if (document.hidden) return;
     const palette = nextPalette();
-    paint(palette);
+    if (!paint(palette)) return;
     try { localStorage.setItem(KEY, JSON.stringify(palette)); } catch {}
     channel?.postMessage(palette);
   };
@@ -283,13 +295,14 @@
       if (travelled >= Math.max(360, innerHeight * .6) && now - lastChange > 3000) {
         travelled = 0;
         lastChange = now;
-        shuffle();
+        idle(shuffle);
       }
     };
     addEventListener('scroll', () => { if (frame === null) frame = requestAnimationFrame(step); }, { ...opts, passive: true });
   }
 
   addEventListener('pagehide', () => {
+    clearTimeout(swapTimer);
     channel?.close();
     controller.abort();
   }, { once: true });

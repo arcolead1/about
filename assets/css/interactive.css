@@ -394,6 +394,9 @@ body::after {
 }
 html.bg-alt body::before { opacity: 0; }
 html.bg-alt body::after { opacity: var(--acc-max); }
+html.bg-swap body::before, html.bg-swap body::after { animation-play-state: paused, paused, running; }
+/* lite: static, smaller color layers; only html::before keeps its slow drift */
+html.lite body::before, html.lite body::after { inset: 0; animation: none; will-change: auto; }
 html.bg-instant body::before, html.bg-instant body::after { transition: none; }
 @supports (animation-timeline: scroll()) {
   body::before, body::after {
