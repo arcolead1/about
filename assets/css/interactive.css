@@ -312,13 +312,17 @@ address { font-style: normal; display: grid; justify-items: start; gap: 14px; }
 .footer-link:hover::after { right: 0; }
 .footer-copy { padding: 0 0 4px; background: none; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--link) 50%, transparent); color: var(--link); font: 500 .75rem/1 var(--font-mono); cursor: pointer; }
 .footer-mark {
-  margin: 64px 0 -.06em; text-align: center; user-select: none; white-space: nowrap;
+  --mx: -9999px; --my: 50%;
+  margin: 0 0 -.06em; padding-top: .8em; text-align: center; user-select: none; white-space: nowrap;
   font: 600 clamp(3.4rem, 17vw, 13rem)/.8 var(--font-display); letter-spacing: -.06em;
-  background: linear-gradient(100deg, var(--cyan), var(--blue), var(--violet), var(--lime), var(--cyan));
-  background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
-  -webkit-mask-image: linear-gradient(180deg, #000 20%, transparent 92%); mask-image: linear-gradient(180deg, #000 20%, transparent 92%);
-  opacity: .8; animation: err-flow 14s linear infinite;
+  background:
+    radial-gradient(circle 1.1em at var(--mx) var(--my), rgba(255,255,255,.95), transparent 70%),
+    linear-gradient(100deg, var(--cyan), var(--blue), var(--violet), var(--lime), var(--cyan));
+  background-size: 100% 100%, 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 58%, transparent 98%); mask-image: linear-gradient(180deg, #000 0, #000 58%, transparent 98%);
+  opacity: .8; animation: fm-flow 14s linear infinite;
 }
+@keyframes fm-flow { to { background-position: 0 0, 260% 0; } }
 .footer-bottom {
   position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 14px;
   padding: 22px 0 30px; border-top: 1px solid var(--line); font-size: .8125rem;
@@ -610,29 +614,36 @@ html.lite .cyber-glass::before { animation: none; background: linear-gradient(13
 
 .footer-mark { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .fm-l { display: inline-block; transform-origin: 50% 88%; transition: color .4s var(--ease); }
-.footer-mark.is-hopping { background: none; opacity: .9; }
+.footer-mark.is-hopping, .footer-mark.is-entering { background: none; opacity: .9; }
+.footer-mark.is-armed .fm-l { opacity: 0; }
+.footer-mark.is-entering .fm-l { color: hsl(calc(175 + var(--i) * 40) 100% 64%); animation: fm-in .9s var(--ease) calc(var(--i) * 70ms) both; }
+@keyframes fm-in {
+  from { opacity: 0; transform: translateY(.7em) scale(.8, 1.2) rotate(calc(var(--r, 1) * 12deg)); filter: blur(10px); }
+  60%  { opacity: 1; filter: blur(0); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
 .footer-mark.is-hopping .fm-l { color: hsl(calc(175 + var(--i) * 40) 100% 64%); animation: fm-hop .9s var(--ease-soft) calc(var(--i) * 55ms) 1; }
-:root[data-theme="light"] .footer-mark.is-hopping .fm-l { color: hsl(calc(175 + var(--i) * 40) 92% 46%); }
+:root[data-theme="light"] :is(.footer-mark.is-hopping, .footer-mark.is-entering) .fm-l { color: hsl(calc(175 + var(--i) * 40) 92% 46%); }
 .footer-mark.is-hopping .fm-l[data-hero] { animation-name: fm-hop-hero; animation-duration: 1.1s; }
 @keyframes fm-hop {
-  0%   { transform: scale(1, 1); }
-  16%  { transform: scale(1.16, .8); }
-  36%  { transform: translateY(-.34em) scale(.88, 1.2); }
-  54%  { transform: translateY(-.44em) scale(.97, 1.04); }
-  74%  { transform: translateY(0) scale(1.2, .76); }
+  0%   { transform: scale(1, 1); text-shadow: 0 0 0 transparent; }
+  14%  { transform: scale(1.18, .76); }
+  34%  { transform: translateY(-.38em) scale(.86, 1.22) rotate(calc(var(--r, 1) * -7deg)); text-shadow: 0 0 .28em currentColor; }
+  52%  { transform: translateY(-.48em) scale(.97, 1.04) rotate(calc(var(--r, 1) * 5deg)); text-shadow: 0 0 .4em currentColor; }
+  74%  { transform: translateY(0) scale(1.22, .74) rotate(0); text-shadow: 0 0 .14em currentColor; }
   87%  { transform: translateY(-.05em) scale(.97, 1.05); }
-  100% { transform: scale(1, 1); }
+  100% { transform: scale(1, 1); text-shadow: 0 0 0 transparent; }
 }
 @keyframes fm-hop-hero {
-  0%   { transform: scale(1, 1) rotate(0); }
+  0%   { transform: scale(1, 1) rotate(0); text-shadow: 0 0 0 transparent; }
   14%  { transform: scale(1.2, .74) rotate(0); }
-  34%  { transform: translateY(-.5em) scale(.84, 1.26) rotate(-6deg); }
-  52%  { transform: translateY(-.62em) scale(.96, 1.04) rotate(-12deg); }
-  72%  { transform: translateY(0) scale(1.26, .7) rotate(2deg); }
-  85%  { transform: translateY(-.08em) scale(.95, 1.07) rotate(0); }
-  100% { transform: scale(1, 1) rotate(0); }
+  34%  { transform: translateY(-.44em) scale(.84, 1.26) rotate(-6deg); text-shadow: 0 0 .3em currentColor; }
+  52%  { transform: translateY(-.52em) scale(.96, 1.04) rotate(-12deg); text-shadow: 0 0 .46em currentColor; }
+  72%  { transform: translateY(0) scale(1.26, .7) rotate(2deg); text-shadow: 0 0 .14em currentColor; }
+  85%  { transform: translateY(-.07em) scale(.95, 1.07) rotate(0); }
+  100% { transform: scale(1, 1) rotate(0); text-shadow: 0 0 0 transparent; }
 }
-@media (prefers-reduced-motion: reduce) { .footer-mark.is-hopping .fm-l { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .footer-mark.is-hopping .fm-l, .footer-mark.is-entering .fm-l { animation: none; } .footer-mark.is-armed .fm-l { opacity: 1; } }
 
 .skill { position: relative; }
 .skill-val { position: absolute; top: 16px; right: 18px; font: 500 .75rem/1 var(--font-mono); letter-spacing: .04em; color: var(--muted); font-variant-numeric: tabular-nums; }

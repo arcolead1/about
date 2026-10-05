@@ -419,7 +419,9 @@
   const mark = document.querySelector('.footer-mark');
   if (!mark) return;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = matchMedia('(pointer: fine)');
   const controller = new AbortController();
+  const opts = { signal: controller.signal };
   const letters = [...mark.textContent.trim()];
   mark.textContent = '';
   letters.forEach((ch, i) => {
@@ -427,31 +429,68 @@
     span.className = 'fm-l';
     span.textContent = ch;
     span.style.setProperty('--i', i);
+    span.style.setProperty('--r', i % 2 ? 1 : -1);
     if (ch === 'i') span.dataset.hero = '';
     mark.appendChild(span);
   });
   const last = mark.lastElementChild;
-  let running = false;
-  let inView = false;
+  let running = false, seen = false, inView = false, guard = null, frame = null;
+  const release = () => {
+    clearTimeout(guard);
+    mark.classList.remove('is-hopping', 'is-entering');
+    running = false;
+  };
   const hop = () => {
     if (running || reduced.matches || !last) return;
     running = true;
     mark.classList.add('is-hopping');
+    guard = setTimeout(release, 3500);
   };
-  mark.addEventListener('click', hop, { signal: controller.signal });
-  mark.addEventListener('animationend', (event) => {
+  const enter = () => {
+    if (running || reduced.matches || !last) return;
+    running = true;
+    mark.classList.remove('is-armed');
+    mark.classList.add('is-entering');
+    guard = setTimeout(release, 4500);
+  };
+  if (!reduced.matches && last) mark.classList.add('is-armed');
+  mark.addEventListener('click', hop, opts);
+  mark.addEventListener('animationend', event => {
     if (event.target !== last) return;
-    mark.classList.remove('is-hopping');
-    running = false;
-  }, { signal: controller.signal });
+    if (event.animationName === 'fm-in') { release(); hop(); }
+    else if (event.animationName.startsWith('fm-hop')) release();
+  }, opts);
+
+  if (finePointer.matches && !reduced.matches) {
+    let px = -9999, py = 0;
+    const paint = () => {
+      mark.style.setProperty('--mx', `${px}px`);
+      mark.style.setProperty('--my', `${py}px`);
+      frame = null;
+    };
+    mark.addEventListener('pointermove', e => {
+      const rect = mark.getBoundingClientRect();
+      px = e.clientX - rect.left;
+      py = e.clientY - rect.top;
+      if (frame === null) frame = requestAnimationFrame(paint);
+    }, { ...opts, passive: true });
+    mark.addEventListener('pointerleave', () => { px = -9999; paint(); }, opts);
+  }
+
   let prevY = scrollY;
   const observer = new IntersectionObserver(([entry]) => {
     const down = scrollY > prevY;
     prevY = scrollY;
     if (!entry.isIntersecting) { inView = false; return; }
-    if (!inView && down) hop();
+    if (!seen) { seen = true; enter(); }
+    else if (!inView && down) hop();
     inView = true;
   }, { threshold: 0.55 });
   observer.observe(mark);
-  addEventListener('pagehide', () => { observer.disconnect(); controller.abort(); }, { once: true });
+  addEventListener('pagehide', () => {
+    clearTimeout(guard);
+    if (frame !== null) cancelAnimationFrame(frame);
+    observer.disconnect();
+    controller.abort();
+  }, { once: true });
 })();
