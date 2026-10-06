@@ -718,3 +718,11 @@ html.lite .cyber-glass::before { animation: none; background: linear-gradient(13
   .article h3 { margin: 30px 0 9px; }
 }
 @media (prefers-reduced-motion: reduce) { .article, .article::after { transition: none; } }
+
+/* ── Home rhythm: one consistent vertical gap between sections ── */
+main#top { --home-gap: clamp(56px, 7vw, 96px); }
+main#top > section + section { margin-top: var(--home-gap); margin-bottom: 0; }
+main#top > .hero + .featured { margin-top: calc(var(--home-gap) * .7); }
+main#top .hero { padding-bottom: 48px; }
+main#top .section-head { padding: 0 0 18px; }
+main#top ~ .site-footer { margin-top: clamp(56px, 7vw, 96px); }
