@@ -203,7 +203,7 @@
 .note-quote.in span { background-size: 100% 100%; }
 .note-back { display: inline-block; margin: 0 0 72px; font: 500 .75rem/1 var(--font-mono); color: var(--link); border-bottom: 1px solid color-mix(in srgb, var(--link) 50%, transparent); padding-bottom: 5px; transition: transform var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
 .note-back:hover { color: var(--cyan); transform: translateX(-3px); }
-[data-note-fonts] { transition: letter-spacing .9s var(--ease); }
+[data-note-fonts] { cursor: pointer; transition: letter-spacing .9s var(--ease); }
 .note-font-0 { font-family: var(--font-sans); }
 .note-font-1 { font-family: "Fraunces", var(--font-display), serif; }
 .note-font-2 { font-family: "Caveat", cursive; font-size: 1.16em; }

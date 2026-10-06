@@ -1,13 +1,16 @@
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 const check = process.argv.includes('--check');
 const read = (path) => readFileSync(path, 'utf8');
 const data = JSON.parse(read('data/tools.json'));
 const notesData = JSON.parse(read('data/notes.json'));
+const site = JSON.parse(read('data/site.json'));
+const origin = site.url.replace(/\/$/, '');
 const byId = new Map(data.tools.map((tool) => [tool.id, tool]));
 
 const esc = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const iconUrl = (tool) => `${data.base}${tool.icon}.svg`;
+const iconUrl = (tool) => `${site.iconBase}${tool.icon}.svg`;
 const monoClass = (tool) => (tool.mono ? ' class="ico-mono"' : '');
 const link = (tool) => `href="${tool.url}" target="_blank" rel="noreferrer"`;
 
@@ -77,6 +80,22 @@ const footer = read('partials/footer.html').trimEnd();
 const activate = (html, href) =>
   href ? html.replace(`<a class="nav-link" href="${href}"`, `<a class="nav-link active" href="${href}"`) : html;
 
+const urlPath = (file) => '/' + file.replace(/(^|\/)index\.html$/, '').replace(/\.html$/, '');
+const syncHead = (src, file) =>
+  src
+    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${origin}${urlPath(file)}$2`)
+    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${origin}${urlPath(file)}$2`)
+    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${origin}/icons/og.png$2`)
+    .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${origin}/icons/og.png$2`)
+    .replace(/("(?:@id|url|image)": ")https?:\/\/[^\/"]+/g, `$1${origin}`);
+const statsOwner = site.statsRepo.split('/')[0];
+const syncStats = (src) =>
+  src
+    .replace(/https:\/\/raw\.githubusercontent\.com\/[^\/]+\/[^\/]+\/refs\/heads\/main\/github-metrics\.svg/, `https://raw.githubusercontent.com/${site.statsRepo}/refs/heads/main/github-metrics.svg`)
+    .replace(/(href="https:\/\/github\.com\/)[^\/"]+\/[^\/"]+(\/actions")/, `$1${site.statsRepo}$2`)
+    .replace(/(data-src [^>]*>)[^<]*(<\/a>)/, `$1${site.statsRepo} &#8599;$2`)
+    .replace(/user=[^&"]+/, `user=${statsOwner}`);
+
 const changed = [];
 const write = (path, next) => {
   if (existsSync(path) && read(path) === next) return;
@@ -92,8 +111,14 @@ for (const [path, active] of Object.entries(pages)) {
   src = replaceInner(src, '<section aria-label="Skills grid" data-build="skill-groups">', '</section>', data.groups.map(group).join('\n\n') + '\n      ');
   src = replaceInner(src, '<div data-build="notes-main">', '\n        </div>\n      </section>', mainHtml);
   src = replaceInner(src, '<div data-build="notes-more">', '\n        </div>\n      </section>', moreHtml);
+  src = syncHead(src, path);
+  if (path === 'stats.html') src = syncStats(src);
   write(path, src);
 }
+
+write('sitemap.xml', read('sitemap.xml').replace(/<loc>https?:\/\/[^\/<]+/g, `<loc>${origin}`));
+write('robots.txt', read('robots.txt').replace(/(Sitemap: )https?:\/\/[^\/\s]+/, `$1${origin}`));
+write('assets/js/stats.js', read('assets/js/stats.js').replace(/const REPO = '[^']*';/, `const REPO = '${site.statsRepo}';`));
 
 const entries = [];
 for (const g of data.groups) {
@@ -111,12 +136,25 @@ write('assets/js/tools-i18n.js', i18n);
 const xml = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const items = sortedNotes
   .map((note) => {
-    const url = `${notesData.site}/notes/${note.slug}`;
+    const url = `${origin}/notes/${note.slug}`;
     return `    <item>\n      <title>${xml(note.title.en)}</title>\n      <link>${url}</link>\n      <guid isPermaLink="true">${url}</guid>\n      <pubDate>${new Date(`${note.date}T00:00:00Z`).toUTCString()}</pubDate>\n      <description>${xml(note.desc.en)}</description>\n    </item>`;
   })
   .join('\n');
-const feed = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>Arlingkin - Notes</title>\n    <link>${notesData.site}/notes</link>\n    <atom:link href="${notesData.site}/feed.xml" rel="self" type="application/rss+xml"/>\n    <description>Short notes from Arlingga.</description>\n    <language>en</language>\n    <lastBuildDate>${new Date(`${sortedNotes[0].date}T00:00:00Z`).toUTCString()}</lastBuildDate>\n${items}\n  </channel>\n</rss>\n`;
+const feed = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>Arlingkin - Notes</title>\n    <link>${origin}/notes</link>\n    <atom:link href="${origin}/feed.xml" rel="self" type="application/rss+xml"/>\n    <description>Short notes from Arlingga.</description>\n    <language>en</language>\n    <lastBuildDate>${new Date(`${sortedNotes[0].date}T00:00:00Z`).toUTCString()}</lastBuildDate>\n${items}\n  </channel>\n</rss>\n`;
 write('feed.xml', feed);
+
+/* CSP: keep sha256 hashes of the inline scripts (boot + speculation rules) in vercel.json in sync. */
+const inline = (re, name) => {
+  const m = read('index.html').match(re);
+  if (!m) throw new Error(`${name} not found in index.html`);
+  for (const page of Object.keys(pages)) if (!read(page).includes(m[1])) throw new Error(`${name} differs in ${page}`);
+  return `'sha256-${createHash('sha256').update(m[1]).digest('base64')}'`;
+};
+const hashes = [
+  inline(/<script>(\(function\(\)\{var d=document[\s\S]*?)<\/script>/, 'boot script'),
+  inline(/<script type="speculationrules">([\s\S]*?)<\/script>/, 'speculation rules'),
+].join(' ');
+write('vercel.json', read('vercel.json').replace(/script-src [^;]*;/, `script-src 'self' ${hashes} 'inline-speculation-rules';`));
 
 if (changed.length) console.log(`${check ? 'out of date' : 'updated'}: ${changed.join(', ')}`);
 else console.log('up to date');

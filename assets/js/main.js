@@ -59,7 +59,7 @@ const T = {
   'notes.read': { en:"READ NOTE →", id:"BACA CATATAN →" },
   'note3.h1': { en:"Where it started: <em>Mindustry logic.</em>", id:"Awalnya dari <em>logic Mindustry.</em>" },
   'note3.lead': { en:"I started programming inside a game, on my phone.", id:"Saya mulai memprogram dari sebuah game, lewat ponsel." },
-  'note3.p1': { en:"<a class=\"inline-link\" href=\"https://mindustrygame.github.io/\" target=\"_blank\" rel=\"noreferrer\"><img class=\"inline-ico\" src=\"https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/mindustry.png\" alt=\"\" width=\"18\" height=\"18\">Mindustry</a> has a logic processor you program in a language called mlog. I learned it on my phone, bit by bit, because I simply like to program. That is where my skills kept sharpening.", id:"<a class=\"inline-link\" href=\"https://mindustrygame.github.io/\" target=\"_blank\" rel=\"noreferrer\"><img class=\"inline-ico\" src=\"https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/mindustry.png\" alt=\"\" width=\"18\" height=\"18\">Mindustry</a> punya logic processor yang diprogram dengan bahasa mlog. Saya mempelajarinya di ponsel, sedikit demi sedikit, karena saya memang suka memprogram. Dari situ kemampuan saya terus terasah." },
+  'note3.p1': { en:"<a class=\"inline-link\" href=\"https://mindustrygame.github.io/\" target=\"_blank\" rel=\"noreferrer\"><img class=\"inline-ico\" src=\"/icons/tools/mindustry.png\" alt=\"\" width=\"18\" height=\"18\">Mindustry</a> has a logic processor you program in a language called mlog. I learned it on my phone, bit by bit, because I simply like to program. That is where my skills kept sharpening.", id:"<a class=\"inline-link\" href=\"https://mindustrygame.github.io/\" target=\"_blank\" rel=\"noreferrer\"><img class=\"inline-ico\" src=\"/icons/tools/mindustry.png\" alt=\"\" width=\"18\" height=\"18\">Mindustry</a> punya logic processor yang diprogram dengan bahasa mlog. Saya mempelajarinya di ponsel, sedikit demi sedikit, karena saya memang suka memprogram. Dari situ kemampuan saya terus terasah." },
   'note3.p2': { en:"Then I moved on to Mindustry mods written in JavaScript. From there the road opened into web development, Java and semantic HTML.", id:"Lalu saya masuk ke mod Mindustry yang ditulis dengan JavaScript. Dari sana jalannya terbuka ke web development, Java, dan HTML semantik." },
   'note3.p3': { en:"One of my creations is a schematic that monitors launch pad items. Its display draws a realtime graph of the item flow. It comes from my save data of playing Mindustry v6 in 2025.", id:"Salah satu karya saya adalah skematik untuk memantau item di launch pad. Display-nya menggambar grafik aliran item secara realtime. Skematik itu ada di data save saya saat bermain Mindustry v6 pada 2025." },
   'note3.p4': { en:"The save data is ready to import into your Mindustry. Give it a try.", id:"Data save-nya siap diimpor ke Mindustry Anda. Silakan dicoba." },
@@ -325,21 +325,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── dynamic note typography ─────────────────────────────────── */
 function initNoteTypography() {
-  const targets = document.querySelectorAll('[data-note-fonts]');
-  if (!targets.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  let index = 0, timer = null;
-  const tick = () => {
-    targets.forEach(el => {
-      el.classList.remove('note-font-0','note-font-1','note-font-2','note-font-3','note-font-4');
-      el.classList.add(`note-font-${index}`);
+  /* The font changes only on click/tap, never on its own (WCAG 2.2.2). */
+  const all = ['note-font-0','note-font-1','note-font-2','note-font-3','note-font-4'];
+  document.querySelectorAll('[data-note-fonts]').forEach(el => {
+    let index = 0;
+    el.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      index = (index + 1) % all.length;
+      el.classList.remove(...all);
+      el.classList.add(all[index]);
       el.classList.toggle('font-shifted', index % 2 === 1);
     });
-    index = (index + 1) % 5;
-  };
-  const start = () => { if (timer === null) timer = setInterval(tick, 3600); };
-  const stop = () => { clearInterval(timer); timer = null; };
-  tick();
-  start();
-  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
-  addEventListener('pagehide', stop, { once: true });
+  });
 }
