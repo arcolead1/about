@@ -66,19 +66,39 @@
         <p class="intro" data-i18n="proj.intro">Stuff I made while learning, from school projects to small experiments.</p>
       </section>
 
-      <section aria-label="Featured project">
-        <div class="section-head">
-          <h2 data-i18n="proj.feat.label">Featured</h2>
-          <span class="meta" data-i18n="proj.feat.sub">what I'm mostly working on</span>
-        </div>
-        <article class="feature-card">
-          <div class="feature-copy reveal">
-            <span class="tag soft" data-i18n="proj.feat.tag">SCHOOL PROJECT · LIVE</span>
-            <h3 data-i18n="proj.feat.title">nufabase</h3>
-            <p data-i18n="proj.feat.desc">A school web project I build and maintain myself: data, layout, and deployment.</p>
-            <a class="read-link" href="http://nufabase.web.app" target="_blank" rel="noreferrer" data-i18n="proj.feat.link">VISIT SITE →</a>
+      <div data-filter data-page="8" data-noun="projects">
+        <div class="filter-bar reveal">
+          <label class="filter-search">
+            <span class="sr-only" data-i18n="filter.label">Search</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" data-filter-q data-ph="filter.ph.projects" placeholder="Search projects…" autocomplete="off" spellcheck="false">
+          </label>
+          <div class="filter-chips" role="group" aria-label="Filter">
+            <button class="chip chip-btn" type="button" data-filter-tag="" aria-pressed="true" data-i18n="filter.all">All</button><span class="chips-gen" data-build="projects-tags">
+            <button class="chip chip-btn" type="button" data-filter-tag="web" aria-pressed="false" data-i18n="projects.type.web">Web</button>
+            <button class="chip chip-btn" type="button" data-filter-tag="game" aria-pressed="false" data-i18n="projects.type.game">Game</button>
+            <button class="chip chip-btn" type="button" data-filter-tag="mobile" aria-pressed="false" data-i18n="projects.type.mobile">Mobile</button>
+            <button class="chip chip-btn" type="button" data-filter-tag="school" aria-pressed="false" data-i18n="projects.type.school">School</button>
+            <button class="chip chip-btn" type="button" data-filter-tag="automation" aria-pressed="false" data-i18n="projects.type.automation">Automation</button></span>
           </div>
-          <div class="code-art reveal" aria-label="Decorative code illustration">
+          <p class="filter-count" data-filter-count aria-live="polite"></p>
+        </div>
+
+        <section aria-label="Featured projects" data-filter-group>
+          <div class="section-head">
+            <h2 data-i18n="proj.feat.label">Featured</h2>
+            <span class="meta" data-i18n="proj.feat.sub">what I'm mostly working on</span>
+          </div>
+          <div data-build="projects-featured">
+          <article class="feature-card" data-item data-q="nufabase nufabase nufabase a school web project i build and maintain myself: data, layout, and deployment. proyek web sekolah yang saya bangun dan rawat sendiri: dari data, layout, sampai deploy. live live web web web school school sekolah" data-tags="web school">
+            <div class="feature-copy reveal">
+              <span class="tag soft" data-i18n="projects.nufabase.badge">SCHOOL PROJECT · LIVE</span>
+              <h3 data-i18n="projects.nufabase.title">nufabase</h3>
+              <p data-i18n="projects.nufabase.desc">A school web project I build and maintain myself: data, layout, and deployment.</p>
+              <div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-i18n="projects.type.web">Web</span><span class="chip" data-i18n="projects.type.school">School</span></div>
+              <a class="read-link" href="https://nufabase.web.app" target="_blank" rel="noreferrer" data-i18n="projects.nufabase.cta">VISIT SITE →</a>
+            </div>
+            <div class="code-art reveal" aria-label="Decorative code illustration">
             <div class="code-window">
               <div class="dots"><i></i><i></i><i></i></div>
               <span class="pink">const</span> project = {<br>
@@ -88,16 +108,17 @@
               };<br><br>
               <span class="faint">// still learning</span>
             </div>
-          </div>
-        </article>
-        <article class="feature-card matrix">
-          <div class="feature-copy reveal">
-            <span class="tag matrix" data-i18n="proj.feat2.tag">GAME · MATRIX</span>
-            <h3 data-i18n="proj.a5.title">Snake-game — matrix edition</h3>
-            <p data-i18n="proj.a5.desc">Classic snake with a Matrix look. Eat, grow, don't hit the wall. Vanilla JS on a neon green grid.</p>
-            <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="proj.a5.link">PLAY THE GAME →</a>
-          </div>
-          <div class="code-art reveal" aria-label="Decorative Matrix code illustration">
+            </div>
+          </article>
+          <article class="feature-card matrix" data-item data-q="snake snake-game — matrix edition snake-game — edisi matrix classic snake with a matrix look. eat, grow, don't hit the wall. vanilla js on a neon green grid. snake klasik dengan tampilan matrix. makan, tumbuh, jangan nabrak tembok. js vanilla di grid hijau neon. live live game game game web web web javascript" data-tags="game web">
+            <div class="feature-copy reveal">
+              <span class="tag matrix" data-i18n="projects.snake.badge">GAME · MATRIX</span>
+              <h3 data-i18n="projects.snake.title">Snake-game — matrix edition</h3>
+              <p data-i18n="projects.snake.desc">Classic snake with a Matrix look. Eat, grow, don't hit the wall. Vanilla JS on a neon green grid.</p>
+              <div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-i18n="projects.type.game">Game</span><span class="chip" data-i18n="projects.type.web">Web</span><span class="chip chip-stack">JavaScript</span></div>
+              <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="projects.snake.cta">PLAY THE GAME →</a>
+            </div>
+            <div class="code-art reveal" aria-label="Decorative code illustration">
             <div class="code-window">
               <div class="dots"><i></i><i></i><i></i></div>
               <span class="pink">const</span> snake = {<br>
@@ -107,48 +128,38 @@
               };<br><br>
               <span class="faint">// vanilla JS</span>
             </div>
+            </div>
+          </article>
           </div>
-        </article>
-      </section>
+        </section>
 
-      <section aria-label="Project archive" id="archive">
-        <div class="section-head">
-          <h2 data-i18n="proj.arch.label">From the archive</h2>
-          <span class="meta" data-i18n="proj.arch.sub">smaller stuff</span>
+        <section aria-label="More projects" id="archive" data-filter-group data-paged>
+          <div class="section-head">
+            <h2 data-i18n="proj.arch.label">More projects</h2>
+            <span class="meta" data-i18n="proj.arch.sub">smaller stuff</span>
+          </div>
+          <div data-build="projects-archive">
+            <a class="project-row reveal" data-item data-q="dalim dalim — data limit dalim — batas data my newest one: an android app that tracks your daily data quota (kuota). get the latest apk from the github pre-releases. yang terbaru: aplikasi android untuk memantau kuota harian. apk terbaru ada di pre-release github. pre-release pra-rilis mobile mobile mobile" data-tags="mobile" href="https://github.com/arlingkin/dalim/releases" target="_blank" rel="noreferrer"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="projects.dalim.title">dalim — data limit</h3><p data-i18n="projects.dalim.desc">My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub pre-releases.</p><div class="row-meta"><span class="chip chip-status s-beta" data-i18n="projects.status.beta">pre-release</span><span class="chip" data-i18n="projects.type.mobile">Mobile</span></div></div><span class="project-link" data-i18n="projects.dalim.cta">GET PRE-RELEASES →</span></a>
+            <a class="project-row reveal" data-item data-q="portfolio this portfolio — arlingkin portofolio ini — arlingkin this site. plain html, css and js, several pages, clean urls. situs ini. html, css, dan js biasa, beberapa halaman, url rapi. live live web web web html css javascript" data-tags="web" href="/"><span class="project-num">04</span><div class="project-main"><h3 data-i18n="projects.portfolio.title">This portfolio — arlingkin</h3><p data-i18n="projects.portfolio.desc">This site. Plain HTML, CSS and JS, several pages, clean URLs.</p><div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-i18n="projects.type.web">Web</span><span class="chip chip-stack">HTML</span><span class="chip chip-stack">CSS</span><span class="chip chip-stack">JavaScript</span></div></div><span class="project-link" data-i18n="projects.portfolio.cta">LIVE ↗</span></a>
+            <a class="project-row reveal" data-item data-q="experiments web experiments eksperimen web small vanilla javascript builds, the streak automation and the github metrics. build kecil pakai javascript vanilla, otomasi streak, dan metrik github. ongoing berjalan web web web automation automation otomasi javascript python" data-tags="web automation" href="https://github.com/arlingkin" target="_blank" rel="noreferrer"><span class="project-num">05</span><div class="project-main"><h3 data-i18n="projects.experiments.title">Web experiments</h3><p data-i18n="projects.experiments.desc">Small vanilla JavaScript builds, the streak automation and the GitHub metrics.</p><div class="row-meta"><span class="chip chip-status s-ongoing" data-i18n="projects.status.ongoing">ongoing</span><span class="chip" data-i18n="projects.type.web">Web</span><span class="chip" data-i18n="projects.type.automation">Automation</span><span class="chip chip-stack">JavaScript</span><span class="chip chip-stack">Python</span></div></div><span class="project-link" data-i18n="projects.experiments.cta">github ↗</span></a>
+          </div>
+        </section>
+
+        <p class="filter-more"><button class="read-link" type="button" data-filter-more hidden data-i18n="filter.more">SHOW MORE ↓</button></p>
+
+        <div class="project-soon reveal" data-filter-idle>
+          <span class="pulse" aria-hidden="true"></span>
+          <div>
+            <h3 data-i18n="proj.soon.title">The next one is in the works.</h3>
+            <p data-i18n="proj.soon.desc">New projects land here once they're ready to show. One feature at a time.</p>
+          </div>
         </div>
-        <div>
-          <a class="project-row reveal" href="/">
-            <span class="project-num">01</span>
-            <div class="project-main"><h3 data-i18n="proj.a1.title">This portfolio — arlingkin</h3><p data-i18n="proj.a1.desc">This site. Plain HTML, CSS and JS, several pages, clean URLs.</p></div>
-            <span class="project-link">LIVE ↗</span>
-          </a>
-          <a class="project-row reveal" href="http://nufabase.web.app" target="_blank" rel="noreferrer">
-            <span class="project-num">02</span>
-            <div class="project-main"><h3 data-i18n="proj.a2.title">School project — nufabase</h3><p data-i18n="proj.a2.desc">My main project. Started small and added features over time.</p></div>
-            <span class="project-link">nufabase.web.app ↗</span>
-          </a>
-          <a class="project-row reveal" href="https://github.com/arlingkin" target="_blank" rel="noreferrer">
-            <span class="project-num">03</span>
-            <div class="project-main"><h3 data-i18n="proj.a3.title">Web experiments</h3><p data-i18n="proj.a3.desc">Small vanilla JavaScript builds, the streak automation and the GitHub metrics.</p></div>
-            <span class="project-link">github ↗</span>
-          </a>
-          <a class="project-row reveal" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer">
-            <span class="project-num">04</span>
-            <div class="project-main"><h3 data-i18n="proj.a5.title">Snake-game — matrix edition</h3><p data-i18n="proj.a5.desc">Classic snake with a Matrix look. Eat, grow, don't hit the wall. Vanilla JS on a neon green grid.</p></div>
-            <span class="project-link" data-i18n="proj.a5.link">PLAY THE GAME →</span>
-          </a>
-          <a class="project-row reveal" href="https://github.com/arlingkin/dalim/releases" target="_blank" rel="noreferrer">
-            <span class="project-num">05</span>
-            <div class="project-main"><h3 data-i18n="proj.a6.title">Project — data limit</h3><p data-i18n="proj.a6.desc">My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub pre-releases.</p></div>
-            <span class="project-link" data-i18n="proj.a6.link">GET PRE-RELEASES →</span>
-          </a>
-          <a class="project-row reveal note-row" href="/notes/note-02.html">
-            <span class="project-num">06</span>
-            <div class="project-main"><h3 data-i18n="proj.note2.title">Personal Note — The moment I stopped watching the chart.</h3><p data-i18n="proj.note2.desc">About trading, screen time, and learning to step away from the chart.</p></div>
-            <span class="project-link" data-i18n="proj.note2.link">READ NOTE →</span>
-          </a>
+        <div class="filter-empty" data-filter-empty hidden>
+          <h3 data-i18n="filter.empty.title">Nothing matches that.</h3>
+          <p data-i18n="filter.empty.desc">Try a shorter word or clear the filters.</p>
+          <button class="read-link" type="button" data-filter-clear data-i18n="filter.clear">CLEAR FILTERS</button>
         </div>
-      </section>
+      </div>
     </main>
 
     <footer class="site-footer" data-build="footer">
@@ -198,6 +209,8 @@
   </div>
   <script src="assets/js/mail.js"></script><script src="assets/js/site-config.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/tools-i18n.js"></script>
+  <script src="assets/js/filter.js"></script>
   <script src="assets/js/interactive.js"></script>
 </body>
 </html>

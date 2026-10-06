@@ -3,7 +3,7 @@
     {
       "target": "main",
       "public": ".",
-      "ignore": ["firebase.json", "app/**", ".git/**", ".firebaserc", ".vercel/**", "**/.*", "**/node_modules/**"],
+      "ignore": ["firebase.json", "app/**", "scripts/**", "data/**", "partials/**", "*.md", "LICENSE", "vercel.json", ".git/**", ".firebaserc", ".vercel/**", "**/.*", "**/node_modules/**"],
       "cleanUrls": true
     },
     {

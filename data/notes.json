@@ -1,4 +1,22 @@
 {
+  "tags": {
+    "programming": {
+      "en": "programming",
+      "id": "pemrograman"
+    },
+    "game": {
+      "en": "game",
+      "id": "game"
+    },
+    "trading": {
+      "en": "trading",
+      "id": "trading"
+    },
+    "habits": {
+      "en": "habits",
+      "id": "kebiasaan"
+    }
+  },
   "notes": [
     {
       "slug": "mindustry",
@@ -11,7 +29,11 @@
       "desc": {
         "en": "How a phone game and its logic processor led me into web development.",
         "id": "Bagaimana game di ponsel dan logic processor-nya membawa saya ke web development."
-      }
+      },
+      "tags": [
+        "programming",
+        "game"
+      ]
     },
     {
       "slug": "note-02",
@@ -24,7 +46,11 @@
       "desc": {
         "en": "A note about trading, screen time, and learning that stepping away is part of the process.",
         "id": "Catatan tentang trading, waktu di depan layar, dan belajar bahwa menjauh sejenak juga bagian dari proses."
-      }
+      },
+      "tags": [
+        "trading",
+        "habits"
+      ]
     }
   ]
 }

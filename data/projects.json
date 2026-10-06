@@ -1,0 +1,95 @@
+{
+  "types": {
+    "web": { "en": "Web", "id": "Web" },
+    "game": { "en": "Game", "id": "Game" },
+    "mobile": { "en": "Mobile", "id": "Mobile" },
+    "school": { "en": "School", "id": "Sekolah" },
+    "automation": { "en": "Automation", "id": "Otomasi" }
+  },
+  "status": {
+    "live": { "en": "live", "id": "live" },
+    "beta": { "en": "pre-release", "id": "pra-rilis" },
+    "ongoing": { "en": "ongoing", "id": "berjalan" }
+  },
+  "projects": [
+    {
+      "slug": "nufabase",
+      "featured": true,
+      "tags": ["web", "school"],
+      "status": "live",
+      "url": "https://nufabase.web.app",
+      "title": { "en": "nufabase", "id": "nufabase" },
+      "desc": {
+        "en": "A school web project I build and maintain myself: data, layout, and deployment.",
+        "id": "Proyek web sekolah yang saya bangun dan rawat sendiri: dari data, layout, sampai deploy."
+      },
+      "badge": { "en": "SCHOOL PROJECT · LIVE", "id": "PROYEK SEKOLAH · LIVE" },
+      "cta": { "en": "VISIT SITE →", "id": "KUNJUNGI SITUS →" },
+      "art": {
+        "name": "project",
+        "props": { "name": "nufabase", "stage": "live", "focus": "one feature at a time" },
+        "comment": "still learning"
+      }
+    },
+    {
+      "slug": "snake",
+      "featured": true,
+      "theme": "matrix",
+      "tags": ["game", "web"],
+      "status": "live",
+      "url": "https://arlingkin.github.io/Snake-game",
+      "stack": ["JavaScript"],
+      "title": { "en": "Snake-game — matrix edition", "id": "Snake-game — edisi matrix" },
+      "desc": {
+        "en": "Classic snake with a Matrix look. Eat, grow, don't hit the wall. Vanilla JS on a neon green grid.",
+        "id": "Snake klasik dengan tampilan Matrix. Makan, tumbuh, jangan nabrak tembok. JS vanilla di grid hijau neon."
+      },
+      "badge": { "en": "GAME · MATRIX", "id": "GAME · MATRIX" },
+      "cta": { "en": "PLAY THE GAME →", "id": "MAINKAN GAME →" },
+      "art": {
+        "name": "snake",
+        "props": { "theme": "matrix", "stack": "vanilla JS", "goal": "eat · grow · survive" },
+        "comment": "vanilla JS"
+      }
+    },
+    {
+      "slug": "dalim",
+      "tags": ["mobile"],
+      "status": "beta",
+      "url": "https://github.com/arlingkin/dalim/releases",
+      "title": { "en": "dalim — data limit", "id": "dalim — batas data" },
+      "desc": {
+        "en": "My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub pre-releases.",
+        "id": "Yang terbaru: aplikasi Android untuk memantau kuota harian. APK terbaru ada di pre-release GitHub."
+      },
+      "cta": { "en": "GET PRE-RELEASES →", "id": "AMBIL PRE-RELEASE →" }
+    },
+    {
+      "slug": "portfolio",
+      "external": false,
+      "tags": ["web"],
+      "status": "live",
+      "url": "/",
+      "stack": ["HTML", "CSS", "JavaScript"],
+      "title": { "en": "This portfolio — arlingkin", "id": "Portofolio ini — arlingkin" },
+      "desc": {
+        "en": "This site. Plain HTML, CSS and JS, several pages, clean URLs.",
+        "id": "Situs ini. HTML, CSS, dan JS biasa, beberapa halaman, URL rapi."
+      },
+      "cta": { "en": "LIVE ↗", "id": "LIVE ↗" }
+    },
+    {
+      "slug": "experiments",
+      "tags": ["web", "automation"],
+      "status": "ongoing",
+      "url": "https://github.com/arlingkin",
+      "stack": ["JavaScript", "Python"],
+      "title": { "en": "Web experiments", "id": "Eksperimen web" },
+      "desc": {
+        "en": "Small vanilla JavaScript builds, the streak automation and the GitHub metrics.",
+        "id": "Build kecil pakai JavaScript vanilla, otomasi streak, dan metrik GitHub."
+      },
+      "cta": { "en": "github ↗", "id": "github ↗" }
+    }
+  ]
+}

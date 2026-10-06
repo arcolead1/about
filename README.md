@@ -26,11 +26,12 @@ Personal site and learning journal of **Arlingga**, built with plain HTML, CSS a
 ├── partials/                              # shared header.html and footer.html
 ├── data/
 │   ├── tools.json                         # tools, groups, icons, descriptions (EN/ID)
-│   └── notes.json                         # notes list, dates, featured flag (EN/ID)
+│   ├── notes.json                         # notes list, dates, tags, featured flag (EN/ID)
+│   └── projects.json                      # projects: tags, status, stack, links (EN/ID)
 ├── assets/
 │   ├── css/                               # style.css (design system), interactive.css (effects)
 │   └── js/                                # main.js (i18n, nav, reveal), interactive.js,
-│                                          # stats.js, mail.js, site-config.js, valueskills.js,
+│                                          # stats.js, filter.js, mail.js, site-config.js, valueskills.js,
 │                                          # tools-i18n.js (generated)
 ├── icons/                                 # site icons and icons/tools/*.svg
 ├── scripts/
@@ -63,7 +64,7 @@ Some parts are generated so they stay identical on every page:
 
 - header and footer, from `partials/`
 - tool chips and skill cards, from `data/tools.json`
-- the notes list, `feed.xml` and `assets/js/tools-i18n.js`, from `data/notes.json` and `data/tools.json`
+- the notes list, the projects page, `feed.xml` and `assets/js/tools-i18n.js`, from `data/notes.json`, `data/projects.json` and `data/tools.json`
 - page URLs (canonical, Open Graph, JSON-LD), `sitemap.xml`, `robots.txt`, the stats repo in `stats.js` / `stats.html` and the CSP script hashes in `vercel.json`, from `data/site.json` (edit it first when forking)
 
 After changing any of those sources, run:
@@ -84,9 +85,16 @@ Commit the regenerated files. The Node.js version in CI is 20.
 ### Adding a note
 
 1. Copy `notes/mindustry.html` to `notes/<slug>.html` and add its text keys in `assets/js/main.js`.
-2. Add the entry to `data/notes.json` and a URL to `sitemap.xml`.
+2. Add the entry to `data/notes.json` (with `tags` from the `tags` map there) and a URL to `sitemap.xml`.
 3. Add `notes/<slug>.html` to the `pages` map in `scripts/build.mjs`.
 4. Run `node scripts/build.mjs`.
+
+### Adding a project
+
+1. Add an entry to `data/projects.json` (`tags` from `types`, `status` from `status`, EN/ID `title`, `desc`, `cta`). Set `featured: true` for a big card (needs `badge` and `art`); everything else becomes a row.
+2. Run `node scripts/build.mjs`. The card, filter chips, search index and i18n keys are generated.
+
+Notes and Projects share one search/filter script (`assets/js/filter.js`, the `[data-filter]` markup) with tag chips, `?q=&tag=` links and "show more" paging.
 
 ## Site config variables
 
