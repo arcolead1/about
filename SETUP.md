@@ -79,7 +79,7 @@ dibuat oleh `scripts/build.mjs`. Hasilnya di-commit, jadi deploy tetap statis.
 - Ubah header/footer: edit `partials/header.html` atau `partials/footer.html`.
 - Jalankan `node scripts/build.mjs`, lalu commit semua file yang berubah.
 - `node scripts/build.mjs --check` dipakai CI (`build-check.yml`) dan gagal kalau hasil belum di-commit.
-- Ikon dimuat dari `https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/`.
+- Ikon dimuat dari `icons/tools/` (lokal; base ada di `data/site.json`). Saat fork, ubah `data/site.json` lalu jalankan build.
 
 ## Nilai skill
 

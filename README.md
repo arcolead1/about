@@ -64,6 +64,7 @@ Some parts are generated so they stay identical on every page:
 - header and footer, from `partials/`
 - tool chips and skill cards, from `data/tools.json`
 - the notes list, `feed.xml` and `assets/js/tools-i18n.js`, from `data/notes.json` and `data/tools.json`
+- page URLs (canonical, Open Graph, JSON-LD), `sitemap.xml`, `robots.txt`, the stats repo in `stats.js` / `stats.html` and the CSP script hashes in `vercel.json`, from `data/site.json` (edit it first when forking)
 
 After changing any of those sources, run:
 
@@ -115,7 +116,7 @@ The Vercel and Firebase workflows skip themselves when their secret is not set. 
 - Vanilla JavaScript only, loaded as classic scripts
 - Translations live in the `T` object in `assets/js/main.js` and are applied through `data-i18n` attributes
 - Fonts: DM Sans, DM Mono and Playfair Display via Google Fonts
-- Tool icons are loaded from `raw.githubusercontent.com/arlingkin/about/main/icons/tools/`
+- Tool icons are served locally from `icons/tools/` (path set by `iconBase` in `data/site.json`)
 
 ## License
 

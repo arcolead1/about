@@ -35,7 +35,7 @@ const T = {
   'home.h1':           { en:'Making sense of <em>code.</em>',  id:'Menerka makna <em>kode.</em>' },
   'home.intro': { en: "This is my personal site. I make things for the web and keep notes on what I'm <strong>learning.</strong>", id: "Ini situs pribadi saya. Saya bikin hal-hal untuk web dan mencatat apa yang lagi <strong>saya pelajari.</strong>" },
   'home.status':       { en:'vibe code, but with <em>human</em> sense', id:'vibe code, tapi tetap pakai akal <em>manusia</em>' },
-  'home.latest.label': { en:'01 - LATEST NOTE', id:'01 - CATATAN TERBARU' },
+  'home.latest.label': { en:'<span class="sec-num">01</span>LATEST NOTE', id:'<span class="sec-num">01</span>CATATAN TERBARU' },
   'home.latest.link': { en:"all notes", id:"semua catatan" },
   'home.latest.tag':   { en:'PERSONAL NOTE',  id:'CATATAN PRIBADI' },
   'home.latest.title': { en:"Where it started: Mindustry logic.", id:"Awalnya dari logic Mindustry." },
@@ -59,7 +59,7 @@ const T = {
   'notes.read': { en:"READ NOTE →", id:"BACA CATATAN →" },
   'note3.h1': { en:"Where it started: <em>Mindustry logic.</em>", id:"Awalnya dari <em>logic Mindustry.</em>" },
   'note3.lead': { en:"I started programming inside a game, on my phone.", id:"Saya mulai memprogram dari sebuah game, lewat ponsel." },
-  'note3.p1': { en:"<a class=\"inline-link\" href=\"https://mindustrygame.github.io/\" target=\"_blank\" rel=\"noreferrer\"><img class=\"inline-ico\" src=\"https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/mindustry.png\" alt=\"\" width=\"18\" height=\"18\">Mindustry</a> has a logic processor you program in a language called mlog. I learned it on my phone, bit by bit, because I simply like to program. That is where my skills kept sharpening.", id:"<a class=\"inline-link\" href=\"https://mindustrygame.github.io/\" target=\"_blank\" rel=\"noreferrer\"><img class=\"inline-ico\" src=\"https://raw.githubusercontent.com/arlingkin/about/main/icons/tools/mindustry.png\" alt=\"\" width=\"18\" height=\"18\">Mindustry</a> punya logic processor yang diprogram dengan bahasa mlog. Saya mempelajarinya di ponsel, sedikit demi sedikit, karena saya memang suka memprogram. Dari situ kemampuan saya terus terasah." },
+  'note3.p1': { en:"<a class=\"inline-link\" href=\"https://mindustrygame.github.io/\" target=\"_blank\" rel=\"noreferrer\"><img class=\"inline-ico\" src=\"/icons/tools/mindustry.png\" alt=\"\" width=\"18\" height=\"18\">Mindustry</a> has a logic processor you program in a language called mlog. I learned it on my phone, bit by bit, because I simply like to program. That is where my skills kept sharpening.", id:"<a class=\"inline-link\" href=\"https://mindustrygame.github.io/\" target=\"_blank\" rel=\"noreferrer\"><img class=\"inline-ico\" src=\"/icons/tools/mindustry.png\" alt=\"\" width=\"18\" height=\"18\">Mindustry</a> punya logic processor yang diprogram dengan bahasa mlog. Saya mempelajarinya di ponsel, sedikit demi sedikit, karena saya memang suka memprogram. Dari situ kemampuan saya terus terasah." },
   'note3.p2': { en:"Then I moved on to Mindustry mods written in JavaScript. From there the road opened into web development, Java and semantic HTML.", id:"Lalu saya masuk ke mod Mindustry yang ditulis dengan JavaScript. Dari sana jalannya terbuka ke web development, Java, dan HTML semantik." },
   'note3.p3': { en:"One of my creations is a schematic that monitors launch pad items. Its display draws a realtime graph of the item flow. It comes from my save data of playing Mindustry v6 in 2025.", id:"Salah satu karya saya adalah skematik untuk memantau item di launch pad. Display-nya menggambar grafik aliran item secara realtime. Skematik itu ada di data save saya saat bermain Mindustry v6 pada 2025." },
   'note3.p4': { en:"The save data is ready to import into your Mindustry. Give it a try.", id:"Data save-nya siap diimpor ke Mindustry Anda. Silakan dicoba." },
@@ -67,23 +67,27 @@ const T = {
   'note3.link': { en:"Get my save data ↗", id:"Ambil data save saya ↗" },
   'note3.back': { en:"← back to notes", id:"← kembali ke catatan" },
   'note2.back': { en:'← back to projects', id:'← kembali ke proyek' },
-  'home.where.label':  { en:'02 - WHERE I AM',  id:'02 - DI MANA SAYA' },
+  'home.where.label':  { en:'<span class="sec-num">02</span>WHERE I AM', id:'<span class="sec-num">02</span>DI MANA SAYA' },
   'home.where.sub': { en: "based in indonesia", id: "tinggal di indonesia" },
-  'home.about.tag':    { en:'ABOUT · 01', id:'TENTANG · 01' },
+  'home.about.tag':    { en:'<span class="idx">02.1</span>ABOUT', id:'<span class="idx">02.1</span>TENTANG' },
   'home.about.title':  { en:"Hi, I'm Arlingga", id:'Hai, saya Arlingga' },
   'home.about.desc': { en: "Web dev: frontend, backend, a bit of devops and AI.", id: "Web dev: frontend, backend, sedikit devops dan AI." },
-  'home.skills.tag':   { en:'SKILLS · 02', id:'KEAHLIAN · 02' },
+  'home.skills.tag':   { en:'<span class="idx">02.2</span>SKILLS', id:'<span class="idx">02.2</span>KEAHLIAN' },
   'home.skills.title': { en:'The toolbox', id:'Kotak perkakas' },
   'home.skills.desc': { en: "JS, Python, Java, Tailwind, NextJS, Firebase, Supabase and more.", id: "JS, Python, Java, Tailwind, NextJS, Firebase, Supabase, dan lainnya." },
-  'home.stats.tag':    { en:'STATS · 03', id:'STATISTIK · 03' },
+  'home.stats.tag':    { en:'<span class="idx">02.3</span>STATS', id:'<span class="idx">02.3</span>STATISTIK' },
   'home.stats.title': { en: "GitHub stats", id: "Statistik GitHub" },
   'home.stats.desc': { en: "My GitHub activity and streak, updated automatically.", id: "Aktivitas GitHub dan streak saya, diperbarui otomatis." },
-  'home.now.label':    { en:'03 - RIGHT NOW', id:'03 - SEKARANG' },
+  'home.proj.tag':     { en:'<span class="idx">02.4</span>PROJECTS', id:'<span class="idx">02.4</span>PROYEK' },
+  'home.proj.title':   { en: "Things I built", id: "Yang sudah saya buat" },
+  'home.proj.desc': { en: "A school web app, a Matrix-style snake game, an Android data-quota tracker and a few web experiments.", id: "Web app sekolah, game snake bertema Matrix, aplikasi Android pemantau kuota, dan beberapa eksperimen web." },
+  'home.now.label':    { en:'<span class="sec-num">03</span>RIGHT NOW', id:'<span class="sec-num">03</span>SEKARANG' },
   'home.now.h2': { en: "What I'm<br><em>up to.</em>", id: "Lagi<br><em>ngapain.</em>" },
   'home.now.1': { en: "Working on a personal project, one feature at a time.", id: "Ngerjain proyek pribadi, satu fitur setiap kali." },
   'home.now.2': { en: "Learning JavaScript, CSS and HTML by building stuff.", id: "Belajar JavaScript, CSS, dan HTML sambil langsung bikin sesuatu." },
   'home.now.3': { en: "Still tweaking this site.", id: "Masih utak-atik situs ini." },
   'home.now.4': { en: "Blue is my favorite color.", id: "Warna favorit saya biru." },
+  'home.toolbox.label': { en:'<span class="sec-num">04</span>TOOLBOX', id:'<span class="sec-num">04</span>KOTAK PERKAKAS' },
   'home.toolbox.sub': { en: "things I build with", id: "alat yang saya pakai" },
   'proj.note2.title': { en:'Personal Note — The moment I stopped watching the chart.', id:'Catatan Pribadi — Saat saya berhenti menatap chart.' },
   'proj.note2.desc': { en: "About trading, screen time, and learning to step away from the chart.", id: "Soal trading, waktu di depan layar, dan belajar menjauh dari chart." },
@@ -325,21 +329,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── dynamic note typography ─────────────────────────────────── */
 function initNoteTypography() {
-  const targets = document.querySelectorAll('[data-note-fonts]');
-  if (!targets.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  let index = 0, timer = null;
-  const tick = () => {
-    targets.forEach(el => {
-      el.classList.remove('note-font-0','note-font-1','note-font-2','note-font-3','note-font-4');
-      el.classList.add(`note-font-${index}`);
+  /* The font changes only on click/tap, never on its own (WCAG 2.2.2). */
+  const all = ['note-font-0','note-font-1','note-font-2','note-font-3','note-font-4'];
+  document.querySelectorAll('[data-note-fonts]').forEach(el => {
+    let index = 0;
+    el.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      index = (index + 1) % all.length;
+      el.classList.remove(...all);
+      el.classList.add(all[index]);
       el.classList.toggle('font-shifted', index % 2 === 1);
     });
-    index = (index + 1) % 5;
-  };
-  const start = () => { if (timer === null) timer = setInterval(tick, 3600); };
-  const stop = () => { clearInterval(timer); timer = null; };
-  tick();
-  start();
-  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
-  addEventListener('pagehide', stop, { once: true });
+  });
 }
