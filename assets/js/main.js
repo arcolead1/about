@@ -124,6 +124,7 @@ const T = {
   'proj.arch.sub': { en: "smaller stuff", id: "yang lebih kecil" },
   'proj.soon.title': { en: "The next one is in the works.", id: "Yang berikutnya lagi dikerjakan." },
   'proj.soon.desc': { en: "New projects land here once they're ready to show. One feature at a time.", id: "Proyek baru muncul di sini begitu siap dipamerkan. Satu fitur setiap kali." },
+  'proj.soon.alt': { en: "Arlingkin letters hopping with squash and stretch", id: "Huruf arlingkin melompat dengan squash and stretch" },
 
   /* search / filter (notes + projects) */
   'filter.all': { en: "All", id: "Semua" },
@@ -206,6 +207,10 @@ function applyLang(lang) {
   });
   const dateFmt = new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
   document.querySelectorAll('time[data-date]').forEach(t => { t.textContent = dateFmt.format(new Date(`${t.dataset.date}T00:00:00Z`)); });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    const entry = T[el.getAttribute('data-i18n-alt')];
+    if (entry) el.alt = entry[lang] || entry.en;
+  });
   document.querySelectorAll('.lang-btn').forEach(btn => {
     const active = btn.dataset.lang === lang;
     btn.classList.toggle('on', active);

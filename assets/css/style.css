@@ -508,3 +508,9 @@ html.js .reveal-fade   { transform: none; }
   .project-link { align-self: flex-start; margin-top: 6px; }
   .page-head { padding: 56px 0 40px; }
 }
+
+/* projects: GIF di dalam kartu "proyek berikutnya" */
+.project-soon { flex-wrap: wrap; }
+.project-soon-text { flex: 1 1 0; min-width: 0; }
+.project-soon-gif { flex: 0 0 100%; margin: 14px 0 0; }
+.project-soon-gif img { display: block; width: 100%; max-width: 720px; height: auto; border-radius: 8px; }
