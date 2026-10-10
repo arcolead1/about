@@ -14,7 +14,7 @@ Object.assign(T, {
   const rand = (a, b) => a + Math.random() * (b - a);
 
   /* 1) tebak halaman yang dimaksud (jarak edit terdekat) */
-  const PAGES = ['/', '/about', '/skills', '/projects', '/stats', '/contact', '/notes', '/notes/mindustry', '/notes/note-02'];
+  const PAGES = ['/', '/about', '/skills', '/projects', '/stats', '/contact', '/notes', '/notes/mindustry', '/notes/trading'];
   const dist = (a, b) => {
     let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
     for (let i = 1; i <= a.length; i++) {

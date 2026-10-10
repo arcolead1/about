@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/notes/note-02", "destination": "/notes/trading", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

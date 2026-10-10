@@ -4,7 +4,8 @@
       "target": "main",
       "public": ".",
       "ignore": ["firebase.json", "app/**", "scripts/**", "data/**", "partials/**", "*.md", "LICENSE", "vercel.json", ".git/**", ".firebaserc", ".vercel/**", "**/.*", "**/node_modules/**"],
-      "cleanUrls": true
+      "cleanUrls": true,
+      "redirects": [{ "source": "/notes/note-02", "destination": "/notes/trading", "type": 301 }]
     },
     {
       "target": "app",

@@ -49,7 +49,7 @@ const num = (i) => String(i).padStart(2, '0');
 const chipButtons = (key, labels, lists) =>
   Object.keys(labels)
     .filter((id) => lists.some((tags) => tags.includes(id)))
-    .map((id) => `            <button class="chip chip-btn" type="button" data-filter-tag="${id}" aria-pressed="false" data-i18n="${key}.${id}">${esc(labels[id].en)}</button>`)
+    .map((id) => `                <button class="chip chip-btn" type="button" data-filter-tag="${id}" aria-pressed="false" data-i18n="${key}.${id}">${esc(labels[id].en)}</button>`)
     .join('\n');
 
 /* notes */
@@ -60,7 +60,7 @@ const moreNotes = sortedNotes.filter((note) => !note.featured);
 const noteRow = (note, index) => {
   const tags = note.tags || [];
   const q = norm([note.slug, note.title.en, note.title.id, note.desc.en, note.desc.id, ...tags.flatMap((t) => [t, noteTags[t].en, noteTags[t].id])].join(' '));
-  const chips = tags.map((t) => `<span class="chip" data-i18n="notes.tag.${t}">${esc(noteTags[t].en)}</span>`).join('');
+  const chips = tags.map((t) => `<span class="chip" data-tag="${t}" data-i18n="notes.tag.${t}">${esc(noteTags[t].en)}</span>`).join('');
   return `            <a class="project-row reveal" data-item data-q="${escAttr(q)}" data-tags="${tags.join(' ')}" href="/notes/${note.slug}"><span class="project-num">${num(index)}</span><div class="project-main"><h3 data-i18n="notes.${note.slug}.title">${esc(note.title.en)}</h3><p data-i18n="notes.${note.slug}.desc">${esc(note.desc.en)}</p><div class="row-meta"><time datetime="${note.date}" data-date="${note.date}">${shortDate(note.date)}</time>${chips}</div></div><span class="project-link" data-i18n="notes.read">READ NOTE →</span></a>`;
 };
 const mainHtml = mainNotes.map((note, i) => noteRow(note, i + 1)).join('\n');
@@ -75,7 +75,7 @@ const featuredProjects = projects.filter((p) => p.featured);
 const otherProjects = projects.filter((p) => !p.featured);
 const projMeta = (p) => {
   const status = `<span class="chip chip-status s-${p.status}" data-i18n="projects.status.${p.status}">${esc(projStatus[p.status].en)}</span>`;
-  const types = p.tags.map((t) => `<span class="chip" data-i18n="projects.type.${t}">${esc(projTypes[t].en)}</span>`);
+  const types = p.tags.map((t) => `<span class="chip" data-tag="${t}" data-i18n="projects.type.${t}">${esc(projTypes[t].en)}</span>`);
   const stack = (p.stack || []).map((t) => `<span class="chip chip-stack">${esc(t)}</span>`);
   return `<div class="row-meta">${[status, ...types, ...stack].join('')}</div>`;
 };
@@ -149,7 +149,7 @@ const pages = {
   '404.html': null,
   'notes/index.html': null,
   'notes/mindustry.html': null,
-  'notes/note-02.html': null,
+  'notes/trading.html': null,
 };
 
 const header = read('partials/header.html').trimEnd();

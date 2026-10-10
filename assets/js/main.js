@@ -35,14 +35,14 @@ const T = {
   'home.latest.title': { en:"Where it started: Mindustry logic.", id:"Awalnya dari logic Mindustry." },
   'home.latest.desc': { en:"How a phone game and its logic processor led me into web development.", id:"Bagaimana game di ponsel dan logic processor-nya membawa saya ke web development." },
   'home.latest.read':  { en:'READ THE NOTE →',  id:'BACA CATATAN →' },
-  'note2.h1':    { en:'The moment I stopped <em>watching the chart.</em>', id:'Saat saya berhenti <em>menatap chart.</em>' },
-  'note2.lead': { en:"There was a point where checking the chart felt like doing the work. It wasn't.", id:'Pernah ada titik ketika mengecek chart terasa seperti sedang bekerja. Padahal tidak.' },
-  'note2.p1': { en: "I used to think more screen time meant more chances. More candles, more setups, more moves to catch. Most of the time I was just staring at every tiny movement.", id: "Dulu saya kira makin lama di depan layar berarti makin banyak peluang. Lebih banyak candle, setup, dan pergerakan yang bisa ditangkap. Nyatanya, saya lebih sering cuma menatapi setiap gerakan kecil." },
-  'note2.p2': { en:"A setup doesn't become better because I stare at it longer. A loss doesn't become easier because I immediately hunt for the next trade. And a green candle isn't an invitation.", id:'Sebuah setup tidak menjadi lebih bagus hanya karena saya menatapnya lebih lama. Kerugian tidak menjadi lebih ringan hanya karena saya langsung mencari trade berikutnya. Dan candle hijau bukan berarti sebuah undangan.' },
-  'note2.quote': { en:'Sometimes the most disciplined thing I can do is <span>close the chart.</span>', id:'Kadang hal paling disiplin yang bisa saya lakukan adalah <span>menutup chart.</span>' },
-  'note2.p3': { en: "That changed how I want to trade. I still study structure, liquidity, entries and risk, but I want the plan to work even when the screen is off. I don't need to predict every move. I need to know my setup, decide where it's wrong, risk only what I can accept, and walk away.", id: "Itu mengubah cara saya ingin trading. Saya tetap belajar structure, liquidity, entry, dan risk, tapi saya mau rencananya tetap jalan meski layar mati. Saya tidak perlu memprediksi semua gerakan. Saya cuma perlu paham setup saya, tahu di mana setup itu salah, mengambil risiko yang bisa saya terima, lalu pergi." },
-  'note2.p4': { en: "For me, stepping away isn't wasted time, it's part of the system. I have school, prayer, family, exercise and coding, and a life outside the candles. If a plan needs me to watch every second, it's not really freedom.", id: "Buat saya, menjauh sejenak bukan waktu yang terbuang, itu bagian dari sistem. Saya punya sekolah, ibadah, keluarga, olahraga, dan coding, juga hidup di luar candle. Kalau sebuah plan mengharuskan saya menonton setiap detik, itu belum benar-benar bebas." },
-  'note2.p5': { en: "I'm still learning this. Some days I break my own rule and go back to the screen too fast. The difference is that I notice now, and I can reset before one bad decision ruins the whole session.", id: "Saya masih belajar soal ini. Beberapa hari saya masih melanggar aturan sendiri dan kembali ke layar terlalu cepat. Bedanya sekarang saya sadar, dan bisa reset sebelum satu keputusan buruk merusak satu sesi penuh." },
+  'trading.h1':    { en:'The moment I stopped <em>watching the chart.</em>', id:'Saat saya berhenti <em>menatap chart.</em>' },
+  'trading.lead': { en:"There was a point where checking the chart felt like doing the work. It wasn't.", id:'Pernah ada titik ketika mengecek chart terasa seperti sedang bekerja. Padahal tidak.' },
+  'trading.p1': { en: "I used to think more screen time meant more chances. More candles, more setups, more moves to catch. Most of the time I was just staring at every tiny movement.", id: "Dulu saya kira makin lama di depan layar berarti makin banyak peluang. Lebih banyak candle, setup, dan pergerakan yang bisa ditangkap. Nyatanya, saya lebih sering cuma menatapi setiap gerakan kecil." },
+  'trading.p2': { en:"A setup doesn't become better because I stare at it longer. A loss doesn't become easier because I immediately hunt for the next trade. And a green candle isn't an invitation.", id:'Sebuah setup tidak menjadi lebih bagus hanya karena saya menatapnya lebih lama. Kerugian tidak menjadi lebih ringan hanya karena saya langsung mencari trade berikutnya. Dan candle hijau bukan berarti sebuah undangan.' },
+  'trading.quote': { en:'Sometimes the most disciplined thing I can do is <span>close the chart.</span>', id:'Kadang hal paling disiplin yang bisa saya lakukan adalah <span>menutup chart.</span>' },
+  'trading.p3': { en: "That changed how I want to trade. I still study structure, liquidity, entries and risk, but I want the plan to work even when the screen is off. I don't need to predict every move. I need to know my setup, decide where it's wrong, risk only what I can accept, and walk away.", id: "Itu mengubah cara saya ingin trading. Saya tetap belajar structure, liquidity, entry, dan risk, tapi saya mau rencananya tetap jalan meski layar mati. Saya tidak perlu memprediksi semua gerakan. Saya cuma perlu paham setup saya, tahu di mana setup itu salah, mengambil risiko yang bisa saya terima, lalu pergi." },
+  'trading.p4': { en: "For me, stepping away isn't wasted time, it's part of the system. I have school, prayer, family, exercise and coding, and a life outside the candles. If a plan needs me to watch every second, it's not really freedom.", id: "Buat saya, menjauh sejenak bukan waktu yang terbuang, itu bagian dari sistem. Saya punya sekolah, ibadah, keluarga, olahraga, dan coding, juga hidup di luar candle. Kalau sebuah plan mengharuskan saya menonton setiap detik, itu belum benar-benar bebas." },
+  'trading.p5': { en: "I'm still learning this. Some days I break my own rule and go back to the screen too fast. The difference is that I notice now, and I can reset before one bad decision ruins the whole session.", id: "Saya masih belajar soal ini. Beberapa hari saya masih melanggar aturan sendiri dan kembali ke layar terlalu cepat. Bedanya sekarang saya sadar, dan bisa reset sebelum satu keputusan buruk merusak satu sesi penuh." },
   'notes.eyebrow': { en:"Notes", id:"Catatan" },
   'notes.h1': { en:"Short <em>notes.</em>", id:"Catatan <em>singkat.</em>" },
   'notes.intro': { en:"Things I write down while learning. No fixed schedule.", id:"Yang saya tulis sambil belajar. Tanpa jadwal tetap." },
@@ -128,6 +128,8 @@ const T = {
   /* search / filter (notes + projects) */
   'filter.all': { en: "All", id: "Semua" },
   'filter.label': { en: "Search", id: "Cari" },
+  'filter.title': { en: "Filter", id: "Filter" },
+  'filter.clearq': { en: "Clear search", id: "Hapus pencarian" },
   'filter.ph.notes': { en: "Search notes…", id: "Cari catatan…" },
   'filter.ph.projects': { en: "Search projects…", id: "Cari proyek…" },
   'filter.count.notes': { en: "Showing {n} of {t} notes", id: "Menampilkan {n} dari {t} catatan" },
@@ -202,6 +204,8 @@ function applyLang(lang) {
     }
     el.innerHTML = entry[lang] || entry.en;
   });
+  const dateFmt = new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  document.querySelectorAll('time[data-date]').forEach(t => { t.textContent = dateFmt.format(new Date(`${t.dataset.date}T00:00:00Z`)); });
   document.querySelectorAll('.lang-btn').forEach(btn => {
     const active = btn.dataset.lang === lang;
     btn.classList.toggle('on', active);

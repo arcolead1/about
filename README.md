@@ -84,7 +84,7 @@ Commit the regenerated files. The Node.js version in CI is 20.
 
 ### Adding a note
 
-1. Copy `notes/mindustry.html` to `notes/<slug>.html` and add its text keys in `assets/js/main.js`.
+1. Copy `notes/trading.html` to `notes/<slug>.html` and add its text keys in `assets/js/main.js`.
 2. Add the entry to `data/notes.json` (with `tags` from the `tags` map there) and a URL to `sitemap.xml`.
 3. Add `notes/<slug>.html` to the `pages` map in `scripts/build.mjs`.
 4. Run `node scripts/build.mjs`.

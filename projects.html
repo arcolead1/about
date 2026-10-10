@@ -68,20 +68,33 @@
 
       <div data-filter data-page="8" data-noun="projects">
         <div class="filter-bar reveal">
-          <label class="filter-search">
-            <span class="sr-only" data-i18n="filter.label">Search</span>
-            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <input type="search" data-filter-q data-ph="filter.ph.projects" placeholder="Search projects…" autocomplete="off" spellcheck="false">
-          </label>
-          <div class="filter-chips" role="group" aria-label="Filter">
-            <button class="chip chip-btn" type="button" data-filter-tag="" aria-pressed="true" data-i18n="filter.all">All</button><span class="chips-gen" data-build="projects-tags">
-            <button class="chip chip-btn" type="button" data-filter-tag="web" aria-pressed="false" data-i18n="projects.type.web">Web</button>
-            <button class="chip chip-btn" type="button" data-filter-tag="game" aria-pressed="false" data-i18n="projects.type.game">Game</button>
-            <button class="chip chip-btn" type="button" data-filter-tag="mobile" aria-pressed="false" data-i18n="projects.type.mobile">Mobile</button>
-            <button class="chip chip-btn" type="button" data-filter-tag="school" aria-pressed="false" data-i18n="projects.type.school">School</button>
-            <button class="chip chip-btn" type="button" data-filter-tag="automation" aria-pressed="false" data-i18n="projects.type.automation">Automation</button></span>
+          <div class="filter-search" data-filter-search>
+            <button class="filter-icon" type="button" data-filter-search-toggle aria-expanded="false" aria-controls="fq-projects" aria-label="Search" title="Search">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            </button>
+            <input id="fq-projects" type="search" data-filter-q data-ph="filter.ph.projects" placeholder="Search projects…" aria-label="Search" autocomplete="off" spellcheck="false">
+            <button class="filter-clear" type="button" data-filter-search-clear hidden aria-label="Clear search" title="Clear search">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
           </div>
+          <button class="filter-toggle" type="button" data-filter-panel-toggle aria-expanded="false" aria-controls="fp-projects">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>
+            <span data-i18n="filter.title">Filter</span><i class="filter-dot" aria-hidden="true"></i>
+            <svg class="filter-chev" aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
           <p class="filter-count" data-filter-count aria-live="polite"></p>
+          <div class="filter-panel" id="fp-projects" data-filter-panel inert>
+            <div class="filter-panel-in">
+              <div class="filter-chips" role="group" aria-label="Filter">
+                <button class="chip chip-btn" type="button" data-filter-tag="" aria-pressed="true" data-i18n="filter.all">All</button><span class="chips-gen" data-build="projects-tags">
+                <button class="chip chip-btn" type="button" data-filter-tag="web" aria-pressed="false" data-i18n="projects.type.web">Web</button>
+                <button class="chip chip-btn" type="button" data-filter-tag="game" aria-pressed="false" data-i18n="projects.type.game">Game</button>
+                <button class="chip chip-btn" type="button" data-filter-tag="mobile" aria-pressed="false" data-i18n="projects.type.mobile">Mobile</button>
+                <button class="chip chip-btn" type="button" data-filter-tag="school" aria-pressed="false" data-i18n="projects.type.school">School</button>
+                <button class="chip chip-btn" type="button" data-filter-tag="automation" aria-pressed="false" data-i18n="projects.type.automation">Automation</button></span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <section aria-label="Featured projects" data-filter-group>
@@ -95,7 +108,7 @@
               <span class="tag soft" data-i18n="projects.nufabase.badge">SCHOOL PROJECT · LIVE</span>
               <h3 data-i18n="projects.nufabase.title">nufabase</h3>
               <p data-i18n="projects.nufabase.desc">A school web project I build and maintain myself: data, layout, and deployment.</p>
-              <div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-i18n="projects.type.web">Web</span><span class="chip" data-i18n="projects.type.school">School</span></div>
+              <div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-tag="web" data-i18n="projects.type.web">Web</span><span class="chip" data-tag="school" data-i18n="projects.type.school">School</span></div>
               <a class="read-link" href="https://nufabase.web.app" target="_blank" rel="noreferrer" data-i18n="projects.nufabase.cta">VISIT SITE →</a>
             </div>
             <div class="code-art reveal" aria-label="Decorative code illustration">
@@ -115,7 +128,7 @@
               <span class="tag matrix" data-i18n="projects.snake.badge">GAME · MATRIX</span>
               <h3 data-i18n="projects.snake.title">Snake-game — matrix edition</h3>
               <p data-i18n="projects.snake.desc">Classic snake with a Matrix look. Eat, grow, don't hit the wall. Vanilla JS on a neon green grid.</p>
-              <div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-i18n="projects.type.game">Game</span><span class="chip" data-i18n="projects.type.web">Web</span><span class="chip chip-stack">JavaScript</span></div>
+              <div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-tag="game" data-i18n="projects.type.game">Game</span><span class="chip" data-tag="web" data-i18n="projects.type.web">Web</span><span class="chip chip-stack">JavaScript</span></div>
               <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="projects.snake.cta">PLAY THE GAME →</a>
             </div>
             <div class="code-art reveal" aria-label="Decorative code illustration">
@@ -139,9 +152,9 @@
             <span class="meta" data-i18n="proj.arch.sub">smaller stuff</span>
           </div>
           <div data-build="projects-archive">
-            <a class="project-row reveal" data-item data-q="dalim dalim — data limit dalim — batas data my newest one: an android app that tracks your daily data quota (kuota). get the latest apk from the github pre-releases. yang terbaru: aplikasi android untuk memantau kuota harian. apk terbaru ada di pre-release github. pre-release pra-rilis mobile mobile mobile" data-tags="mobile" href="https://github.com/arlingkin/dalim/releases" target="_blank" rel="noreferrer"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="projects.dalim.title">dalim — data limit</h3><p data-i18n="projects.dalim.desc">My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub pre-releases.</p><div class="row-meta"><span class="chip chip-status s-beta" data-i18n="projects.status.beta">pre-release</span><span class="chip" data-i18n="projects.type.mobile">Mobile</span></div></div><span class="project-link" data-i18n="projects.dalim.cta">GET PRE-RELEASES →</span></a>
-            <a class="project-row reveal" data-item data-q="portfolio this portfolio — arlingkin portofolio ini — arlingkin this site. plain html, css and js, several pages, clean urls. situs ini. html, css, dan js biasa, beberapa halaman, url rapi. live live web web web html css javascript" data-tags="web" href="/"><span class="project-num">04</span><div class="project-main"><h3 data-i18n="projects.portfolio.title">This portfolio — arlingkin</h3><p data-i18n="projects.portfolio.desc">This site. Plain HTML, CSS and JS, several pages, clean URLs.</p><div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-i18n="projects.type.web">Web</span><span class="chip chip-stack">HTML</span><span class="chip chip-stack">CSS</span><span class="chip chip-stack">JavaScript</span></div></div><span class="project-link" data-i18n="projects.portfolio.cta">LIVE ↗</span></a>
-            <a class="project-row reveal" data-item data-q="experiments web experiments eksperimen web small vanilla javascript builds, the streak automation and the github metrics. build kecil pakai javascript vanilla, otomasi streak, dan metrik github. ongoing berjalan web web web automation automation otomasi javascript python" data-tags="web automation" href="https://github.com/arlingkin" target="_blank" rel="noreferrer"><span class="project-num">05</span><div class="project-main"><h3 data-i18n="projects.experiments.title">Web experiments</h3><p data-i18n="projects.experiments.desc">Small vanilla JavaScript builds, the streak automation and the GitHub metrics.</p><div class="row-meta"><span class="chip chip-status s-ongoing" data-i18n="projects.status.ongoing">ongoing</span><span class="chip" data-i18n="projects.type.web">Web</span><span class="chip" data-i18n="projects.type.automation">Automation</span><span class="chip chip-stack">JavaScript</span><span class="chip chip-stack">Python</span></div></div><span class="project-link" data-i18n="projects.experiments.cta">github ↗</span></a>
+            <a class="project-row reveal" data-item data-q="dalim dalim — data limit dalim — batas data my newest one: an android app that tracks your daily data quota (kuota). get the latest apk from the github pre-releases. yang terbaru: aplikasi android untuk memantau kuota harian. apk terbaru ada di pre-release github. pre-release pra-rilis mobile mobile mobile" data-tags="mobile" href="https://github.com/arlingkin/dalim/releases" target="_blank" rel="noreferrer"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="projects.dalim.title">dalim — data limit</h3><p data-i18n="projects.dalim.desc">My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub pre-releases.</p><div class="row-meta"><span class="chip chip-status s-beta" data-i18n="projects.status.beta">pre-release</span><span class="chip" data-tag="mobile" data-i18n="projects.type.mobile">Mobile</span></div></div><span class="project-link" data-i18n="projects.dalim.cta">GET PRE-RELEASES →</span></a>
+            <a class="project-row reveal" data-item data-q="portfolio this portfolio — arlingkin portofolio ini — arlingkin this site. plain html, css and js, several pages, clean urls. situs ini. html, css, dan js biasa, beberapa halaman, url rapi. live live web web web html css javascript" data-tags="web" href="/"><span class="project-num">04</span><div class="project-main"><h3 data-i18n="projects.portfolio.title">This portfolio — arlingkin</h3><p data-i18n="projects.portfolio.desc">This site. Plain HTML, CSS and JS, several pages, clean URLs.</p><div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-tag="web" data-i18n="projects.type.web">Web</span><span class="chip chip-stack">HTML</span><span class="chip chip-stack">CSS</span><span class="chip chip-stack">JavaScript</span></div></div><span class="project-link" data-i18n="projects.portfolio.cta">LIVE ↗</span></a>
+            <a class="project-row reveal" data-item data-q="experiments web experiments eksperimen web small vanilla javascript builds, the streak automation and the github metrics. build kecil pakai javascript vanilla, otomasi streak, dan metrik github. ongoing berjalan web web web automation automation otomasi javascript python" data-tags="web automation" href="https://github.com/arlingkin" target="_blank" rel="noreferrer"><span class="project-num">05</span><div class="project-main"><h3 data-i18n="projects.experiments.title">Web experiments</h3><p data-i18n="projects.experiments.desc">Small vanilla JavaScript builds, the streak automation and the GitHub metrics.</p><div class="row-meta"><span class="chip chip-status s-ongoing" data-i18n="projects.status.ongoing">ongoing</span><span class="chip" data-tag="web" data-i18n="projects.type.web">Web</span><span class="chip" data-tag="automation" data-i18n="projects.type.automation">Automation</span><span class="chip chip-stack">JavaScript</span><span class="chip chip-stack">Python</span></div></div><span class="project-link" data-i18n="projects.experiments.cta">github ↗</span></a>
           </div>
         </section>
 
