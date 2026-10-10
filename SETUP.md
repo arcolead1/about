@@ -89,5 +89,5 @@ Angka saat ini masih acak 56-87 sebagai placeholder.
 ## Notes, RSS, email
 
 - Daftar catatan ada di `data/notes.json` (`featured: true` = catatan utama). `node scripts/build.mjs` membuat daftar di `/notes`, `feed.xml`, dan kunci i18n judul/deskripsi.
-- Halaman catatan baru: salin `notes/mindustry.html`, tambahkan kunci teksnya di `assets/js/main.js`, lalu tambahkan entri di `data/notes.json` dan `sitemap.xml`.
+- Halaman catatan baru: salin `notes/trading.html`, tambahkan kunci teksnya di `assets/js/main.js`, lalu tambahkan entri di `data/notes.json` dan `sitemap.xml`.
 - Email dirakit di `assets/js/mail.js` (tidak ada alamat mentah di HTML). Ubah alamat di file itu.

@@ -22,13 +22,7 @@ const T = {
   'skip.main':    { en:'Skip to content', id:'Lewati ke konten' },
 
   'err.eyebrow': { en: "404 - Not found", id: "404 - Tidak ketemu" },
-  'err.h1': { en: "Nothing <em>here.</em>", id: "Di sini <em>kosong.</em>" },
-  'err.intro': { en: "The link is broken or the page moved. Try one of these instead.", id: "Tautannya salah atau halamannya sudah pindah. Coba salah satu dari ini." },
   'err.home': { en: "BACK HOME →", id: "KE BERANDA →" },
-  'err.map.label': { en: "Try these", id: "Coba ini" },
-  'err.map.sub': { en: "pages that exist", id: "yang beneran ada" },
-  'err.game.title': { en: "Bored? Play snake.", id: "Bosan? Main snake." },
-  'err.game.desc': { en: "A Matrix-style snake game I made in vanilla JS.", id: "Game snake bertema Matrix, dibuat pakai JS biasa." },
 
   /* home */
   'home.eyebrow':      { en:'Personal notes - 2026',   id:'Catatan pribadi - 2026' },
@@ -41,14 +35,14 @@ const T = {
   'home.latest.title': { en:"Where it started: Mindustry logic.", id:"Awalnya dari logic Mindustry." },
   'home.latest.desc': { en:"How a phone game and its logic processor led me into web development.", id:"Bagaimana game di ponsel dan logic processor-nya membawa saya ke web development." },
   'home.latest.read':  { en:'READ THE NOTE →',  id:'BACA CATATAN →' },
-  'note2.h1':    { en:'The moment I stopped <em>watching the chart.</em>', id:'Saat saya berhenti <em>menatap chart.</em>' },
-  'note2.lead': { en:"There was a point where checking the chart felt like doing the work. It wasn't.", id:'Pernah ada titik ketika mengecek chart terasa seperti sedang bekerja. Padahal tidak.' },
-  'note2.p1': { en: "I used to think more screen time meant more chances. More candles, more setups, more moves to catch. Most of the time I was just staring at every tiny movement.", id: "Dulu saya kira makin lama di depan layar berarti makin banyak peluang. Lebih banyak candle, setup, dan pergerakan yang bisa ditangkap. Nyatanya, saya lebih sering cuma menatapi setiap gerakan kecil." },
-  'note2.p2': { en:"A setup doesn't become better because I stare at it longer. A loss doesn't become easier because I immediately hunt for the next trade. And a green candle isn't an invitation.", id:'Sebuah setup tidak menjadi lebih bagus hanya karena saya menatapnya lebih lama. Kerugian tidak menjadi lebih ringan hanya karena saya langsung mencari trade berikutnya. Dan candle hijau bukan berarti sebuah undangan.' },
-  'note2.quote': { en:'Sometimes the most disciplined thing I can do is <span>close the chart.</span>', id:'Kadang hal paling disiplin yang bisa saya lakukan adalah <span>menutup chart.</span>' },
-  'note2.p3': { en: "That changed how I want to trade. I still study structure, liquidity, entries and risk, but I want the plan to work even when the screen is off. I don't need to predict every move. I need to know my setup, decide where it's wrong, risk only what I can accept, and walk away.", id: "Itu mengubah cara saya ingin trading. Saya tetap belajar structure, liquidity, entry, dan risk, tapi saya mau rencananya tetap jalan meski layar mati. Saya tidak perlu memprediksi semua gerakan. Saya cuma perlu paham setup saya, tahu di mana setup itu salah, mengambil risiko yang bisa saya terima, lalu pergi." },
-  'note2.p4': { en: "For me, stepping away isn't wasted time, it's part of the system. I have school, prayer, family, exercise and coding, and a life outside the candles. If a plan needs me to watch every second, it's not really freedom.", id: "Buat saya, menjauh sejenak bukan waktu yang terbuang, itu bagian dari sistem. Saya punya sekolah, ibadah, keluarga, olahraga, dan coding, juga hidup di luar candle. Kalau sebuah plan mengharuskan saya menonton setiap detik, itu belum benar-benar bebas." },
-  'note2.p5': { en: "I'm still learning this. Some days I break my own rule and go back to the screen too fast. The difference is that I notice now, and I can reset before one bad decision ruins the whole session.", id: "Saya masih belajar soal ini. Beberapa hari saya masih melanggar aturan sendiri dan kembali ke layar terlalu cepat. Bedanya sekarang saya sadar, dan bisa reset sebelum satu keputusan buruk merusak satu sesi penuh." },
+  'trading.h1':    { en:'The moment I stopped <em>watching the chart.</em>', id:'Saat saya berhenti <em>menatap chart.</em>' },
+  'trading.lead': { en:"There was a point where checking the chart felt like doing the work. It wasn't.", id:'Pernah ada titik ketika mengecek chart terasa seperti sedang bekerja. Padahal tidak.' },
+  'trading.p1': { en: "I used to think more screen time meant more chances. More candles, more setups, more moves to catch. Most of the time I was just staring at every tiny movement.", id: "Dulu saya kira makin lama di depan layar berarti makin banyak peluang. Lebih banyak candle, setup, dan pergerakan yang bisa ditangkap. Nyatanya, saya lebih sering cuma menatapi setiap gerakan kecil." },
+  'trading.p2': { en:"A setup doesn't become better because I stare at it longer. A loss doesn't become easier because I immediately hunt for the next trade. And a green candle isn't an invitation.", id:'Sebuah setup tidak menjadi lebih bagus hanya karena saya menatapnya lebih lama. Kerugian tidak menjadi lebih ringan hanya karena saya langsung mencari trade berikutnya. Dan candle hijau bukan berarti sebuah undangan.' },
+  'trading.quote': { en:'Sometimes the most disciplined thing I can do is <span>close the chart.</span>', id:'Kadang hal paling disiplin yang bisa saya lakukan adalah <span>menutup chart.</span>' },
+  'trading.p3': { en: "That changed how I want to trade. I still study structure, liquidity, entries and risk, but I want the plan to work even when the screen is off. I don't need to predict every move. I need to know my setup, decide where it's wrong, risk only what I can accept, and walk away.", id: "Itu mengubah cara saya ingin trading. Saya tetap belajar structure, liquidity, entry, dan risk, tapi saya mau rencananya tetap jalan meski layar mati. Saya tidak perlu memprediksi semua gerakan. Saya cuma perlu paham setup saya, tahu di mana setup itu salah, mengambil risiko yang bisa saya terima, lalu pergi." },
+  'trading.p4': { en: "For me, stepping away isn't wasted time, it's part of the system. I have school, prayer, family, exercise and coding, and a life outside the candles. If a plan needs me to watch every second, it's not really freedom.", id: "Buat saya, menjauh sejenak bukan waktu yang terbuang, itu bagian dari sistem. Saya punya sekolah, ibadah, keluarga, olahraga, dan coding, juga hidup di luar candle. Kalau sebuah plan mengharuskan saya menonton setiap detik, itu belum benar-benar bebas." },
+  'trading.p5': { en: "I'm still learning this. Some days I break my own rule and go back to the screen too fast. The difference is that I notice now, and I can reset before one bad decision ruins the whole session.", id: "Saya masih belajar soal ini. Beberapa hari saya masih melanggar aturan sendiri dan kembali ke layar terlalu cepat. Bedanya sekarang saya sadar, dan bisa reset sebelum satu keputusan buruk merusak satu sesi penuh." },
   'notes.eyebrow': { en:"Notes", id:"Catatan" },
   'notes.h1': { en:"Short <em>notes.</em>", id:"Catatan <em>singkat.</em>" },
   'notes.intro': { en:"Things I write down while learning. No fixed schedule.", id:"Yang saya tulis sambil belajar. Tanpa jadwal tetap." },
@@ -66,7 +60,6 @@ const T = {
   'note3.p5': { en:"I also played well. I finished the campaign without mods and took every sector at 15.", id:"Saya juga bermain dengan lihai: kampanye tamat tanpa mod, dan seluruh sektor saya kuasai di usia 15 tahun." },
   'note3.link': { en:"Get my save data ↗", id:"Ambil data save saya ↗" },
   'note3.back': { en:"← back to notes", id:"← kembali ke catatan" },
-  'note2.back': { en:'← back to projects', id:'← kembali ke proyek' },
   'home.where.label':  { en:'<span class="sec-num">02</span>WHERE I AM', id:'<span class="sec-num">02</span>DI MANA SAYA' },
   'home.where.sub': { en: "based in indonesia", id: "tinggal di indonesia" },
   'home.about.tag':    { en:'<span class="idx">02.1</span>ABOUT', id:'<span class="idx">02.1</span>TENTANG' },
@@ -89,9 +82,6 @@ const T = {
   'home.now.4': { en: "Blue is my favorite color.", id: "Warna favorit saya biru." },
   'home.toolbox.label': { en:'<span class="sec-num">04</span>TOOLBOX', id:'<span class="sec-num">04</span>KOTAK PERKAKAS' },
   'home.toolbox.sub': { en: "things I build with", id: "alat yang saya pakai" },
-  'proj.note2.title': { en:'Personal Note — The moment I stopped watching the chart.', id:'Catatan Pribadi — Saat saya berhenti menatap chart.' },
-  'proj.note2.desc': { en: "About trading, screen time, and learning to step away from the chart.", id: "Soal trading, waktu di depan layar, dan belajar menjauh dari chart." },
-  'proj.note2.link':  { en:'READ NOTE →', id:'BACA CATATAN →' },
 
   /* about */
   'about.eyebrow':    { en:'01 - About me', id:'01 - Tentang saya' },
@@ -130,34 +120,25 @@ const T = {
   'proj.intro': { en: "Stuff I made while learning, from school projects to small experiments.", id: "Yang saya buat sambil belajar, dari proyek sekolah sampai eksperimen kecil." },
   'proj.feat.label': { en:'Featured', id:'Unggulan' },
   'proj.feat.sub': { en: "what I'm mostly working on", id: "yang paling sering saya kerjakan" },
-  'proj.feat.tag':   { en:'SCHOOL PROJECT · LIVE', id:'PROYEK SEKOLAH · LIVE' },
-  'proj.feat.title': { en: "nufabase", id: "nufabase" },
-  'proj.feat.desc': { en: "A school web project I build and maintain myself: data, layout, and deployment.", id: "Proyek web sekolah yang saya bangun dan rawat sendiri: dari data, layout, sampai deploy." },
-  'proj.feat.link':  { en:'VISIT SITE →', id:'KUNJUNGI SITUS →' },
-  'proj.feat2.tag':  { en:'GAME · MATRIX', id:'GAME · MATRIX' },
-  'proj.arch.label': { en:'From the archive', id:'Dari arsip' },
+  'proj.arch.label': { en:'More projects', id:'Proyek lainnya' },
   'proj.arch.sub': { en: "smaller stuff", id: "yang lebih kecil" },
-  'proj.a1.title':   { en:'This portfolio — arlingkin', id:'Portofolio ini — arlingkin' },
-  'proj.a1.desc': { en: "This site. Plain HTML, CSS and JS, several pages, clean URLs.", id: "Situs ini. HTML, CSS, dan JS biasa, beberapa halaman, URL rapi." },
-  'proj.a2.title':   { en:'School project — nufabase', id:'Proyek sekolah — nufabase' },
-  'proj.a2.desc': { en: "My main project. Started small and added features over time.", id: "Proyek utama saya. Mulai dari yang kecil, lalu ditambah fitur sedikit demi sedikit." },
-  'proj.a3.title':   { en:'Web experiments', id:'Eksperimen web' },
-  'proj.a3.desc': { en: "Small vanilla JavaScript builds, the streak automation and the GitHub metrics.", id: "Build kecil pakai JavaScript vanilla, otomasi streak, dan metrik GitHub." },
-  'proj.a4.title':   { en:'About repo (this site)', id:'Repo about (situs ini)' },
-  'proj.a4.desc': { en: "Open source, MIT license.", id: "Open source, lisensi MIT." },
-  'proj.a4.link':    { en:'SOURCE ↗', id:'SUMBER ↗' },
-  'proj.a5.title':   { en:'Snake-game — matrix edition', id:'Snake-game — edisi matrix' },
-  'proj.a5.desc': { en: "Classic snake with a Matrix look. Eat, grow, don't hit the wall. Vanilla JS on a neon green grid.", id: "Snake klasik dengan tampilan Matrix. Makan, tumbuh, jangan nabrak tembok. JS vanilla di grid hijau neon." },
-  'proj.a5.tag':     { en:'GAME · MATRIX', id:'GAME · MATRIX' },
+  'proj.soon.title': { en: "The next one is in the works.", id: "Yang berikutnya lagi dikerjakan." },
+  'proj.soon.desc': { en: "New projects land here once they're ready to show. One feature at a time.", id: "Proyek baru muncul di sini begitu siap dipamerkan. Satu fitur setiap kali." },
+
+  /* search / filter (notes + projects) */
+  'filter.all': { en: "All", id: "Semua" },
+  'filter.label': { en: "Search", id: "Cari" },
+  'filter.title': { en: "Filter", id: "Filter" },
+  'filter.clearq': { en: "Clear search", id: "Hapus pencarian" },
+  'filter.ph.notes': { en: "Search notes…", id: "Cari catatan…" },
+  'filter.ph.projects': { en: "Search projects…", id: "Cari proyek…" },
+  'filter.count.notes': { en: "Showing {n} of {t} notes", id: "Menampilkan {n} dari {t} catatan" },
+  'filter.count.projects': { en: "Showing {n} of {t} projects", id: "Menampilkan {n} dari {t} proyek" },
+  'filter.empty.title': { en: "Nothing matches that.", id: "Tidak ada yang cocok." },
+  'filter.empty.desc': { en: "Try a shorter word or clear the filters.", id: "Coba kata yang lebih pendek atau hapus filter." },
+  'filter.clear': { en: "CLEAR FILTERS", id: "HAPUS FILTER" },
+  'filter.more': { en: "SHOW MORE ↓", id: "TAMPILKAN LAGI ↓" },
   'proj.a5.link':    { en:'PLAY THE GAME →', id:'MAINKAN GAME →' },
-  'proj.a6.title':   { en:'Project — data limit', id:'Proyek — batas data' },
-  'proj.a6.desc': { en: "My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub pre-releases.", id: "Yang terbaru: aplikasi Android untuk memantau kuota harian. APK terbaru ada di pre-release GitHub." },
-  'proj.a6.link':    { en:'GET PRE-RELEASES →', id:'AMBIL PRE-RELEASE →' },
-  'proj.opencode.title': { en:'OpenCode', id:'OpenCode' },
-  'proj.opencode.desc':  { en:'An open-source AI coding agent for the terminal — built to help you code, inspect, and ship with control.', id:'AI coding agent open-source untuk terminal — membantu coding, inspeksi, dan rilis dengan kontrol tetap di tanganmu.' },
-  'proj.opencode.link':  { en:'VISIT OPENCODE →', id:'KUNJUNGI OPENCODE →' },
-  'proj.a5.archive.title': { en:'Snake-game — matrix edition', id:'Snake-game — edisi Matrix' },
-  'proj.a5.archive.desc': { en: "A small Matrix-themed browser game in vanilla JavaScript.", id: "Game browser kecil bertema Matrix, dibuat pakai JavaScript vanilla." },
 
   /* stats */
   'stats.eyebrow':    { en:'04 - GitHub stats', id:'04 - Statistik GitHub' },
@@ -223,6 +204,8 @@ function applyLang(lang) {
     }
     el.innerHTML = entry[lang] || entry.en;
   });
+  const dateFmt = new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  document.querySelectorAll('time[data-date]').forEach(t => { t.textContent = dateFmt.format(new Date(`${t.dataset.date}T00:00:00Z`)); });
   document.querySelectorAll('.lang-btn').forEach(btn => {
     const active = btn.dataset.lang === lang;
     btn.classList.toggle('on', active);
@@ -270,11 +253,12 @@ function applyConfig() {
 
 /* ── nav ──────────────────────────────────────────────────────── */
 function setActiveNav() {
-  document.querySelectorAll('.nav-link').forEach(link => {
+  /* header + footer links; a section link (e.g. /notes) stays current on its child pages */
+  document.querySelectorAll('.nav-link, .footer-link').forEach(link => {
     const href = link.getAttribute('href') || '';
-    if (href.startsWith('http')) return;
+    if (!href.startsWith('/')) return;
     const target = href.split('#')[0];
-    if ((path === '/' && target === '/') || (path !== '/' && path === target)) {
+    if (path === target || (target !== '/' && path.startsWith(target + '/'))) {
       link.classList.add('active');
       link.setAttribute('aria-current', 'page');
     }
