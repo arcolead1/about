@@ -388,21 +388,24 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .auto-card p { color: var(--muted); font-size: .8125rem; line-height: 1.55; }
 
 /* contact */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 56px 0 0; }
+.contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin: 56px 0 0; }
 .contact-card {
-  padding: 26px; border: 1px solid var(--line); border-radius: var(--radius);
+  position: relative; min-width: 0; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius);
   background: var(--panel); display: flex; flex-direction: column;
   transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease-spring), box-shadow var(--dur) var(--ease);
 }
-.contact-card:hover { border-color: color-mix(in srgb, var(--link) 50%, transparent); transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.contact-card:hover, .contact-card:focus-within { border-color: rgba(217,255,89,.5); transform: translateY(-4px); box-shadow: var(--shadow-card); }
 .contact-card .kbd { color: var(--muted); }
-.contact-card h3 { margin: 26px 0 8px; font-size: 20px; }
-.contact-card p { color: var(--muted); font-size: .875rem; line-height: 1.5; }
+.contact-card h3 { margin: 26px 0 8px; font-size: 20px; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.contact-card p { color: var(--muted); font-size: 14px; line-height: 1.5; }
 .contact-card .cta {
-  margin-top: auto; padding-top: 20px; font-family: var(--font-mono); font-size: .75rem; color: var(--link);
-  border-bottom: 1px solid color-mix(in srgb, var(--link) 50%, transparent); align-self: flex-start;
+  align-self: flex-start; display: inline-block; margin-top: auto; padding: 20px 0 8px; min-height: 44px;
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.4; color: var(--lime); overflow-wrap: anywhere;
+  background: none; border: 0; border-bottom: 1px solid rgba(217,255,89,.5); cursor: pointer;
 }
 .card-mail { grid-column: 1 / -1; }
+:root[data-theme="light"] .contact-card .cta { color: #3f5f00; border-bottom-color: rgba(63,95,0,.5); }
+:root[data-theme="light"] .contact-card .kbd { color: #586178; }
 
 /* pulse dot (status) */
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); animation: pulse 2s infinite; }
