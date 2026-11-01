@@ -44,7 +44,7 @@ Object.assign(T, {
   "skills.os.title": {"en":"OneSignal","id":"OneSignal"},
   "skills.os.desc": {"en":"Push notifications for web and mobile.","id":"Notifikasi push untuk web dan mobile."},
   "notes.simple-rockets-2.title": {"en":"How I became an engineer in Simple Rockets 2.","id":"Bagaimana saya jadi insinyur di Simple Rockets 2."},
-  "notes.simple-rockets-2.desc": {"en":"How a spaceflight sandbox taught me to see code: rockets, a space station, programs that fly themselves, and the concepts behind them.","id":"Bagaimana sandbox antariksa mengajarkan saya melihat kode: roket, stasiun luar angkasa, program yang terbang sendiri, dan konsep di baliknya."},
+  "notes.simple-rockets-2.desc": {"en":"How a spaceflight sandbox helped me understand code: rockets, a space station, programs that fly themselves, and the concepts behind them.","id":"Bagaimana sandbox antariksa membantu saya memahami kode: roket, stasiun luar angkasa, program yang terbang sendiri, dan konsep di baliknya."},
   "notes.mindustry.title": {"en":"Where it started: Mindustry logic.","id":"Awalnya dari logic Mindustry."},
   "notes.mindustry.desc": {"en":"How a phone game and its logic processor led me into web development.","id":"Bagaimana game di ponsel dan logic processor-nya membawa saya ke web development."},
   "notes.trading.title": {"en":"The moment I stopped watching the chart.","id":"Saat saya berhenti menatap chart."},
