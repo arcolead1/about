@@ -7,6 +7,7 @@ Object.assign(T, {
   'nav.stats':    { en:'stats',     id:'statistik' },
   'nav.contact':  { en:'contact',   id:'kontak' },
   'nav.github':   { en:'github ↗',  id:'github ↗' },
+  'nav.pin':      { en:'Pin header on scroll', id:'Header tetap saat scroll' },
   'footer.copy': { en: "© 2026 Arlingkin. Plain HTML, CSS and a bit of JS.", id: "© 2026 Arlingkin. HTML, CSS, dan sedikit JS." },
   'footer.hello': { en:'say hello ↗', id:'sapa saya ↗' },
   'footer.tagline': { en: "Arlingga. I build web stuff and write down what I learn.", id: "Arlingga. Bikin web dan mencatat apa yang lagi dipelajari." },

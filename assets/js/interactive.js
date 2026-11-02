@@ -19,6 +19,21 @@
     matchMedia('(min-width: 701px)').addEventListener('change', e => { if (e.matches) setNav(false); }, opts);
   }
 
+  const pinBtn = header.querySelector('.nav-pin');
+  const PIN_KEY = 'arlingkin-pin';
+  let pinOn = true;
+  try { pinOn = localStorage.getItem(PIN_KEY) !== 'off'; } catch {}
+  const applyPin = () => {
+    document.documentElement.dataset.pin = pinOn ? 'on' : 'off';
+    pinBtn?.setAttribute('aria-checked', String(pinOn));
+  };
+  applyPin();
+  pinBtn?.addEventListener('click', () => {
+    pinOn = !pinOn;
+    applyPin();
+    try { localStorage.setItem(PIN_KEY, pinOn ? 'on' : 'off'); } catch {}
+  }, opts);
+
   let popTimeout = null;
   const pop = () => {
     brand.classList.remove('is-popping');

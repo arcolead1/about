@@ -446,6 +446,12 @@ html.js .reveal-fade   { transform: none; }
   html.js .site-header nav { display: none; flex-direction: column; padding: 4px 0 2px; border-top: 1px solid var(--line-soft); }
   html.js .site-header.nav-open nav { display: flex; }
   .site-header nav .nav-link { padding: 12px 2px; }
+  html.js .nav-pin { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; margin-top: 4px; padding: 12px 2px 6px; border: 0; border-top: 1px solid var(--line-soft); background: none; color: var(--muted); cursor: pointer; font: 500 .75rem/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; text-align: left; }
+  .nav-pin::after { content: ""; flex: 0 0 auto; width: 34px; height: 18px; border: 1px solid var(--line); border-radius: 999px; background: radial-gradient(circle at 9px 50%, var(--muted) 6px, transparent 6.5px); }
+  .nav-pin[aria-checked="true"]::after { border-color: transparent; background: radial-gradient(circle at 25px 50%, #10152a 6px, transparent 6.5px), var(--link); }
+  html:not([data-pin="off"]) { scroll-padding-top: 88px; }
+  html:not([data-pin="off"]) .site-header { position: sticky; top: 0; z-index: 100; margin-inline: -20px; padding-inline: 20px; background: color-mix(in srgb, var(--paper) 84%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+  html:not([data-pin="off"]) .site-header.nav-open { max-height: 100dvh; overflow-y: auto; }
   .hero { padding: 62px 0 45px; }
   .hero-grid, .bio-grid, .feature-card, .now, .contact-grid { grid-template-columns: 1fr; gap: 28px; }
   .intro { margin: 0; }
