@@ -1,5 +1,3 @@
-# Vercel links the project into .vercel/ during CI — keep account-scoped
-# project settings out of the repo and out of Firebase uploads.
 .vercel/
 .DS_Store
 *.local

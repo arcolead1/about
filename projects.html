@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';if(localStorage.getItem('arlingkin-lang')==='id'){d.lang='id';d.dataset.lang='id';}}catch(e){}})();</script>
-  <meta name="description" content="Arlingga's projects — nufabase school project, this portfolio, and small web experiments.">
-  <meta name="keywords" content="projects, nufabase, snake game matrix, dalim data limit Android, web experiments, portfolio, Arlingkin">
+  <script>(function(){var d=document.documentElement,L;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang');if(q==='id'||q==='en'){L=q;localStorage.setItem('arlingkin-lang',q);}}catch(e){}try{L=L||localStorage.getItem('arlingkin-lang');d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';}catch(e){}if(L==='id'){d.lang='id';d.dataset.lang='id';}})();</script>
+  <meta name="description" content="Everything I have already built so far, from school work to small experiments.">
+  <meta name="keywords" content="projects, things I built, web experiments, portfolio, personal site, Arlingkin, Arlingga">
   <meta name="author" content="Arlingga">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#071a3b">
   <meta name="color-scheme" content="dark">
   <title>Arlingkin - Projects</title>
   <meta property="og:title" content="Arlingkin - Projects">
-  <meta property="og:description" content="Arlingga's projects — nufabase school project, this portfolio, and small web experiments.">
+  <meta property="og:description" content="Everything I have already built so far, from school work to small experiments.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arlingkin.vercel.app/projects">
     <link rel="canonical" href="https://arlingkin.vercel.app/projects">
-<meta property="og:image" content="https://arlingkin.vercel.app/icons/og.png">
+<meta property="og:image" content="https://arlingkin.vercel.app/icons/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Arlingkin - personal site of Arlingga">
+  <meta property="og:image:alt" content="Arlingkin, personal site of Arlingga: Making sense of code.">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="id_ID">
   <meta property="og:site_name" content="Arlingkin">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@arlingkin">
-  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.jpg">
   <link rel="alternate" type="application/rss+xml" title="Arlingkin - Notes" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -36,6 +37,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/interactive.css">
+  <link rel="stylesheet" href="assets/css/card.css">
   <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
@@ -104,7 +106,7 @@
             <span class="meta" data-i18n="proj.feat.sub">what I'm mostly working on</span>
           </div>
           <div data-build="projects-featured">
-          <article class="feature-card" data-item data-q="nufabase nufabase nufabase a school web project i build and maintain myself: data, layout, and deployment. proyek web sekolah yang saya bangun dan rawat sendiri: dari data, layout, sampai deploy. live live web web web school school sekolah" data-tags="web school">
+          <article class="feature-card" data-card-theme="rain" data-item data-q="nufabase nufabase nufabase a school web project i build and maintain myself: data, layout, and deployment. proyek web sekolah yang saya bangun dan rawat sendiri: dari data, layout, sampai deploy. live live web web web school school sekolah" data-tags="web school">
             <div class="feature-copy reveal">
               <span class="tag soft" data-i18n="projects.nufabase.badge">SCHOOL PROJECT · LIVE</span>
               <h3 data-i18n="projects.nufabase.title">nufabase</h3>
@@ -124,7 +126,7 @@
             </div>
             </div>
           </article>
-          <article class="feature-card matrix" data-item data-q="snake snake-game — matrix edition snake-game — edisi matrix classic snake with a matrix look. eat, grow, don't hit the wall. vanilla js on a neon green grid. snake klasik dengan tampilan matrix. makan, tumbuh, jangan nabrak tembok. js vanilla di grid hijau neon. live live game game game web web web javascript" data-tags="game web">
+          <article class="feature-card matrix" data-card-theme="matrix" data-item data-q="snake snake-game — matrix edition snake-game — edisi matrix classic snake with a matrix look. eat, grow, don't hit the wall. vanilla js on a neon green grid. snake klasik dengan tampilan matrix. makan, tumbuh, jangan nabrak tembok. js vanilla di grid hijau neon. live live game game game web web web javascript" data-tags="game web">
             <div class="feature-copy reveal">
               <span class="tag matrix" data-i18n="projects.snake.badge">GAME · MATRIX</span>
               <h3 data-i18n="projects.snake.title">Snake-game — matrix edition</h3>
@@ -153,7 +155,7 @@
             <span class="meta" data-i18n="proj.arch.sub">smaller stuff</span>
           </div>
           <div data-build="projects-archive">
-            <a class="project-row reveal" data-item data-q="dalim dalim — data limit dalim — batas data my newest one: an android app that tracks your daily data quota (kuota). get the latest apk from the github pre-releases. yang terbaru: aplikasi android untuk memantau kuota harian. apk terbaru ada di pre-release github. pre-release pra-rilis mobile mobile mobile" data-tags="mobile" href="https://github.com/arlingkin/dalim/releases" target="_blank" rel="noreferrer"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="projects.dalim.title">dalim — data limit</h3><p data-i18n="projects.dalim.desc">My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub pre-releases.</p><div class="row-meta"><span class="chip chip-status s-beta" data-i18n="projects.status.beta">pre-release</span><span class="chip" data-tag="mobile" data-i18n="projects.type.mobile">Mobile</span></div></div><span class="project-link" data-i18n="projects.dalim.cta">GET PRE-RELEASES →</span></a>
+            <a class="project-row reveal" data-item data-q="dalim dalim — data limit dalim — batas data my newest one: an android app that tracks your daily data quota (kuota). get the latest apk from the github releases. yang terbaru: aplikasi android untuk memantau kuota harian. apk terbaru ada di rilis github. live live mobile mobile mobile" data-tags="mobile" href="https://github.com/arlingkin/dalim/releases" target="_blank" rel="noreferrer"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="projects.dalim.title">dalim — data limit</h3><p data-i18n="projects.dalim.desc">My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub releases.</p><div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-tag="mobile" data-i18n="projects.type.mobile">Mobile</span></div></div><span class="project-link" data-i18n="projects.dalim.cta">GET LATEST RELEASE →</span></a>
             <a class="project-row reveal" data-item data-q="portfolio this portfolio — arlingkin portofolio ini — arlingkin this site. plain html, css and js, several pages, clean urls. situs ini. html, css, dan js biasa, beberapa halaman, url rapi. live live web web web html css javascript" data-tags="web" href="/"><span class="project-num">04</span><div class="project-main"><h3 data-i18n="projects.portfolio.title">This portfolio — arlingkin</h3><p data-i18n="projects.portfolio.desc">This site. Plain HTML, CSS and JS, several pages, clean URLs.</p><div class="row-meta"><span class="chip chip-status s-live" data-i18n="projects.status.live">live</span><span class="chip" data-tag="web" data-i18n="projects.type.web">Web</span><span class="chip chip-stack">HTML</span><span class="chip chip-stack">CSS</span><span class="chip chip-stack">JavaScript</span></div></div><span class="project-link" data-i18n="projects.portfolio.cta">LIVE ↗</span></a>
             <a class="project-row reveal" data-item data-q="experiments web experiments eksperimen web small vanilla javascript builds, the streak automation and the github metrics. build kecil pakai javascript vanilla, otomasi streak, dan metrik github. ongoing berjalan web web web automation automation otomasi javascript python" data-tags="web automation" href="https://github.com/arlingkin" target="_blank" rel="noreferrer"><span class="project-num">05</span><div class="project-main"><h3 data-i18n="projects.experiments.title">Web experiments</h3><p data-i18n="projects.experiments.desc">Small vanilla JavaScript builds, the streak automation and the GitHub metrics.</p><div class="row-meta"><span class="chip chip-status s-ongoing" data-i18n="projects.status.ongoing">ongoing</span><span class="chip" data-tag="web" data-i18n="projects.type.web">Web</span><span class="chip" data-tag="automation" data-i18n="projects.type.automation">Automation</span><span class="chip chip-stack">JavaScript</span><span class="chip chip-stack">Python</span></div></div><span class="project-link" data-i18n="projects.experiments.cta">github ↗</span></a>
           </div>
@@ -182,7 +184,7 @@
     <footer class="site-footer" data-build="footer">
       <div class="footer-top">
         <div class="footer-col footer-brand">
-          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
+          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span><span class="fl-text" data-text="arlingkin">arlingkin</span></a>
           <p data-i18n="footer.tagline">Arlingga. I build web stuff and write down what I learn.</p>
           <p class="footer-status"><span class="pulse" aria-hidden="true"></span><span data-i18n="footer.status">open to collaborate</span></p>
         </div>
@@ -225,9 +227,14 @@
     </footer>
   </div>
   <script src="assets/js/mail.js"></script><script src="assets/js/site-config.js"></script>
+  <script src="assets/js/i18n/core.js"></script>
+  <script src="assets/js/i18n/common.js"></script>
+  <script src="assets/js/i18n/projects.js"></script>
+  <script src="assets/js/i18n/filter.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/tools-i18n.js"></script>
   <script src="assets/js/filter.js"></script>
+  <script src="assets/js/card.js"></script>
   <script src="assets/js/interactive.js"></script>
 </body>
 </html>

@@ -15,6 +15,7 @@
     {
       "slug": "nufabase",
       "featured": true,
+      "theme": "rain",
       "tags": ["web", "school"],
       "status": "live",
       "url": "https://nufabase.web.app",
@@ -55,14 +56,14 @@
     {
       "slug": "dalim",
       "tags": ["mobile"],
-      "status": "beta",
+      "status": "live",
       "url": "https://github.com/arlingkin/dalim/releases",
       "title": { "en": "dalim — data limit", "id": "dalim — batas data" },
       "desc": {
-        "en": "My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub pre-releases.",
-        "id": "Yang terbaru: aplikasi Android untuk memantau kuota harian. APK terbaru ada di pre-release GitHub."
+        "en": "My newest one: an Android app that tracks your daily data quota (kuota). Get the latest APK from the GitHub releases.",
+        "id": "Yang terbaru: aplikasi Android untuk memantau kuota harian. APK terbaru ada di rilis GitHub."
       },
-      "cta": { "en": "GET PRE-RELEASES →", "id": "AMBIL PRE-RELEASE →" }
+      "cta": { "en": "GET LATEST RELEASE →", "id": "AMBIL RILIS TERBARU →" }
     },
     {
       "slug": "portfolio",

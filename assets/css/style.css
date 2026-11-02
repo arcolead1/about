@@ -1,18 +1,4 @@
-/* ================================================================
-   ARLINGKIN · design system
-   ----------------------------------------------------------------
-   01 · Design tokens      (colors, type, motion — calibrate here)
-   02 · Reset & base
-   03 · Layout
-   04 · Header & navigation
-   05 · Components
-   06 · Motion & scroll-reveal
-   07 · Responsive
-   ================================================================ */
-
-/* ── 01 · DESIGN TOKENS ───────────────────────────────────────── */
 :root {
-  /* palette */
   --paper:   #0a1020;
   --panel:   rgba(19,27,51,.76);
   --ink:     #f7f8ff;
@@ -28,16 +14,13 @@
   --cyan:    #8ee8ff;
   --matrix:  #00ff41;
 
-  /* type */
   --font-sans: "DM Sans", Arial, sans-serif;
   --font-mono: "DM Mono", monospace;
   --font-display: "Playfair Display", serif;
 
-  /* shape & space */
   --radius: 10px;
   --page-max: 1200px;
 
-  /* motion — one place to retune every animation feel */
   --dur-fast: .18s;
   --dur:      .3s;
   --dur-slow: .6s;
@@ -45,13 +28,11 @@
   --ease-soft: cubic-bezier(.4,0,.2,1);
   --ease-spring: cubic-bezier(.34,1.56,.64,1);
 
-  /* effects */
   --shadow-card: 0 6px 24px -12px rgba(0,0,0,.55);
   --glow-blue: 0 0 32px rgba(120,166,255,.06), 0 0 80px rgba(174,140,255,.03);
 
 }
 
-/* ── 02 · RESET & BASE ────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 
@@ -81,7 +62,6 @@ a:focus-visible, button:focus-visible {
   border-radius: 4px;
 }
 
-/* ── 03 · LAYOUT ──────────────────────────────────────────────── */
 .page { max-width: var(--page-max); margin: auto; padding: 0 32px; }
 
 .eyebrow, .meta, .tag, .nav-link, .kbd {
@@ -125,7 +105,6 @@ h1 em, .display em { color: var(--orange); font-family: var(--font-display); fon
 .section-head a { color: var(--muted); border-bottom: 1px solid currentColor; font-size: .8125rem; transition: color var(--dur) var(--ease); }
 .section-head a:hover { color: var(--link); }
 
-/* ── 04 · HEADER & NAV ────────────────────────────────────────── */
 .site-header {
   min-height: 78px;
   display: flex;
@@ -185,9 +164,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .lang-switch button.on { background: var(--lime); color: #10152a; }
 .lang-switch button + button { border-left: 1px solid var(--line); }
 
-/* ── 05 · COMPONENTS ──────────────────────────────────────────── */
-
-/* featured project */
 .featured { border-bottom: 1px solid var(--line); }
 .feature-card {
   display: grid; grid-template-columns: 1fr 1fr; min-height: 390px;
@@ -244,7 +220,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .green { color: var(--link); }
 .faint { color: var(--faint); }
 
-/* home article cards */
 .article-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); }
 .article {
   min-height: 265px; padding: 24px 26px 28px 0; border-right: 1px solid var(--line);
@@ -258,7 +233,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .article h3 { margin: 52px 0 12px; max-width: 270px; font-size: 25px; line-height: 1.05; letter-spacing: -.05em; transition: color var(--dur) var(--ease); }
 .article p { color: var(--muted); font-size: .875rem; line-height: 1.5; }
 
-/* now banner */
 .now {
   display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; margin: 75px 0; padding: 38px;
   border: 1px solid rgba(216,224,255,.28);
@@ -272,7 +246,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .now-list span { color: var(--blue); font-family: var(--font-mono); font-size: .75rem; padding-top: 2px; }
 .now-list li:last-child { border: 0; }
 
-/* about */
 .bio-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: start; margin: 56px 0; }
 .portrait {
   border-radius: var(--radius); overflow: hidden; position: relative;
@@ -289,7 +262,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .bio li b { display: block; color: var(--ink); font-weight: 600; font-size: .9375rem; margin-top: 4px; }
 .bio li::before { content: "·"; color: var(--violet); font-weight: 700; margin-right: 10px; }
 
-/* skills */
 .skill-grid { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .skill-grid--3 { grid-template-columns: repeat(3,1fr); }
 .skill {
@@ -328,7 +300,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .icon-card span { font-size: .8125rem; color: var(--muted); white-space: nowrap; }
 .icon-card:hover span { color: var(--ink); }
 
-/* projects */
 .project-row {
   display: grid; grid-template-columns: 72px 1fr auto; gap: 20px; align-items: center;
   padding: 26px 0; border-bottom: 1px solid var(--line);
@@ -347,7 +318,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .project-row.matrix .project-num { color: var(--matrix); }
 .project-row.matrix .project-link { color: var(--matrix); border-bottom-color: rgba(0,255,65,.5); text-shadow: 0 0 8px rgba(0,255,65,.35); }
 
-/* stats */
 .stats-panel { margin: 56px 0; }
 .cyber-glass {
   position: relative; border-radius: var(--radius); padding: 28px;
@@ -387,7 +357,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 .auto-card h3 { margin: 20px 0 8px; font-size: 16px; }
 .auto-card p { color: var(--muted); font-size: .8125rem; line-height: 1.55; }
 
-/* contact */
 .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin: 56px 0 0; }
 .contact-card {
   position: relative; min-width: 0; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius);
@@ -407,10 +376,8 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
 :root[data-theme="light"] .contact-card .cta { color: #3f5f00; border-bottom-color: rgba(63,95,0,.5); }
 :root[data-theme="light"] .contact-card .kbd { color: #586178; }
 
-/* pulse dot (status) */
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); animation: pulse 2s infinite; }
 
-/* ── 06 · MOTION & SCROLL-REVEAL ──────────────────────────────── */
 @keyframes pulse {
   70%  { box-shadow: 0 0 0 6px rgba(217,255,89,0); }
   100% { box-shadow: 0 0 0 0 rgba(217,255,89,0); }
@@ -428,13 +395,6 @@ nav { display: flex; gap: 22px; color: var(--muted); flex-wrap: wrap; justify-co
   50%      { box-shadow: 0 0 0 5px rgba(120,166,255,.10), 0 6px 24px -12px rgba(0,0,0,.55); }
 }
 
-/*
-   Scroll-reveal system.
-   Base `.reveal` = fade + rise. Variants give each section its own
-   signature when scrolled into view (IO adds `.in` in main.js).
-   Timing/distance are tuned via tokens above; per-element delay can
-   be set with a short class (`.d1`..`.d4`) or a `data-delay` attr.
-*/
 html.js .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -453,7 +413,6 @@ html.js .reveal-right  { transform: translateX(28px); }
 html.js .reveal-zoom   { transform: scale(.92) translateY(12px); }
 html.js .reveal-fade   { transform: none; }
 
-/* staggered delays — swap a class to recalibrate quickly */
 .d1 { --d: 70ms; }
 .d2 { --d: 140ms; }
 .d3 { --d: 210ms; }
@@ -471,7 +430,6 @@ html.js .reveal-fade   { transform: none; }
   }
 }
 
-/* ── 07 · RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width:960px) {
   .skill-grid { grid-template-columns: repeat(2,1fr); }
   .skill-grid--3 { grid-template-columns: repeat(3,1fr); }
@@ -509,7 +467,6 @@ html.js .reveal-fade   { transform: none; }
   .page-head { padding: 56px 0 40px; }
 }
 
-/* projects: GIF di dalam kartu "proyek berikutnya" */
 .project-soon { flex-wrap: wrap; }
 .project-soon-text { flex: 1 1 0; min-width: 0; }
 .project-soon-gif { flex: 0 0 100%; margin: 14px 0 0; }

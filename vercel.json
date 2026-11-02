@@ -1,7 +1,16 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/notes/note-02", "destination": "/notes/trading", "permanent": true }
+    { "source": "/notes/note-02", "destination": "/notes/trading", "permanent": true },
+    { "source": "/", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id?lang=id", "permanent": false },
+    { "source": "/about", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id/about?lang=id", "permanent": false },
+    { "source": "/skills", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id/skills?lang=id", "permanent": false },
+    { "source": "/projects", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id/projects?lang=id", "permanent": false },
+    { "source": "/stats", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id/stats?lang=id", "permanent": false },
+    { "source": "/contact", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id/contact?lang=id", "permanent": false },
+    { "source": "/notes", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id/notes?lang=id", "permanent": false },
+    { "source": "/notes/mindustry", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id/notes/mindustry?lang=id", "permanent": false },
+    { "source": "/notes/trading", "has": [{ "type": "query", "key": "lang", "value": "id" }], "destination": "/id/notes/trading?lang=id", "permanent": false }
   ],
   "headers": [
     {
@@ -29,7 +38,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-Y3rQFzgmZ1kQ9v+96BQjBWh2wlaDSyxZMqEEeCfeg7E=' 'sha256-d4bT/6OpDGnIXBTr/SxPhvE4PrJjdmchMBJYaVh8els=' 'inline-speculation-rules'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://raw.githubusercontent.com https://streak-stats.demolab.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+          "value": "default-src 'self'; script-src 'self' 'sha256-Fg5jqtoo+8b/glY4GTi9/g9WbYfWSupym29WwWyXm9I=' 'sha256-d4bT/6OpDGnIXBTr/SxPhvE4PrJjdmchMBJYaVh8els=' 'inline-speculation-rules'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://raw.githubusercontent.com https://streak-stats.demolab.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
         }
       ]
     },

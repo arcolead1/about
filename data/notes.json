@@ -15,9 +15,46 @@
     "habits": {
       "en": "habits",
       "id": "kebiasaan"
+    },
+    "science": {
+      "en": "science",
+      "id": "sains"
+    },
+    "sandbox": {
+      "en": "sandbox",
+      "id": "sandbox"
+    },
+    "rockets": {
+      "en": "rockets",
+      "id": "roket"
+    },
+    "engineer": {
+      "en": "engineer",
+      "id": "insinyur"
     }
   },
   "notes": [
+    {
+      "slug": "simple-rockets-2",
+      "date": "2026-10-18",
+      "featured": false,
+      "title": {
+        "en": "How I became an engineer in Simple Rockets 2.",
+        "id": "Bagaimana saya jadi insinyur di Simple Rockets 2."
+      },
+      "desc": {
+        "en": "How a spaceflight sandbox helped me understand code: rockets, a space station, programs that fly themselves, and the concepts behind them.",
+        "id": "Bagaimana sandbox antariksa membantu saya memahami kode: roket, stasiun luar angkasa, program yang terbang sendiri, dan konsep di baliknya."
+      },
+      "tags": [
+        "programming",
+        "game",
+        "science",
+        "sandbox",
+        "rockets",
+        "engineer"
+      ]
+    },
     {
       "slug": "mindustry",
       "date": "2026-10-03",

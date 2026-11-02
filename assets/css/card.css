@@ -1,0 +1,9 @@
+.feature-card[data-card-theme="rain"] { --rain-head: var(--lime); --rain-mid: var(--cyan); --rain-tail: var(--blue); }
+.feature-card[data-card-theme="rain"] .code-art { background: linear-gradient(165deg, #020817 0%, #071a3b 55%, #01040d 100%); }
+.feature-card[data-card-theme="rain"] .code-art:before { inset: 0; width: auto; height: auto; border-radius: 0; background: radial-gradient(circle at 50% 115%, color-mix(in srgb, var(--rain-mid) 24%, transparent), transparent 62%); }
+.feature-card[data-card-theme="rain"] .tag.soft { background: color-mix(in srgb, var(--rain-mid) 12%, transparent); color: var(--rain-mid); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--rain-mid) 35%, transparent); }
+.card-rain {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+}

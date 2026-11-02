@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';if(localStorage.getItem('arlingkin-lang')==='id'){d.lang='id';d.dataset.lang='id';}}catch(e){}})();</script>
-  <meta name="description" content="Arlingga's personal site: web development projects, skills and notes.">
+  <script>(function(){var d=document.documentElement,L;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang');if(q==='id'||q==='en'){L=q;localStorage.setItem('arlingkin-lang',q);}}catch(e){}try{L=L||localStorage.getItem('arlingkin-lang');d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';}catch(e){}if(L==='id'){d.lang='id';d.dataset.lang='id';}})();</script>
+  <meta name="description" content="Arlingkin: the personal site of Arlingga, where I make things for the web and keep short notes on what I'm learning.">
   <meta name="keywords" content="Arlingga, Arlingkin, web developer Indonesia, portfolio, frontend, backend, devops, AI engineering, JavaScript, personal notes">
   <meta name="author" content="Arlingga">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -12,20 +12,21 @@
   <meta name="color-scheme" content="dark">
   <title>Arlingkin - Home</title>
   <meta property="og:title" content="Arlingkin - Home">
-  <meta property="og:description" content="Arlingga's personal site: web development projects, skills and notes.">
+  <meta property="og:description" content="Arlingkin: the personal site of Arlingga, where I make things for the web and keep short notes on what I'm learning.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arlingkin.vercel.app/">
     <link rel="canonical" href="https://arlingkin.vercel.app/">
-<meta property="og:image" content="https://arlingkin.vercel.app/icons/og.png">
+<meta property="og:image" content="https://arlingkin.vercel.app/icons/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Arlingkin - personal site of Arlingga">
+  <meta property="og:image:alt" content="Arlingkin, personal site of Arlingga: Making sense of code.">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="id_ID">
   <meta property="og:site_name" content="Arlingkin">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@arlingkin">
-  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.jpg">
   <link rel="alternate" type="application/rss+xml" title="Arlingkin - Notes" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -79,8 +80,8 @@
         <div class="section-head"><h2 id="featured-title" data-i18n="home.latest.label"><span class="sec-num">01</span>LATEST NOTE</h2><a href="/notes" data-i18n="home.latest.link">all notes</a></div>
         <article class="feature-card personal-note"><div class="feature-copy reveal"><span class="tag personal-note-tag" data-i18n="home.latest.tag">PERSONAL NOTE</span><h3 data-i18n="home.latest.title">Where it started: Mindustry logic.</h3><p data-i18n="home.latest.desc">How a phone game and its logic processor led me into web development.</p><a class="read-link" href="/notes/mindustry" data-i18n="home.latest.read">READ THE NOTE →</a></div><div class="code-art reveal"><div class="code-window"><div class="dots"><i></i><i></i><i></i></div><span class="pink">sensor</span> n pad1 <span class="purple">@copper</span><br><span class="pink">draw</span> rect x 0 1 <span class="green">n</span><br><span class="pink">drawflush</span> display1<br><br><span class="faint">// items in, graph out</span></div></div></article>
       </section>
-      <section aria-labelledby="archive-title"><div class="section-head"><h2 id="archive-title" data-i18n="home.where.label"><span class="sec-num">02</span>WHERE I AM</h2><span class="meta" data-i18n="home.where.sub">based in indonesia</span></div><div class="article-grid"><a class="article reveal reveal-left d1" href="/about"><p class="meta" data-i18n="home.about.tag"><span class="idx">02.1</span>ABOUT</p><h3 data-i18n="home.about.title">Hi, I'm Arlingga</h3><p data-i18n="home.about.desc">Web dev: frontend, backend, a bit of devops and AI.</p></a><a class="article reveal d2" href="/skills"><p class="meta" data-i18n="home.skills.tag"><span class="idx">02.2</span>SKILLS</p><h3 data-i18n="home.skills.title">The toolbox</h3><p data-i18n="home.skills.desc">JS, Python, Java, Tailwind, NextJS, Firebase, Supabase and more.</p></a><a class="article reveal d3" href="/stats"><p class="meta" data-i18n="home.stats.tag"><span class="idx">02.3</span>STATS</p><h3 data-i18n="home.stats.title">GitHub stats</h3><p data-i18n="home.stats.desc">My GitHub activity and streak, updated automatically.</p></a><a class="article reveal reveal-right d4" href="/projects"><p class="meta" data-i18n="home.proj.tag"><span class="idx">02.4</span>PROJECTS</p><h3 data-i18n="home.proj.title">Things I built</h3><p data-i18n="home.proj.desc">A school web app, a Matrix-style snake game, an Android data-quota tracker and a few web experiments.</p></a></div></section>
-      <section class="now reveal reveal-right" id="now" aria-labelledby="now-title"><div><p class="eyebrow" data-i18n="home.now.label"><span class="sec-num">03</span>RIGHT NOW</p><h2 id="now-title" data-i18n="home.now.h2">What I'm<br><em>up to.</em></h2></div><ul class="now-list"><li><span>01</span><span data-i18n="home.now.1">Working on a personal project, one feature at a time.</span></li><li><span>02</span><span data-i18n="home.now.2">Learning JavaScript, CSS and HTML by building stuff.</span></li><li><span>03</span><span data-i18n="home.now.3">Still tweaking this site.</span></li><li><span>04</span><span data-i18n="home.now.4">Blue is my favorite color.</span></li></ul></section>
+      <section aria-labelledby="archive-title"><div class="section-head"><h2 id="archive-title" data-i18n="home.where.label"><span class="sec-num">02</span>WHERE I AM</h2><span class="meta" data-i18n="home.where.sub">based in indonesia</span></div><div class="article-grid"><a class="article reveal reveal-left d1" href="/about"><p class="meta" data-i18n="home.about.tag"><span class="idx">02.1</span>ABOUT</p><h3 data-i18n="home.about.title">Hi, I'm Arlingga</h3><p data-i18n="home.about.desc">Web dev: frontend, backend, a bit of devops and AI.</p></a><a class="article reveal d2" href="/projects"><p class="meta" data-i18n="home.proj.tag"><span class="idx">02.2</span>PROJECTS</p><h3 data-i18n="home.proj.title">Things I built</h3><p data-i18n="home.proj.desc">A school web app, a Matrix-style snake game, an Android data-quota tracker and a few web experiments.</p></a><a class="article reveal d3" href="/skills"><p class="meta" data-i18n="home.skills.tag"><span class="idx">02.3</span>SKILLS</p><h3 data-i18n="home.skills.title">The toolbox</h3><p data-i18n="home.skills.desc">JS, Python, Java, Tailwind, NextJS, Firebase, Supabase and more.</p></a><a class="article reveal reveal-right d4" href="/stats"><p class="meta" data-i18n="home.stats.tag"><span class="idx">02.4</span>STATS</p><h3 data-i18n="home.stats.title">GitHub stats</h3><p data-i18n="home.stats.desc">My GitHub activity and streak, updated automatically.</p></a></div></section>
+      <section class="now reveal reveal-right" id="now" aria-labelledby="now-title"><div><p class="eyebrow" data-i18n="home.now.label"><span class="sec-num">03</span>RIGHT NOW</p><h2 id="now-title" data-i18n="home.now.h2">What I'm<br><em>up to.</em></h2></div><ul class="now-list"><li><span>01</span><span data-i18n="home.now.1">Working on a personal project, one feature at a time.</span></li><li><span>02</span><span data-i18n="home.now.2">Learning JavaScript, CSS and HTML by building stuff.</span></li><li><span>03</span><span data-i18n="home.now.3">Still tweaking this site.</span></li><li><span>04</span><span data-i18n="home.now.4">Writing short notes about what I learn.</span></li></ul></section>
       <section class="tool-marquee reveal" aria-labelledby="tool-marquee-title">
         <div class="section-head">
           <h2 id="tool-marquee-title" data-i18n="home.toolbox.label"><span class="sec-num">04</span>TOOLBOX</h2>
@@ -111,7 +112,7 @@
     <footer class="site-footer" data-build="footer">
       <div class="footer-top">
         <div class="footer-col footer-brand">
-          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
+          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span><span class="fl-text" data-text="arlingkin">arlingkin</span></a>
           <p data-i18n="footer.tagline">Arlingga. I build web stuff and write down what I learn.</p>
           <p class="footer-status"><span class="pulse" aria-hidden="true"></span><span data-i18n="footer.status">open to collaborate</span></p>
         </div>
@@ -153,7 +154,11 @@
       </div>
     </footer>
   </div>
-  <script src="assets/js/mail.js"></script><script src="assets/js/site-config.js"></script><script src="assets/js/main.js"></script>
+  <script src="assets/js/mail.js"></script><script src="assets/js/site-config.js"></script>  <script src="assets/js/i18n/core.js"></script>
+  <script src="assets/js/i18n/common.js"></script>
+  <script src="assets/js/i18n/home.js"></script>
+  <script src="assets/js/i18n/now.js"></script>
+  <script src="assets/js/main.js"></script>
   <script src="assets/js/interactive.js"></script>
 </body>
 </html>

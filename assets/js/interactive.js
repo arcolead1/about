@@ -183,7 +183,6 @@
   const KEY = 'arlingkin-bg';
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const liteQuery = matchMedia('(max-width: 700px), (pointer: coarse)');
   const controller = new AbortController();
   const opts = { signal: controller.signal };
   let channel = null;
@@ -192,9 +191,7 @@
   const rand = (min, max) => min + Math.random() * (max - min);
   const idle = cb => ('requestIdleCallback' in window ? requestIdleCallback(cb, { timeout: 1000 }) : setTimeout(cb, 150));
   const isPalette = v => v && [v.a, v.b, v.c].every(Number.isFinite);
-  const detectLite = () => liteQuery.matches || (navigator.deviceMemory ?? 8) <= 4 || navigator.connection?.saveData === true;
   let current = { a: 158, b: 196, c: 330 };
-  let lite = false;
   let alt = false;
 
   const setVars = (prefix, palette) => {
@@ -204,7 +201,6 @@
   };
 
   let swapping = false, swapTimer = null;
-  /* Crossfade guard: one swap at a time; slow time-based layer animations pause while the fade runs (bg-swap). */
   const paint = palette => {
     if (swapping) return false;
     swapping = true;
@@ -227,11 +223,6 @@
     setVars('--bg2-', palette);
     root.classList.remove('bg-alt');
     requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('bg-instant')));
-  };
-
-  const applyLite = () => {
-    lite = detectLite();
-    root.classList.toggle('lite', lite);
   };
 
   const readStored = () => {
@@ -271,8 +262,7 @@
 
   const stored = readStored();
   paintInstant(stored || current);
-  applyLite();
-  liteQuery.addEventListener('change', applyLite, opts);
+
 
   channel?.addEventListener('message', e => receive(e.data), opts);
   addEventListener('storage', e => {
@@ -429,81 +419,78 @@
 })();
 
 (() => {
-  const mark = document.querySelector('.footer-mark');
-  if (!mark) return;
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = matchMedia('(pointer: fine)');
-  const controller = new AbortController();
-  const opts = { signal: controller.signal };
-  const letters = [...mark.textContent.trim()];
-  mark.textContent = '';
-  letters.forEach((ch, i) => {
-    const span = document.createElement('span');
-    span.className = 'fm-l';
-    span.textContent = ch;
-    span.style.setProperty('--i', i);
-    span.style.setProperty('--r', i % 2 ? 1 : -1);
-    if (ch === 'i') span.dataset.hero = '';
-    mark.appendChild(span);
-  });
-  const last = mark.lastElementChild;
-  let running = false, seen = false, inView = false, guard = null, frame = null;
-  const release = () => {
-    clearTimeout(guard);
-    mark.classList.remove('is-hopping', 'is-entering');
-    running = false;
-  };
-  const hop = () => {
-    if (running || reduced.matches || !last) return;
-    running = true;
-    mark.classList.add('is-hopping');
-    guard = setTimeout(release, 3500);
-  };
-  const enter = () => {
-    if (running || reduced.matches || !last) return;
-    running = true;
-    mark.classList.remove('is-armed');
-    mark.classList.add('is-entering');
-    guard = setTimeout(release, 4500);
-  };
-  if (!reduced.matches && last) mark.classList.add('is-armed');
-  mark.addEventListener('click', hop, opts);
-  mark.addEventListener('animationend', event => {
-    if (event.target !== last) return;
-    if (event.animationName === 'fm-in') { release(); hop(); }
-    else if (event.animationName.startsWith('fm-hop')) release();
-  }, opts);
-
-  if (finePointer.matches && !reduced.matches) {
-    let px = -9999, py = 0;
-    const paint = () => {
-      mark.style.setProperty('--mx', `${px}px`);
-      mark.style.setProperty('--my', `${py}px`);
-      frame = null;
+  const footer = document.querySelector('.site-footer');
+  if (!footer) return;
+  const origin = document.currentScript?.src || `${location.origin}/assets/js/interactive.js`;
+  const asset = rel => new URL(rel, origin).href;
+  let started = false;
+  const load = () => {
+    if (started) return;
+    started = true;
+    const run = () => {
+      const script = document.createElement('script');
+      script.src = asset('footer-fx.min.js');
+      script.async = true;
+      document.body.append(script);
     };
-    mark.addEventListener('pointermove', e => {
-      const rect = mark.getBoundingClientRect();
-      px = e.clientX - rect.left;
-      py = e.clientY - rect.top;
-      if (frame === null) frame = requestAnimationFrame(paint);
-    }, { ...opts, passive: true });
-    mark.addEventListener('pointerleave', () => { px = -9999; paint(); }, opts);
-  }
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = asset('../css/footer-fx.min.css');
+    css.onload = css.onerror = run;
+    document.head.append(css);
+  };
+  if (!('IntersectionObserver' in window)) { load(); return; }
+  const io = new IntersectionObserver(entries => {
+    if (entries.some(e => e.isIntersecting)) { io.disconnect(); load(); }
+  }, { rootMargin: '0px 0px 800px 0px' });
+  io.observe(footer);
+  addEventListener('pagehide', () => io.disconnect(), { once: true });
+})();
 
-  let prevY = scrollY;
-  const observer = new IntersectionObserver(([entry]) => {
-    const down = scrollY > prevY;
-    prevY = scrollY;
-    if (!entry.isIntersecting) { inView = false; return; }
-    if (!seen) { seen = true; enter(); }
-    else if (!inView && down) hop();
-    inView = true;
-  }, { threshold: 0.55 });
-  observer.observe(mark);
-  addEventListener('pagehide', () => {
-    clearTimeout(guard);
-    if (frame !== null) cancelAnimationFrame(frame);
-    observer.disconnect();
-    controller.abort();
-  }, { once: true });
+(() => {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const SEL = '.article, .skill, .icon-card, .contact-card';
+  let frame = null, x = 0, y = 0, target = null;
+  const paint = () => {
+    frame = null;
+    const r = target.getBoundingClientRect();
+    target.style.setProperty('--mx', `${x - r.left}px`);
+    target.style.setProperty('--my', `${y - r.top}px`);
+  };
+  document.addEventListener('pointermove', e => {
+    const t = e.target.closest?.(SEL);
+    if (!t) return;
+    target = t; x = e.clientX; y = e.clientY;
+    if (frame === null) frame = requestAnimationFrame(paint);
+  }, { passive: true });
+})();
+
+(() => {
+  const header = document.querySelector('.site-header');
+  if (!header || document.querySelector('.nf')) return;
+  let segs;
+  try { segs = decodeURIComponent(location.pathname).replace(/\.html$/, '').split('/').filter(Boolean); } catch { return; }
+  if (segs[segs.length - 1] === 'index') segs.pop();
+  if (!segs.length) return;
+  const trail = document.createElement('nav');
+  trail.className = 'crumbs';
+  trail.setAttribute('aria-label', 'Breadcrumb');
+  const ol = document.createElement('ol');
+  const add = (label, href, key) => {
+    const li = document.createElement('li');
+    const el = document.createElement(href ? 'a' : 'span');
+    if (href) el.href = href; else el.setAttribute('aria-current', 'page');
+    if (key && typeof T !== 'undefined' && T[key]) el.setAttribute('data-i18n', key);
+    el.textContent = label;
+    li.appendChild(el);
+    ol.appendChild(li);
+  };
+  add('home', '/', 'nav.home');
+  segs.forEach((seg, i) => {
+    const key = `nav.${seg}`;
+    const known = typeof T !== 'undefined' && T[key] && i === 0;
+    add(known ? T[key].en : seg, i < segs.length - 1 ? `/${segs.slice(0, i + 1).join('/')}` : null, known ? key : null);
+  });
+  trail.appendChild(ol);
+  header.insertAdjacentElement('afterend', trail);
 })();

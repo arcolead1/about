@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';if(localStorage.getItem('arlingkin-lang')==='id'){d.lang='id';d.dataset.lang='id';}}catch(e){}})();</script>
+  <script>(function(){var d=document.documentElement,L;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang');if(q==='id'||q==='en'){L=q;localStorage.setItem('arlingkin-lang',q);}}catch(e){}try{L=L||localStorage.getItem('arlingkin-lang');d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';}catch(e){}if(L==='id'){d.lang='id';d.dataset.lang='id';}})();</script>
   <meta name="robots" content="noindex">
-  <meta name="description" content="404: this page doesn't exist. Head back to Arlingga's site.">
+  <meta name="description" content="404: this page doesn't exist. Head back to arlingkin.">
   <meta name="theme-color" content="#071a3b">
   <meta name="color-scheme" content="dark">
   <title>Arlingkin - 404</title>
   <meta property="og:title" content="Arlingkin - 404">
+  <meta property="og:description" content="404: this page doesn't exist. Head back to arlingkin.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <meta property="og:image" content="https://arlingkin.vercel.app/icons/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Arlingkin - personal site of Arlingga">
+  <meta property="og:image:alt" content="Arlingkin, personal site of Arlingga: Making sense of code.">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="id_ID">
   <meta property="og:site_name" content="Arlingkin">
@@ -124,7 +126,7 @@
 
         <div class="nf-actions">
           <a class="read-link" href="/" data-i18n="err.home">BACK HOME →</a>
-          <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="proj.a5.link">PLAY THE GAME →</a>
+          <a class="read-link" href="https://arlingkin.github.io/Snake-game" target="_blank" rel="noreferrer" data-i18n="e404.play">PLAY THE GAME →</a>
         </div>
 
         <nav class="nf-links" aria-labelledby="nf-links-title">
@@ -144,7 +146,7 @@
     <footer class="site-footer" data-build="footer">
       <div class="footer-top">
         <div class="footer-col footer-brand">
-          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
+          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span><span class="fl-text" data-text="arlingkin">arlingkin</span></a>
           <p data-i18n="footer.tagline">Arlingga. I build web stuff and write down what I learn.</p>
           <p class="footer-status"><span class="pulse" aria-hidden="true"></span><span data-i18n="footer.status">open to collaborate</span></p>
         </div>
@@ -187,6 +189,8 @@
     </footer>
   </div>
   <script src="/assets/js/mail.js"></script><script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/i18n/core.js"></script>
+  <script src="/assets/js/i18n/common.js"></script>
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/interactive.js"></script>
   <script src="/assets/js/404.js"></script>

@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';if(localStorage.getItem('arlingkin-lang')==='id'){d.lang='id';d.dataset.lang='id';}}catch(e){}})();</script>
-  <meta name="description" content="About Arlingga, a web developer from Indonesia working on a personal project and open to collaborating.">
-  <meta name="keywords" content="about Arlingga, Arlingkin, web developer Indonesia, frontend developer, backend developer, devops, personal project">
+  <script>(function(){var d=document.documentElement,L;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang');if(q==='id'||q==='en'){L=q;localStorage.setItem('arlingkin-lang',q);}}catch(e){}try{L=L||localStorage.getItem('arlingkin-lang');d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';}catch(e){}if(L==='id'){d.lang='id';d.dataset.lang='id';}})();</script>
+  <meta name="description" content="Who is behind arlingkin: Arlingga, a web developer from Indonesia who went from playing games to writing code.">
+  <meta name="keywords" content="about Arlingga, Arlingga Ainul Yakin, Arlingkin, web developer Indonesia, frontend developer, backend developer, devops, personal project">
   <meta name="author" content="Arlingga">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#071a3b">
   <meta name="color-scheme" content="dark">
   <title>Arlingkin - About</title>
   <meta property="og:title" content="Arlingkin - About">
-  <meta property="og:description" content="About Arlingga, a web developer from Indonesia working on a personal project and open to collaborating.">
+  <meta property="og:description" content="Who is behind arlingkin: Arlingga, a web developer from Indonesia who went from playing games to writing code.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arlingkin.vercel.app/about">
     <link rel="canonical" href="https://arlingkin.vercel.app/about">
-<meta property="og:image" content="https://arlingkin.vercel.app/icons/og.png">
+<meta property="og:image" content="https://arlingkin.vercel.app/icons/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Arlingkin - personal site of Arlingga">
+  <meta property="og:image:alt" content="Arlingkin, personal site of Arlingga: Making sense of code.">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="id_ID">
   <meta property="og:site_name" content="Arlingkin">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@arlingkin">
-  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.jpg">
   <link rel="alternate" type="application/rss+xml" title="Arlingkin - Notes" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -64,7 +65,7 @@
       <section class="page-head reveal reveal-zoom" aria-labelledby="about-title">
         <p class="eyebrow" data-i18n="about.eyebrow">01 - About me</p>
         <h1 id="about-title" data-i18n="about.h1">Hi, I'm<br><em>Arlingga.</em></h1>
-        <p class="intro" data-i18n="about.intro">I do web development: frontend, backend, some devops and AI work.</p>
+        <p class="intro" data-i18n="about.intro">Web developer from Indonesia. I started out playing games and ended up writing code.</p>
       </section>
 
       <section class="bio-grid reveal reveal-left" aria-label="Biography">
@@ -72,15 +73,15 @@
           <img src="icons/icon.jpg" alt="Profile icon of Arlingga">
         </div>
         <div class="bio reveal reveal-fade d2">
-          <p class="lead" data-i18n="about.lead">I build things for the web and <em>learn by doing.</em></p>
-          <p data-i18n="about.p1">I'm a developer from Indonesia 🇮🇩. I work on frontend, backend, devops and a bit of AI. Right now I'm busy with a personal project and learning JavaScript, CSS and HTML by actually building things, because that's how it sticks.</p>
-          <p data-i18n="about.p2">I like shipping small things and keeping them simple. Oh, and blue is my favorite color, in case you need something to talk about.</p>
+          <p class="lead" data-i18n="about.lead">I started with games and ended up <em>building for the web.</em></p>
+          <p data-i18n="about.p1">My name is Arlingga Ainul Yakin, or Arlingkin online: Arling + kin. I'm a developer from Indonesia 🇮🇩 who loves playing games, and that is what pulled me into coding (<a href="/notes/mindustry">the story</a> is in my <a href="/notes">notes</a>). Now I work on frontend, backend, devops and a bit of AI.</p>
+          <p data-i18n="about.p2">I learn JavaScript, CSS and HTML by building real things: a school web app, a Matrix-style snake game, an Android data-quota tracker, and now a personal project. I like shipping small things, keeping them simple, and writing down what I learn.</p>
           <ul class="facts">
             <li data-i18n="about.fact.loc">location<b>Indonesia 🇮🇩</b></li>
             <li data-i18n="about.fact.stat">status<b>active</b></li>
             <li data-i18n="about.fact.work">working on<b>personal project</b></li>
             <li data-i18n="about.fact.open">open to<b>collaborate</b></li>
-            <li data-i18n="about.fact.col">favorite color<b>blue 💙</b></li>
+            <li data-i18n="about.fact.alias">also known as<b>Arlingkin</b></li>
             <li data-i18n="about.fact.em">email<b data-mail-text></b></li>
           </ul>
         </div>
@@ -103,7 +104,7 @@
     <footer class="site-footer" data-build="footer">
       <div class="footer-top">
         <div class="footer-col footer-brand">
-          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
+          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span><span class="fl-text" data-text="arlingkin">arlingkin</span></a>
           <p data-i18n="footer.tagline">Arlingga. I build web stuff and write down what I learn.</p>
           <p class="footer-status"><span class="pulse" aria-hidden="true"></span><span data-i18n="footer.status">open to collaborate</span></p>
         </div>
@@ -146,6 +147,10 @@
     </footer>
   </div>
   <script src="assets/js/mail.js"></script><script src="assets/js/site-config.js"></script>
+  <script src="assets/js/i18n/core.js"></script>
+  <script src="assets/js/i18n/common.js"></script>
+  <script src="assets/js/i18n/about.js"></script>
+  <script src="assets/js/i18n/now.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/interactive.js"></script>
 </body>

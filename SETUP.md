@@ -68,7 +68,7 @@ setting project-scoped Vercel tidak ikut ter-commit atau ter-upload Firebase.
 Lihat `assets/js/site-config.js`. Override dari GitHub:
 **Settings → Secrets and variables → Actions → Variables** dengan alias:
 `SITE_LOCATION`, `SITE_STATUS`, `SITE_WORKING_ON`, `SITE_OPEN_TO`,
-`SITE_FAV_COLOR`, `SITE_EMAIL`, `SITE_ROLE`, `SITE_TAGLINE`, `SITE_NOW_1..4`.
+`SITE_EMAIL`, `SITE_ROLE`, `SITE_TAGLINE`, `SITE_NOW_1..4`.
 
 ## Daftar tool, header, footer (generator)
 

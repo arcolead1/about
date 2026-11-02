@@ -1,0 +1,55 @@
+{
+  "pages": {
+    "index.html": [
+      "common",
+      "home",
+      "now"
+    ],
+    "about.html": [
+      "common",
+      "about",
+      "now"
+    ],
+    "skills.html": [
+      "common",
+      "skills"
+    ],
+    "projects.html": [
+      "common",
+      "projects",
+      "filter"
+    ],
+    "stats.html": [
+      "common",
+      "stats"
+    ],
+    "contact.html": [
+      "common",
+      "contact"
+    ],
+    "404.html": [
+      "common"
+    ],
+    "notes/index.html": [
+      "common",
+      "notes",
+      "filter"
+    ],
+    "notes/mindustry.html": [
+      "common",
+      "note-mindustry"
+    ],
+    "notes/trading.html": [
+      "common",
+      "note-trading"
+    ],
+    "notes/simple-rockets-2.html": [
+      "common",
+      "note-simple-rockets-2"
+    ],
+    "welcome.html": [
+      "common",
+      "welcome"
+    ]
+  }
+}

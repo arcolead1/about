@@ -6,7 +6,14 @@
     <atom:link href="https://arlingkin.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Short notes from Arlingga.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 03 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>How I became an engineer in Simple Rockets 2.</title>
+      <link>https://arlingkin.vercel.app/notes/simple-rockets-2</link>
+      <guid isPermaLink="true">https://arlingkin.vercel.app/notes/simple-rockets-2</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 GMT</pubDate>
+      <description>How a spaceflight sandbox helped me understand code: rockets, a space station, programs that fly themselves, and the concepts behind them.</description>
+    </item>
     <item>
       <title>Where it started: Mindustry logic.</title>
       <link>https://arlingkin.vercel.app/notes/mindustry</link>

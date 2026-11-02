@@ -1,0 +1,45 @@
+{
+  "alt": "Arlingkin, situs pribadi Arlingga: Menerka makna kode.",
+  "pages": {
+    "index.html": {
+      "title": "Arlingkin - Beranda",
+      "desc": "Arlingkin: situs pribadi Arlingga, tempat saya membuat hal-hal untuk web dan mencatat apa yang lagi saya pelajari."
+    },
+    "about.html": {
+      "title": "Arlingkin - Tentang",
+      "desc": "Siapa di balik arlingkin: Arlingga, web developer dari Indonesia yang awalnya main game, lalu belajar ngoding."
+    },
+    "skills.html": {
+      "title": "Arlingkin - Kemampuan",
+      "desc": "Kotak perkakas yang saya pakai: bahasa, framework, dan platform, beserta seberapa jauh saya menguasainya."
+    },
+    "projects.html": {
+      "title": "Arlingkin - Proyek",
+      "desc": "Semua yang sudah saya buat sejauh ini, dari proyek sekolah sampai eksperimen kecil."
+    },
+    "stats.html": {
+      "title": "Arlingkin - Statistik",
+      "desc": "Aktivitas dan streak GitHub saya, diperbarui otomatis, lengkap dengan hitung mundur update berikutnya."
+    },
+    "contact.html": {
+      "title": "Arlingkin - Kontak",
+      "desc": "Daftar semua interaksi saya di internet: email, media sosial, dan di mana saja kamu bisa menemukan saya."
+    },
+    "notes/index.html": {
+      "title": "Arlingkin - Catatan",
+      "desc": "Catatan singkat yang saya tulis sambil belajar memprogram dan membangun untuk web."
+    },
+    "notes/mindustry.html": {
+      "title": "Arlingkin - Logic Mindustry",
+      "desc": "Bagaimana game di ponsel dan logic processor-nya membawa saya ke web development."
+    },
+    "notes/trading.html": {
+      "title": "Arlingkin - Saat saya berhenti menatap chart",
+      "desc": "Catatan pribadi tentang belajar menjauh dari chart, dan kenapa berhenti sejenak juga bagian dari proses."
+    },
+    "welcome.html": {
+      "title": "Arlingkin - Selamat datang",
+      "desc": "Mulai di sini: pilih bahasa dan tema arlingkin, lalu pilih mau ke mana."
+    }
+  }
+}

@@ -29,9 +29,10 @@ Personal site and learning journal of **Arlingga**, built with plain HTML, CSS a
 │   ├── notes.json                         # notes list, dates, tags, featured flag (EN/ID)
 │   └── projects.json                      # projects: tags, status, stack, links (EN/ID)
 ├── assets/
-│   ├── css/                               # style.css (design system), interactive.css (effects)
+│   ├── src/                               # footer-fx.js / footer-fx.css (readable sources)
+│   ├── css/                               # style.css (design system), interactive.css (effects), card.css (featured card themes)
 │   └── js/                                # main.js (i18n, nav, reveal), interactive.js,
-│                                          # stats.js, filter.js, mail.js, site-config.js, valueskills.js,
+│                                          # stats.js, filter.js, card.js, mail.js, site-config.js, valueskills.js,
 │                                          # tools-i18n.js (generated)
 ├── icons/                                 # site icons and icons/tools/*.svg
 ├── scripts/
@@ -96,13 +97,31 @@ Commit the regenerated files. The Node.js version in CI is 20.
 
 Notes and Projects share one search/filter script (`assets/js/filter.js`, the `[data-filter]` markup) with tag chips, `?q=&tag=` links and "show more" paging.
 
+## Translations (i18n)
+
+1. Add keys to the right module in `assets/js/i18n/` (`common` is loaded on every page; create a new module for a new page or note).
+2. List the modules a page needs in `data/i18n.json` (`pages`). `node scripts/build.mjs` writes the matching `<script>` tags before `main.js`.
+3. The build fails when a page uses a `data-i18n` key that none of its modules (or `tools-i18n.js` / `404.js`) defines.
+4. Values from `site-config.js` map onto keys through `CONFIG_MAP` at the top of `applyConfig()` in `main.js`.
+
+## Minified footer effects
+
+Edit `assets/src/footer-fx.js` or `assets/src/footer-fx.css`, then run:
+
+```bash
+node scripts/minify.mjs   # needs network once: runs npx esbuild@0.25.5 (or set ESBUILD=/path/to/esbuild)
+node scripts/build.mjs
+```
+
+The minified files in `assets/js/` and `assets/css/` carry a `/*src:<hash>*/` header; `build.mjs --check` (CI) fails when a source changed without re-minifying. Targets are listed in `data/minify.json`.
+
 ## Site config variables
 
 `assets/js/site-config.js` holds `__SITE_*__` placeholders. In CI, `scripts/inject-config.mjs` replaces them with GitHub Actions variables (**Settings → Secrets and variables → Actions → Variables**). A missing variable simply keeps the default text.
 
 | Variable | Used for |
 | --- | --- |
-| `SITE_LOCATION`, `SITE_STATUS`, `SITE_WORKING_ON`, `SITE_OPEN_TO`, `SITE_FAV_COLOR`, `SITE_EMAIL` | facts list on the About page |
+| `SITE_LOCATION`, `SITE_STATUS`, `SITE_WORKING_ON`, `SITE_OPEN_TO`, `SITE_EMAIL` | facts list on the About page |
 | `SITE_ROLE`, `SITE_TAGLINE` | home page eyebrow and status line |
 | `SITE_NOW_1` to `SITE_NOW_4` | "Right now" list on the home page |
 
@@ -122,7 +141,8 @@ The Vercel and Firebase workflows skip themselves when their secret is not set. 
 ## Tech notes
 
 - Vanilla JavaScript only, loaded as classic scripts
-- Translations live in the `T` object in `assets/js/main.js` and are applied through `data-i18n` attributes
+- Translations live in `assets/js/i18n/*.js` (one module per topic or page, each `Object.assign(T, {...})`) and are applied through `data-i18n` attributes; `main.js` holds only the language switcher, config overrides and shared behavior
+- Footer effects are split out to `assets/src/footer-fx.{js,css}` and loaded as minified files only when the footer is within ~800px of the viewport (or already visible)
 - Fonts: DM Sans, DM Mono and Playfair Display via Google Fonts
 - Tool icons are served locally from `icons/tools/` (path set by `iconBase` in `data/site.json`)
 

@@ -1,11 +1,10 @@
-/* 404 page only: extra i18n keys, route suggestion and star-field parallax. Loaded after main.js. */
-/* teks khusus halaman 404 (main.js menerapkannya saat DOMContentLoaded) */
 Object.assign(T, {
   'e404.h1':   { en: "This is not the page <em>you're looking for.</em>", id: "Ini bukan halaman <em>yang kamu cari.</em>" },
   'e404.sub':  { en: "The link may be broken, or the page moved. Pick a way back below.", id: "Tautannya mungkin salah atau halamannya pindah. Pilih jalan kembali di bawah." },
   'e404.path': { en: "You tried to open", id: "Kamu mencoba membuka" },
   'e404.mean': { en: "Did you mean", id: "Maksudmu" },
   'e404.jump': { en: "Or jump to", id: "Atau langsung ke" },
+  'e404.play':    { en:'PLAY THE GAME →', id:'MAINKAN GAME →' },
   'e404.help': { en: "Still stuck?", id: "Masih bingung?" }
 });
 
@@ -13,7 +12,6 @@ Object.assign(T, {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const rand = (a, b) => a + Math.random() * (b - a);
 
-  /* 1) tebak halaman yang dimaksud (jarak edit terdekat) */
   const PAGES = ['/', '/about', '/skills', '/projects', '/stats', '/contact', '/notes', '/notes/mindustry', '/notes/trading'];
   const dist = (a, b) => {
     let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
@@ -41,7 +39,6 @@ Object.assign(T, {
     }
   }
 
-  /* 2) langit bintang 3 lapis + parallax kursor */
   const sky = document.querySelector('[data-sky]');
   if (!sky) return;
   [

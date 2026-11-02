@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';if(localStorage.getItem('arlingkin-lang')==='id'){d.lang='id';d.dataset.lang='id';}}catch(e){}})();</script>
-  <meta name="description" content="Short notes from Arlingga: learning to program, trading habits, and building for the web.">
+  <script>(function(){var d=document.documentElement,L;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang');if(q==='id'||q==='en'){L=q;localStorage.setItem('arlingkin-lang',q);}}catch(e){}try{L=L||localStorage.getItem('arlingkin-lang');d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';}catch(e){}if(L==='id'){d.lang='id';d.dataset.lang='id';}})();</script>
+  <meta name="description" content="Short notes I write down while learning to program and building for the web.">
   <meta name="keywords" content="notes, blog, mindustry, programming, Arlingkin, Arlingga">
   <meta name="author" content="Arlingga">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -12,20 +12,21 @@
   <meta name="color-scheme" content="dark">
   <title>Arlingkin - Notes</title>
   <meta property="og:title" content="Arlingkin - Notes">
-  <meta property="og:description" content="Short notes from Arlingga: learning to program, trading habits, and building for the web.">
+  <meta property="og:description" content="Short notes I write down while learning to program and building for the web.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arlingkin.vercel.app/notes">
   <link rel="canonical" href="https://arlingkin.vercel.app/notes">
-  <meta property="og:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <meta property="og:image" content="https://arlingkin.vercel.app/icons/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Arlingkin - personal site of Arlingga">
+  <meta property="og:image:alt" content="Arlingkin, personal site of Arlingga: Making sense of code.">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="id_ID">
   <meta property="og:site_name" content="Arlingkin">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@arlingkin">
-  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.png">
+  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.jpg">
   <link rel="alternate" type="application/rss+xml" title="Arlingkin - Notes" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -91,7 +92,11 @@
                 <button class="chip chip-btn" type="button" data-filter-tag="programming" aria-pressed="false" data-i18n="notes.tag.programming">programming</button>
                 <button class="chip chip-btn" type="button" data-filter-tag="game" aria-pressed="false" data-i18n="notes.tag.game">game</button>
                 <button class="chip chip-btn" type="button" data-filter-tag="trading" aria-pressed="false" data-i18n="notes.tag.trading">trading</button>
-                <button class="chip chip-btn" type="button" data-filter-tag="habits" aria-pressed="false" data-i18n="notes.tag.habits">habits</button></span>
+                <button class="chip chip-btn" type="button" data-filter-tag="habits" aria-pressed="false" data-i18n="notes.tag.habits">habits</button>
+                <button class="chip chip-btn" type="button" data-filter-tag="science" aria-pressed="false" data-i18n="notes.tag.science">science</button>
+                <button class="chip chip-btn" type="button" data-filter-tag="sandbox" aria-pressed="false" data-i18n="notes.tag.sandbox">sandbox</button>
+                <button class="chip chip-btn" type="button" data-filter-tag="rockets" aria-pressed="false" data-i18n="notes.tag.rockets">rockets</button>
+                <button class="chip chip-btn" type="button" data-filter-tag="engineer" aria-pressed="false" data-i18n="notes.tag.engineer">engineer</button></span>
               </div>
             </div>
           </div>
@@ -113,7 +118,8 @@
             <span class="meta" data-i18n="notes.more.sub">smaller ones</span>
           </div>
           <div data-build="notes-more">
-            <a class="project-row reveal" data-item data-q="trading the moment i stopped watching the chart. saat saya berhenti menatap chart. a note about trading, screen time, and learning that stepping away is part of the process. catatan tentang trading, waktu di depan layar, dan belajar bahwa menjauh sejenak juga bagian dari proses. trading trading trading habits habits kebiasaan" data-tags="trading habits" href="/notes/trading"><span class="project-num">02</span><div class="project-main"><h3 data-i18n="notes.trading.title">The moment I stopped watching the chart.</h3><p data-i18n="notes.trading.desc">A note about trading, screen time, and learning that stepping away is part of the process.</p><div class="row-meta"><time datetime="2026-10-01" data-date="2026-10-01">1 Oct 2026</time><span class="chip" data-tag="trading" data-i18n="notes.tag.trading">trading</span><span class="chip" data-tag="habits" data-i18n="notes.tag.habits">habits</span></div></div><span class="project-link" data-i18n="notes.read">READ NOTE →</span></a>
+            <a class="project-row reveal" data-item data-q="simple-rockets-2 how i became an engineer in simple rockets 2. bagaimana saya jadi insinyur di simple rockets 2. how a spaceflight sandbox helped me understand code: rockets, a space station, programs that fly themselves, and the concepts behind them. bagaimana sandbox antariksa membantu saya memahami kode: roket, stasiun luar angkasa, program yang terbang sendiri, dan konsep di baliknya. programming programming pemrograman game game game science science sains sandbox sandbox sandbox rockets rockets roket engineer engineer insinyur" data-tags="programming game science sandbox rockets engineer" href="/notes/simple-rockets-2"><span class="project-num">02</span><div class="project-main"><h3 data-i18n="notes.simple-rockets-2.title">How I became an engineer in Simple Rockets 2.</h3><p data-i18n="notes.simple-rockets-2.desc">How a spaceflight sandbox helped me understand code: rockets, a space station, programs that fly themselves, and the concepts behind them.</p><div class="row-meta"><time datetime="2026-10-18" data-date="2026-10-18">18 Oct 2026</time><span class="chip" data-tag="programming" data-i18n="notes.tag.programming">programming</span><span class="chip" data-tag="game" data-i18n="notes.tag.game">game</span><span class="chip" data-tag="science" data-i18n="notes.tag.science">science</span><span class="chip" data-tag="sandbox" data-i18n="notes.tag.sandbox">sandbox</span><span class="chip" data-tag="rockets" data-i18n="notes.tag.rockets">rockets</span><span class="chip" data-tag="engineer" data-i18n="notes.tag.engineer">engineer</span></div></div><span class="project-link" data-i18n="notes.read">READ NOTE →</span></a>
+            <a class="project-row reveal" data-item data-q="trading the moment i stopped watching the chart. saat saya berhenti menatap chart. a note about trading, screen time, and learning that stepping away is part of the process. catatan tentang trading, waktu di depan layar, dan belajar bahwa menjauh sejenak juga bagian dari proses. trading trading trading habits habits kebiasaan" data-tags="trading habits" href="/notes/trading"><span class="project-num">03</span><div class="project-main"><h3 data-i18n="notes.trading.title">The moment I stopped watching the chart.</h3><p data-i18n="notes.trading.desc">A note about trading, screen time, and learning that stepping away is part of the process.</p><div class="row-meta"><time datetime="2026-10-01" data-date="2026-10-01">1 Oct 2026</time><span class="chip" data-tag="trading" data-i18n="notes.tag.trading">trading</span><span class="chip" data-tag="habits" data-i18n="notes.tag.habits">habits</span></div></div><span class="project-link" data-i18n="notes.read">READ NOTE →</span></a>
           </div>
         </section>
 
@@ -129,7 +135,7 @@
     <footer class="site-footer" data-build="footer">
       <div class="footer-top">
         <div class="footer-col footer-brand">
-          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
+          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span><span class="fl-text" data-text="arlingkin">arlingkin</span></a>
           <p data-i18n="footer.tagline">Arlingga. I build web stuff and write down what I learn.</p>
           <p class="footer-status"><span class="pulse" aria-hidden="true"></span><span data-i18n="footer.status">open to collaborate</span></p>
         </div>
@@ -172,6 +178,10 @@
     </footer>
   </div>
   <script src="/assets/js/mail.js"></script><script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/i18n/core.js"></script>
+  <script src="/assets/js/i18n/common.js"></script>
+  <script src="/assets/js/i18n/notes.js"></script>
+  <script src="/assets/js/i18n/filter.js"></script>
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/tools-i18n.js"></script>
   <script src="/assets/js/filter.js"></script>

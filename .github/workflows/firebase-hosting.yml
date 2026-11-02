@@ -35,7 +35,6 @@ jobs:
           SITE_STATUS:        ${{ vars.SITE_STATUS }}
           SITE_WORKING_ON:    ${{ vars.SITE_WORKING_ON }}
           SITE_OPEN_TO:       ${{ vars.SITE_OPEN_TO }}
-          SITE_FAV_COLOR:     ${{ vars.SITE_FAV_COLOR }}
           SITE_EMAIL:         ${{ vars.SITE_EMAIL }}
           SITE_ROLE:          ${{ vars.SITE_ROLE }}
           SITE_TAGLINE:       ${{ vars.SITE_TAGLINE }}

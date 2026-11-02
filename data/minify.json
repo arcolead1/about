@@ -1,0 +1,6 @@
+{
+  "targets": [
+    { "src": "assets/src/footer-fx.js", "out": "assets/js/footer-fx.min.js" },
+    { "src": "assets/src/footer-fx.css", "out": "assets/css/footer-fx.min.css" }
+  ]
+}

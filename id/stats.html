@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){var d=document.documentElement,L;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang');if(q==='id'||q==='en'){L=q;localStorage.setItem('arlingkin-lang',q);}}catch(e){}try{L=L||localStorage.getItem('arlingkin-lang');d.dataset.theme=localStorage.getItem('arlingkin-theme')==='light'?'light':'dark';}catch(e){}if(L==='id'){d.lang='id';d.dataset.lang='id';}})();</script>
+  <meta name="description" content="Aktivitas dan streak GitHub saya, diperbarui otomatis, lengkap dengan hitung mundur update berikutnya.">
+  <meta name="keywords" content="GitHub stats, GitHub streak, contribution metrics, GitHub Actions, Arlingkin, Arlingga">
+  <meta name="author" content="Arlingga">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#071a3b">
+  <meta name="color-scheme" content="dark">
+  <title>Arlingkin - Statistik</title>
+  <meta property="og:title" content="Arlingkin - Statistik">
+  <meta property="og:description" content="Aktivitas dan streak GitHub saya, diperbarui otomatis, lengkap dengan hitung mundur update berikutnya.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arlingkin.vercel.app/stats?lang=id">
+    <link rel="canonical" href="https://arlingkin.vercel.app/stats">
+<meta property="og:image" content="https://arlingkin.vercel.app/icons/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Arlingkin, situs pribadi Arlingga: Menerka makna kode.">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Arlingkin">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@arlingkin">
+  <meta name="twitter:image" content="https://arlingkin.vercel.app/icons/og.jpg">
+  <link rel="alternate" type="application/rss+xml" title="Arlingkin - Notes" href="/feed.xml">
+  <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/interactive.css">
+  <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip.main">Skip to content</a>
+  <div class="page">
+    <header class="site-header" data-build="header">
+      <a class="brand" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span>arlingkin</a>
+      <nav id="primary-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="/" data-i18n="nav.home">home</a>
+        <a class="nav-link" href="/about" data-i18n="nav.about">about</a>
+        <a class="nav-link" href="/skills" data-i18n="nav.skills">skills</a>
+        <a class="nav-link" href="/projects" data-i18n="nav.projects">projects</a>
+        <a class="nav-link active" href="/stats" data-i18n="nav.stats">stats</a>
+        <a class="nav-link" href="/contact" data-i18n="nav.contact">contact</a>
+        <a class="nav-link" href="https://github.com/arlingkin" target="_blank" rel="noreferrer" data-i18n="nav.github">github ↗</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language selector">
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English"><span class="lang-short">EN</span><span class="lang-long">ENGLISH</span></button>
+        <button class="lang-btn" data-lang="id" aria-label="Ganti ke Bahasa Indonesia"><span class="lang-short">ID</span><span class="lang-long">INDONESIA</span></button>
+      </div>
+      <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"><span class="theme-icon">◐</span><span class="theme-label">DARK</span></button>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><span aria-hidden="true"></span></button>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="page-head reveal reveal-zoom" aria-labelledby="stats-title">
+        <p class="eyebrow" data-i18n="stats.eyebrow">04 - GitHub stats</p>
+        <h1 id="stats-title" data-i18n="stats.h1">My GitHub <em>activity.</em></h1>
+        <p class="intro" data-i18n="stats.intro">These numbers are generated automatically from my GitHub account, the same way as my profile README.</p>
+      </section>
+
+      <section class="stats-panel" aria-label="GitHub metrics">
+        <div class="section-head">
+          <h2 data-i18n="stats.cron.label">Next update</h2>
+          <span class="meta" data-i18n="stats.cron.sub">read from the repo workflow</span>
+        </div>
+        <div class="cyber-glass cron-panel reveal" data-cron>
+          <div class="glass-bar"><i></i><i></i><i></i><span data-cron-file>metrics.yml</span></div>
+          <span class="scanline" aria-hidden="true"></span>
+          <div class="glass-body cron-body">
+            <div class="cron-ring-wrap" data-ring>
+              <div class="cron-ring"></div>
+              <div class="cron-ring-inner"><b data-pct>0%</b><small data-i18n="stats.cron.cycle">of the cycle</small></div>
+            </div>
+            <div class="cron-main">
+              <div class="cron-tabs" role="group" aria-label="Workflow">
+                <button class="cron-tab" type="button" data-wf="metrics" aria-pressed="true">metrics</button>
+                <button class="cron-tab" type="button" data-wf="streak" aria-pressed="false">streak badge</button>
+              </div>
+              <div class="cron-clock" role="timer" aria-label="Time until the next run">
+                <div class="cron-cell"><b data-d>00</b><span data-i18n="stats.cron.days">days</span></div>
+                <div class="cron-cell"><b data-h>00</b><span data-i18n="stats.cron.hours">hours</span></div>
+                <div class="cron-cell"><b data-m>00</b><span data-i18n="stats.cron.mins">min</span></div>
+                <div class="cron-cell"><b data-s>00</b><span data-i18n="stats.cron.secs">sec</span></div>
+              </div>
+              <p class="cron-next" data-next></p>
+              <dl class="cron-meta">
+                <div><dt data-i18n="stats.cron.schedule">schedule (UTC)</dt><dd data-expr>0 0 * * *</dd></div>
+                <div><dt data-i18n="stats.cron.last">last run</dt><dd data-last>-</dd></div>
+                <div><dt data-i18n="stats.cron.status">status</dt><dd><span class="cron-chip unk" data-chip><i></i><span data-status>-</span></span></dd></div>
+                <div><dt data-i18n="stats.cron.source">source</dt><dd><a class="cron-src" data-src href="https://github.com/arlingkin/arlingkin/actions" target="_blank" rel="noreferrer">arlingkin/arlingkin &#8599;</a></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h2 data-i18n="stats.live.lbl">Live metrics</h2>
+          <span class="meta" data-i18n="stats.live.sub">auto-updated by github actions</span>
+        </div>
+        <div class="cyber-glass reveal">
+          <div class="glass-bar"><i></i><i></i><i></i><span>github-metrics.svg</span></div>
+          <span class="scanline" aria-hidden="true"></span>
+          <div class="glass-body"><img src="https://raw.githubusercontent.com/arlingkin/arlingkin/refs/heads/main/github-metrics.svg" alt="Live GitHub metrics for arlingkin" width="480" height="713" loading="lazy" decoding="async"></div>
+        </div>
+
+        <div class="section-head">
+          <h2 data-i18n="stats.streak.lbl">Current streak</h2>
+          <span class="meta" data-i18n="stats.streak.sub">updated daily</span>
+        </div>
+        <div class="cyber-glass reveal has-center">
+          <div class="glass-bar"><i></i><i></i><i></i><span>streak card</span></div>
+          <span class="scanline" aria-hidden="true"></span>
+          <div class="glass-body"><img class="streak" src="https://streak-stats.demolab.com/?user=arlingkin&amp;theme=for-the-badge&amp;hide_border=true&amp;card_width=280" alt="Current GitHub streak for arlingkin" loading="lazy" decoding="async"></div>
+        </div>
+
+        <div class="auto-grid">
+          <article class="auto-card reveal">
+            <span class="ico">&#9881;</span>
+            <h3>metrics.yml</h3>
+            <p data-i18n="stats.auto1.desc">A scheduled GitHub Action that turns my activity into <span class="kbd">github-metrics.svg</span>.</p>
+          </article>
+          <article class="auto-card reveal">
+            <span class="ico">&#128293;</span>
+            <h3>streak-badge</h3>
+            <p data-i18n="stats.auto2.desc">A streak card that pulls its numbers from a streak API.</p>
+          </article>
+          <article class="auto-card reveal">
+            <span class="ico">&#9889;</span>
+            <h3>github_streak.py</h3>
+            <p data-i18n="stats.auto3.desc">A small Python script in the repo that feeds the streak automation.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-build="footer">
+      <div class="footer-top">
+        <div class="footer-col footer-brand">
+          <a class="footer-logo" href="/" aria-label="Arlingkin home"><span class="brand-mark">a</span><span class="fl-text" data-text="arlingkin">arlingkin</span></a>
+          <p data-i18n="footer.tagline">Arlingga. I build web stuff and write down what I learn.</p>
+          <p class="footer-status"><span class="pulse" aria-hidden="true"></span><span data-i18n="footer.status">open to collaborate</span></p>
+        </div>
+        <nav class="footer-col" aria-labelledby="footer-nav-title">
+          <h2 class="footer-title" id="footer-nav-title" data-i18n="footer.nav">Pages</h2>
+          <ul class="footer-links">
+            <li><a class="footer-link" href="/" data-i18n="nav.home">home</a></li>
+            <li><a class="footer-link" href="/about" data-i18n="nav.about">about</a></li>
+            <li><a class="footer-link" href="/skills" data-i18n="nav.skills">skills</a></li>
+            <li><a class="footer-link" href="/projects" data-i18n="nav.projects">projects</a></li>
+            <li><a class="footer-link" href="/notes" data-i18n="nav.notes">notes</a></li>
+            <li><a class="footer-link" href="/stats" data-i18n="nav.stats">stats</a></li>
+            <li><a class="footer-link" href="/contact" data-i18n="nav.contact">contact</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-labelledby="footer-social-title">
+          <h2 class="footer-title" id="footer-social-title" data-i18n="footer.social">Find me on</h2>
+          <ul class="footer-links">
+            <li><a class="footer-link" href="https://github.com/arlingkin" target="_blank" rel="noreferrer">GitHub ↗</a></li>
+            <li><a class="footer-link" href="https://instagram.com/__lingg4" target="_blank" rel="noreferrer">Instagram ↗</a></li>
+            <li><a class="footer-link" href="https://tiktok.com/@arlingkin" target="_blank" rel="noreferrer">TikTok ↗</a></li>
+            <li><a class="footer-link" href="https://youtube.com/@arlingkin" target="_blank" rel="noreferrer">YouTube ↗</a></li>
+            <li><a class="footer-link" href="https://t.me/arlingkin" target="_blank" rel="noreferrer">Telegram ↗</a></li>
+            <li><a class="footer-link" href="/feed.xml" type="application/rss+xml">RSS</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col">
+          <h2 class="footer-title" data-i18n="footer.contact">Contact</h2>
+          <address>
+            <a class="footer-link" href="/contact" data-mail-link data-i18n="footer.hello">say hello ↗</a>
+            <button class="footer-copy cta" type="button" data-copy="" data-i18n="contact.email.btn">copy email</button>
+          </address>
+        </div>
+      </div>
+      <p class="footer-mark" aria-hidden="true">arlingkin</p>
+      <div class="footer-bottom">
+        <small data-i18n="footer.copy">© 2026 Arlingkin. Plain HTML, CSS and a bit of JS.</small>
+        <a class="to-top" href="#" data-i18n="footer.top">Back to top ↑</a>
+      </div>
+    </footer>
+  </div>
+  <script src="/assets/js/mail.js"></script><script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/i18n/core.js"></script>
+  <script src="/assets/js/i18n/common.js"></script>
+  <script src="/assets/js/i18n/stats.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/interactive.js"></script>
+  <script src="/assets/js/stats.js" defer></script>
+</body>
+</html>

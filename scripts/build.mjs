@@ -1,11 +1,13 @@
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
 
 const check = process.argv.includes('--check');
 const read = (path) => readFileSync(path, 'utf8');
 const data = JSON.parse(read('data/tools.json'));
 const notesData = JSON.parse(read('data/notes.json'));
 const site = JSON.parse(read('data/site.json'));
+const idMeta = JSON.parse(read('data/meta-id.json'));
 const projData = JSON.parse(read('data/projects.json'));
 const origin = site.url.replace(/\/$/, '');
 const byId = new Map(data.tools.map((tool) => [tool.id, tool]));
@@ -52,7 +54,6 @@ const chipButtons = (key, labels, lists) =>
     .map((id) => `                <button class="chip chip-btn" type="button" data-filter-tag="${id}" aria-pressed="false" data-i18n="${key}.${id}">${esc(labels[id].en)}</button>`)
     .join('\n');
 
-/* notes */
 const noteTags = notesData.tags || {};
 const sortedNotes = [...notesData.notes].sort((a, b) => b.date.localeCompare(a.date));
 const mainNotes = sortedNotes.filter((note) => note.featured);
@@ -67,7 +68,6 @@ const mainHtml = mainNotes.map((note, i) => noteRow(note, i + 1)).join('\n');
 const moreHtml = moreNotes.map((note, i) => noteRow(note, mainNotes.length + i + 1)).join('\n');
 const noteTagHtml = chipButtons('notes.tag', noteTags, notesData.notes.map((n) => n.tags || []));
 
-/* projects */
 const projects = projData.projects;
 const projTypes = projData.types;
 const projStatus = projData.status;
@@ -101,7 +101,7 @@ const projArt = (p) => {
 const projFeature = (p) => {
   const matrix = p.theme === 'matrix';
   return [
-    `          <article class="feature-card${matrix ? ' matrix' : ''}" ${projAttrs(p)}>`,
+    `          <article class="feature-card${matrix ? ' matrix' : ''}" ${p.theme ? `data-card-theme="${p.theme}" ` : ''}${projAttrs(p)}>`,
     '            <div class="feature-copy reveal">',
     `              <span class="tag ${matrix ? 'matrix' : 'soft'}" data-i18n="projects.${p.slug}.badge">${esc(p.badge.en)}</span>`,
     `              <h3 data-i18n="projects.${p.slug}.title">${esc(p.title.en)}</h3>`,
@@ -150,7 +150,19 @@ const pages = {
   'notes/index.html': null,
   'notes/mindustry.html': null,
   'notes/trading.html': null,
+  'notes/simple-rockets-2.html': null,
+  'welcome.html': null,
 };
+
+const i18nPages = JSON.parse(read('data/i18n.json')).pages;
+const injectI18n = (html, file) => {
+  const mods = i18nPages[file];
+  if (!mods) return html;
+  const bare = html.replace(/[ \t]*<script src="\/?assets\/js\/i18n\/[^"]*"><\/script>\n?/g, '');
+  return bare.replace(/<script src="(\/?)assets\/js\/main\.js"><\/script>/, (tag, slash) =>
+    ['core', ...mods].map((m) => `<script src="${slash}assets/js/i18n/${m}.js"></script>`).join('\n  ') + `\n  ${tag}`);
+};
+const pageSrc = new Map();
 
 const header = read('partials/header.html').trimEnd();
 const footer = read('partials/footer.html').trimEnd();
@@ -162,8 +174,8 @@ const syncHead = (src, file) =>
   src
     .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${origin}${urlPath(file)}$2`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${origin}${urlPath(file)}$2`)
-    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${origin}/icons/og.png$2`)
-    .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${origin}/icons/og.png$2`)
+    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${origin}/icons/og.jpg$2`)
+    .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${origin}/icons/og.jpg$2`)
     .replace(/("(?:@id|url|image)": ")https?:\/\/[^\/"]+/g, `$1${origin}`);
 const statsOwner = site.statsRepo.split('/')[0];
 const syncStats = (src) =>
@@ -173,11 +185,29 @@ const syncStats = (src) =>
     .replace(/(data-src [^>]*>)[^<]*(<\/a>)/, `$1${site.statsRepo} &#8599;$2`)
     .replace(/user=[^&"]+/, `user=${statsOwner}`);
 
+const idPage = (src, file) => {
+  const m = idMeta.pages[file];
+  if (!m) return null;
+  const at = (re, fn) => { src = src.replace(re, fn); };
+  at('<html lang="en" data-lang="en">', () => '<html lang="id" data-lang="id">');
+  at(/(<meta name="description" content=")[^"]*(")/, (_, a, z) => a + escAttr(m.desc) + z);
+  at(/(<meta property="og:description" content=")[^"]*(")/, (_, a, z) => a + escAttr(m.desc) + z);
+  at(/(<meta property="og:title" content=")[^"]*(")/, (_, a, z) => a + escAttr(m.title) + z);
+  at(/<title>[^<]*<\/title>/, () => `<title>${esc(m.title)}</title>`);
+  at(/(<meta property="og:url" content="[^"]*)(")/, (_, a, z) => `${a}?lang=id${z}`);
+  at(/(<meta property="og:image:alt" content=")[^"]*(")/, (_, a, z) => a + escAttr(idMeta.alt) + z);
+  at('<meta property="og:locale" content="en_US">', () => '<meta property="og:locale" content="id_ID">');
+  at('<meta property="og:locale:alternate" content="id_ID">', () => '<meta property="og:locale:alternate" content="en_US">');
+  at('content="index, follow, max-image-preview:large"', () => 'content="noindex, follow"');
+  at(/((?:href|src)=")((?:assets|icons)\/)/g, (_, a, p) => `${a}/${p}`);
+  return src;
+};
+
 const changed = [];
 const write = (path, next) => {
   if (existsSync(path) && read(path) === next) return;
   changed.push(path);
-  if (!check) writeFileSync(path, next);
+  if (!check) { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, next); }
 };
 
 for (const [path, active] of Object.entries(pages)) {
@@ -192,14 +222,19 @@ for (const [path, active] of Object.entries(pages)) {
   src = replaceInner(src, '<div data-build="projects-featured">', LIST_END, projFeaturedHtml);
   src = replaceInner(src, '<div data-build="projects-archive">', LIST_END, projArchiveHtml);
   src = replaceInner(src, '<span class="chips-gen" data-build="projects-tags">', '</span>', projTagHtml);
+  src = injectI18n(src, path);
+  pageSrc.set(path, src);
   src = syncHead(src, path);
   if (path === 'stats.html') src = syncStats(src);
   write(path, src);
+  const idSrc = idPage(src, path);
+  if (idSrc) write(`id/${path}`, idSrc);
 }
 
 write('sitemap.xml', read('sitemap.xml').replace(/<loc>https?:\/\/[^\/<]+/g, `<loc>${origin}`));
 write('robots.txt', read('robots.txt').replace(/(Sitemap: )https?:\/\/[^\/\s]+/, `$1${origin}`));
 write('assets/js/stats.js', read('assets/js/stats.js').replace(/const REPO = '[^']*';/, `const REPO = '${site.statsRepo}';`));
+write('assets/src/footer-fx.js', read('assets/src/footer-fx.js').replace(/const SITE_REPO = '[^']*';/, `const SITE_REPO = '${site.repo}';`));
 
 const entries = [];
 for (const g of data.groups) {
@@ -221,6 +256,24 @@ for (const p of projects) {
 const i18n = `Object.assign(T, {\n${entries.map(([key, value]) => `  ${JSON.stringify(key)}: ${JSON.stringify(value)},`).join('\n')}\n});\n`;
 write('assets/js/tools-i18n.js', i18n);
 
+const keysOf = (text) => new Set([...text.matchAll(/^\s*["']([^"']+)["']\s*:/gm)].map((m) => m[1]));
+const generatedKeys = new Set(entries.map(([key]) => key));
+const missing = [];
+for (const [file, html] of pageSrc) {
+  const have = new Set();
+  for (const m of html.matchAll(/<script src="\/?(assets\/js\/[^"]+\.js)"/g)) {
+    if (m[1] === 'assets/js/tools-i18n.js') generatedKeys.forEach((k) => have.add(k));
+    else if (m[1].startsWith('assets/js/i18n/') || m[1] === 'assets/js/404.js') keysOf(read(m[1])).forEach((k) => have.add(k));
+  }
+  for (const m of html.matchAll(/data-i18n(?:-alt)?="([^"]+)"/g)) {
+    if (!have.has(m[1]) || (m[1].startsWith('about.fact.') && !have.has(`${m[1]}v`))) missing.push(`${file}: ${m[1]}`);
+  }
+}
+if (missing.length) {
+  console.error(`missing i18n keys (add them to a module in assets/js/i18n/ listed for the page in data/i18n.json):\n${[...new Set(missing)].join('\n')}`);
+  process.exit(1);
+}
+
 const xml = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const items = sortedNotes
   .map((note) => {
@@ -231,7 +284,6 @@ const items = sortedNotes
 const feed = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>Arlingkin - Notes</title>\n    <link>${origin}/notes</link>\n    <atom:link href="${origin}/feed.xml" rel="self" type="application/rss+xml"/>\n    <description>Short notes from Arlingga.</description>\n    <language>en</language>\n    <lastBuildDate>${new Date(`${sortedNotes[0].date}T00:00:00Z`).toUTCString()}</lastBuildDate>\n${items}\n  </channel>\n</rss>\n`;
 write('feed.xml', feed);
 
-/* CSP: keep sha256 hashes of the inline scripts (boot + speculation rules) in vercel.json in sync. */
 const inline = (re, name) => {
   const m = read('index.html').match(re);
   if (!m) throw new Error(`${name} not found in index.html`);
@@ -244,6 +296,10 @@ const hashes = [
 ].join(' ');
 write('vercel.json', read('vercel.json').replace(/script-src [^;]*;/, `script-src 'self' ${hashes} 'inline-speculation-rules';`));
 
+const stamp = (text) => createHash('sha256').update(text).digest('hex').slice(0, 12);
+const stale = JSON.parse(read('data/minify.json')).targets.filter(({ src, out }) => !existsSync(out) || !read(out).startsWith(`/*src:${stamp(read(src))}*/`)).map(({ out }) => out);
+if (stale.length) console.log(`minified output out of date, run: node scripts/minify.mjs (${stale.join(', ')})`);
+
 if (changed.length) console.log(`${check ? 'out of date' : 'updated'}: ${changed.join(', ')}`);
 else console.log('up to date');
-if (check && changed.length) process.exit(1);
+if (check && (changed.length || stale.length)) process.exit(1);
